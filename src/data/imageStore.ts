@@ -91,9 +91,7 @@ const loadGalleryData = async (galleryPath: string): Promise<GalleryData> => {
 function filterImagesByCollection(collection: string | undefined, images: GalleryImage[]) {
 	if (collection) {
 		images = images.filter((image) =>
-			image.meta.collections.some(
-				(c) => c === collection || c.startsWith(collection + '/'),
-			),
+			image.meta.collections.some((c) => c === collection || c.startsWith(collection + '/')),
 		);
 	}
 	return images;
