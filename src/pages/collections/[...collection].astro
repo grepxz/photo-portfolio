@@ -39,8 +39,6 @@ const tree = buildTree(rawCollections.map((c) => c.id));
 
 const { collection } = Astro.params;
 const images = await getImages(collection ? { collection } : {});
-const base = import.meta.env.BASE_URL;
-
 const activeSegments = collection ? collection.split('/') : [];
 
 type Row = {
@@ -110,7 +108,7 @@ export const getStaticPaths = async () => {
 					<div class={`flex justify-center ${idx === rows.length - 1 ? 'mb-10' : 'mb-4'}`}>
 						<div class="flex flex-wrap gap-2 justify-center">
 							{idx === 0 && (
-								<a href={`${base}/collections/`}>
+								<a href="/collections/">
 									<div
 										class={`px-4 py-2 border ${
 											!collection
@@ -128,7 +126,7 @@ export const getStaticPaths = async () => {
 									(collection !== undefined && collection.startsWith(item.id + '/'));
 								const sizeClass = idx === 0 ? 'px-4 py-2' : 'px-3 py-1 text-sm';
 								return (
-									<a href={`${base}/collections/${item.id}`}>
+									<a href={`/collections/${item.id}`}>
 										<div
 											class={`${sizeClass} border ${
 												isActive

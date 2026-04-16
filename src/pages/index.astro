@@ -4,7 +4,6 @@ import LandingHero from '../components/LandingHero-1.astro';
 import FeaturedGallery from '../components/FeaturedGallery.astro';
 import FeaturedWorkScroll from '../components/FeaturedWorkScroll.astro';
 
-const base = import.meta.env.BASE_URL;
 ---
 
 <MainLayout>
@@ -16,7 +15,7 @@ const base = import.meta.env.BASE_URL;
 			muted
 			playsinline
 			preload="auto"
-			src={`${base}/hero-bg.webm`}></video>
+			src="/hero-bg.webm"></video>
 		<LandingHero />
 		<FeaturedWorkScroll />
 	</section>
