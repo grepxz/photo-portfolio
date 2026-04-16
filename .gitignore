@@ -23,5 +23,8 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
+# claude code local settings
+.claude/
+
 # app
 src/data/__tests__/gallery/gallery.yaml
