@@ -34,16 +34,6 @@ const buildTree = (ids: string[]): Node => {
 	return root;
 };
 
-const collectAllIds = (root: Node): string[] => {
-	const out: string[] = [];
-	const walk = (n: Node) => {
-		if (n.id) out.push(n.id);
-		for (const c of n.children.values()) walk(c);
-	};
-	walk(root);
-	return out;
-};
-
 const rawCollections = await getCollections();
 const tree = buildTree(rawCollections.map((c) => c.id));
 

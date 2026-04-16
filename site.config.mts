@@ -10,7 +10,7 @@ export interface SocialLink {
 export default {
 	title: 'Cedar4st',
 	favicon: 'favicon.ico',
-	owner: 'Hanna does',
+	owner: 'Hanna',
 	profileImage: 'profile.webp',
 	socialLinks: [
 		{
