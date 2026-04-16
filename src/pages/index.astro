@@ -3,10 +3,21 @@ import MainLayout from '../layouts/MainLayout.astro';
 import LandingHero from '../components/LandingHero-1.astro';
 import FeaturedGallery from '../components/FeaturedGallery.astro';
 import FeaturedWorkScroll from '../components/FeaturedWorkScroll.astro';
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <MainLayout>
 	<section class="relative min-h-screen items-center flex py-20 md:py-16 overflow-hidden">
+		<video
+			class="absolute inset-0 w-full h-full object-cover opacity-20  z-0"
+			autoplay
+			loop
+			muted
+			playsinline
+			preload="auto"
+			src={`${base}/hero-bg.webm`}
+		></video>
 		<LandingHero />
 		<FeaturedWorkScroll />
 	</section>

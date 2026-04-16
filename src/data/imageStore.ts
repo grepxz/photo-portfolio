@@ -21,7 +21,7 @@ export class ImageStoreError extends Error {
 /**
  * Import all images from /src directory
  */
-const imageModules = import.meta.glob('/src/**/*.{jpg,jpeg,png,gif}', {
+const imageModules = import.meta.glob('/src/**/*.{jpg,jpeg,png,gif,webp}', {
 	eager: true,
 });
 
@@ -90,7 +90,11 @@ const loadGalleryData = async (galleryPath: string): Promise<GalleryData> => {
 
 function filterImagesByCollection(collection: string | undefined, images: GalleryImage[]) {
 	if (collection) {
-		images = images.filter((image) => image.meta.collections.includes(collection));
+		images = images.filter((image) =>
+			image.meta.collections.some(
+				(c) => c === collection || c.startsWith(collection + '/'),
+			),
+		);
 	}
 	return images;
 }

@@ -1,90 +1,807 @@
 collections:
-  - id: nature
-    name: Nature
-  - id: travel
-    name: Travel
-  - id: street
-    name: Street
+  - id: activism
+    name: Activism
+  - id: "events/birthday"
+    name: Events Birthday
+  - id: "events/networking/Christmas corporate dinner"
+    name: Events Networking Christmas Corporate Dinner
+  - id: "events/networking/Lecture"
+    name: Events Networking Lecture
+  - id: "events/networking/Presentation"
+    name: Events Networking Presentation
+  - id: "events/networking/Venture capital party"
+    name: Events Networking Venture Capital Party
+  - id: weddings
+    name: Weddings
 images:
-  - path: nature/nature-2.jpg
+  - path: activism/IMG_8345-1.webp
     meta:
-      title: Nature scene 2
-      description: Serene natural landscape capturing the essence of wilderness.
-      collections:
-        - nature
-    exif: {}
-  - path: nature/nature-3.jpg
-    meta:
-      title: Nature scene 3
-      description: Breathtaking natural vista showcasing environmental beauty.
-      collections:
-        - featured
-        - nature
-    exif: {}
-  - path: nature/nature-5.jpg
-    meta:
-      title: Nature scene 5
-      description: Natural landscape showing the raw beauty of the environment.
-      collections:
-        - nature
-    exif: {}
-  - path: nature/nature-7.jpg
-    meta:
-      title: Nature scene 7
-      description: Stunning natural landscape capturing environmental beauty.
-      collections:
-        - featured
-        - nature
-    exif: {}
-  - path: nature/nature-8.jpg
-    meta:
-      title: Nature scene 8
-      description: Beautiful natural vista showcasing environmental wonder.
-      collections:
-        - nature
-    exif: {}
-  - path: nature/L1002174.jpg
-    meta:
-      title: Travel scene 6
-      description: null
-      collections:
-        - featured
-        - nature
-    exif:
-      captureDate: 2025-03-27T10:35:21.000Z
-      fNumber: 8
-      focalLength: 28
-      iso: 100
-      model: LEICA Q3
-      shutterSpeed: 1250
-      lensModel: SUMMILUX 1:1.7/28 ASPH.
-  - path: nature/nature-10.jpg
-    meta:
-      title: Nature scene 10
-      description: Majestic natural landscape displaying environmental splendor.
-      collections:
-        - nature
-    exif: {}
-  - path: street/stree-1.jpg
-    meta:
-      title: Street photography 1
-      description: Urban scene capturing the essence of city life.
-      collections:
-        - featured
-        - street
-    exif: {}
-  - path: travel/travel-1.jpg
-    meta:
-      title: Travel scene 1
-      description: Journey through remarkable destinations.
-      collections:
-        - featured
-        - travel
-    exif: {}
-  - path: nature/nature-1.jpg
-    meta:
-      title: Nature 1
+      title: Img 8345 1
       description: ''
       collections:
-        - nature
+        - activism
+    exif: {}
+  - path: activism/IMG_8352-1.webp
+    meta:
+      title: Img 8352 1
+      description: ''
+      collections:
+        - activism
+    exif: {}
+  - path: activism/IMG_8360-1.webp
+    meta:
+      title: Img 8360 1
+      description: ''
+      collections:
+        - activism
+        - featured
+    exif: {}
+  - path: activism/IMG_8372-1.webp
+    meta:
+      title: Img 8372 1
+      description: ''
+      collections:
+        - activism
+    exif: {}
+  - path: activism/IMG_8383-1.webp
+    meta:
+      title: Img 8383 1
+      description: ''
+      collections:
+        - activism
+    exif: {}
+  - path: activism/IMG_8392-1.webp
+    meta:
+      title: Img 8392 1
+      description: ''
+      collections:
+        - activism
+    exif: {}
+  - path: activism/IMG_8436-1.webp
+    meta:
+      title: Img 8436 1
+      description: ''
+      collections:
+        - activism
+    exif: {}
+  - path: activism/IMG_8475-1.webp
+    meta:
+      title: Img 8475 1
+      description: ''
+      collections:
+        - activism
+    exif: {}
+  - path: activism/IMG_8530-1.webp
+    meta:
+      title: Img 8530 1
+      description: ''
+      collections:
+        - activism
+    exif: {}
+  - path: activism/IMG_8541-1.webp
+    meta:
+      title: Img 8541 1
+      description: ''
+      collections:
+        - activism
+        - featured
+    exif: {}
+  - path: activism/IMG_8549-1.webp
+    meta:
+      title: Img 8549 1
+      description: ''
+      collections:
+        - activism
+    exif: {}
+  - path: activism/IMG_8559-1.webp
+    meta:
+      title: Img 8559 1
+      description: ''
+      collections:
+        - activism
+    exif: {}
+  - path: activism/IMG_8583-1.webp
+    meta:
+      title: Img 8583 1
+      description: ''
+      collections:
+        - activism
+    exif: {}
+  - path: activism/IMG_8598-1.webp
+    meta:
+      title: Img 8598 1
+      description: ''
+      collections:
+        - activism
+    exif: {}
+  - path: activism/IMG_8689-1.webp
+    meta:
+      title: Img 8689 1
+      description: ''
+      collections:
+        - activism
+    exif: {}
+  - path: events/birthday/IMG_0726.webp
+    meta:
+      title: Img 0726
+      description: ''
+      collections:
+        - "events/birthday"
+    exif: {}
+  - path: events/birthday/IMG_0727.webp
+    meta:
+      title: Img 0727
+      description: ''
+      collections:
+        - "events/birthday"
+    exif: {}
+  - path: events/birthday/IMG_0729.webp
+    meta:
+      title: Img 0729
+      description: ''
+      collections:
+        - "events/birthday"
+    exif: {}
+  - path: events/birthday/IMG_0732.webp
+    meta:
+      title: Img 0732
+      description: ''
+      collections:
+        - "events/birthday"
+    exif: {}
+  - path: events/birthday/IMG_0764.webp
+    meta:
+      title: Img 0764
+      description: ''
+      collections:
+        - "events/birthday"
+    exif: {}
+  - path: events/birthday/IMG_0800.webp
+    meta:
+      title: Img 0800
+      description: ''
+      collections:
+        - "events/birthday"
+    exif: {}
+  - path: events/birthday/IMG_0803.webp
+    meta:
+      title: Img 0803
+      description: ''
+      collections:
+        - "events/birthday"
+    exif: {}
+  - path: events/birthday/IMG_0805.webp
+    meta:
+      title: Img 0805
+      description: ''
+      collections:
+        - "events/birthday"
+    exif: {}
+  - path: "events/networking/Christmas corporate dinner/IMG_6974.webp"
+    meta:
+      title: Img 6974
+      description: ''
+      collections:
+        - "events/networking/Christmas corporate dinner"
+    exif: {}
+  - path: "events/networking/Christmas corporate dinner/IMG_7012.webp"
+    meta:
+      title: Img 7012
+      description: ''
+      collections:
+        - "events/networking/Christmas corporate dinner"
+    exif: {}
+  - path: "events/networking/Christmas corporate dinner/IMG_7117.webp"
+    meta:
+      title: Img 7117
+      description: ''
+      collections:
+        - "events/networking/Christmas corporate dinner"
+    exif: {}
+  - path: "events/networking/Christmas corporate dinner/IMG_7146.webp"
+    meta:
+      title: Img 7146
+      description: ''
+      collections:
+        - "events/networking/Christmas corporate dinner"
+    exif: {}
+  - path: "events/networking/Christmas corporate dinner/IMG_7162.webp"
+    meta:
+      title: Img 7162
+      description: ''
+      collections:
+        - "events/networking/Christmas corporate dinner"
+    exif: {}
+  - path: "events/networking/Christmas corporate dinner/IMG_7167.webp"
+    meta:
+      title: Img 7167
+      description: ''
+      collections:
+        - "events/networking/Christmas corporate dinner"
+    exif: {}
+  - path: "events/networking/Christmas corporate dinner/IMG_7183.webp"
+    meta:
+      title: Img 7183
+      description: ''
+      collections:
+        - "events/networking/Christmas corporate dinner"
+    exif: {}
+  - path: "events/networking/Christmas corporate dinner/IMG_7237.webp"
+    meta:
+      title: Img 7237
+      description: ''
+      collections:
+        - "events/networking/Christmas corporate dinner"
+    exif: {}
+  - path: "events/networking/Christmas corporate dinner/IMG_7269.webp"
+    meta:
+      title: Img 7269
+      description: ''
+      collections:
+        - "events/networking/Christmas corporate dinner"
+    exif: {}
+  - path: "events/networking/Christmas corporate dinner/IMG_7275.webp"
+    meta:
+      title: Img 7275
+      description: ''
+      collections:
+        - "events/networking/Christmas corporate dinner"
+    exif: {}
+  - path: "events/networking/Christmas corporate dinner/IMG_7300.webp"
+    meta:
+      title: Img 7300
+      description: ''
+      collections:
+        - "events/networking/Christmas corporate dinner"
+    exif: {}
+  - path: events/networking/Lecture/IMG_0864.webp
+    meta:
+      title: Img 0864
+      description: ''
+      collections:
+        - "events/networking/Lecture"
+    exif: {}
+  - path: events/networking/Lecture/IMG_0881-1.webp
+    meta:
+      title: Img 0881 1
+      description: ''
+      collections:
+        - "events/networking/Lecture"
+        - featured
+    exif: {}
+  - path: events/networking/Lecture/IMG_0966.webp
+    meta:
+      title: Img 0966
+      description: ''
+      collections:
+        - "events/networking/Lecture"
+    exif: {}
+  - path: events/networking/Lecture/IMG_0984.webp
+    meta:
+      title: Img 0984
+      description: ''
+      collections:
+        - "events/networking/Lecture"
+        - featured
+    exif: {}
+  - path: events/networking/Lecture/IMG_1040.webp
+    meta:
+      title: Img 1040
+      description: ''
+      collections:
+        - "events/networking/Lecture"
+    exif: {}
+  - path: events/networking/Presentation/IMG_1451.webp
+    meta:
+      title: Img 1451
+      description: ''
+      collections:
+        - "events/networking/Presentation"
+    exif: {}
+  - path: events/networking/Presentation/IMG_1458.webp
+    meta:
+      title: Img 1458
+      description: ''
+      collections:
+        - "events/networking/Presentation"
+        - featured
+    exif: {}
+  - path: events/networking/Presentation/IMG_1473.webp
+    meta:
+      title: Img 1473
+      description: ''
+      collections:
+        - "events/networking/Presentation"
+    exif: {}
+  - path: events/networking/Presentation/IMG_1511.webp
+    meta:
+      title: Img 1511
+      description: ''
+      collections:
+        - "events/networking/Presentation"
+    exif: {}
+  - path: events/networking/Presentation/IMG_1549.webp
+    meta:
+      title: Img 1549
+      description: ''
+      collections:
+        - "events/networking/Presentation"
+    exif: {}
+  - path: events/networking/Presentation/IMG_1593.webp
+    meta:
+      title: Img 1593
+      description: ''
+      collections:
+        - "events/networking/Presentation"
+    exif: {}
+  - path: events/networking/Presentation/IMG_1617.webp
+    meta:
+      title: Img 1617
+      description: ''
+      collections:
+        - "events/networking/Presentation"
+    exif: {}
+  - path: events/networking/Presentation/IMG_1628.webp
+    meta:
+      title: Img 1628
+      description: ''
+      collections:
+        - "events/networking/Presentation"
+    exif: {}
+  - path: events/networking/Presentation/IMG_1640.webp
+    meta:
+      title: Img 1640
+      description: ''
+      collections:
+        - "events/networking/Presentation"
+    exif: {}
+  - path: events/networking/Presentation/IMG_1650.webp
+    meta:
+      title: Img 1650
+      description: ''
+      collections:
+        - "events/networking/Presentation"
+    exif: {}
+  - path: events/networking/Presentation/IMG_1676.webp
+    meta:
+      title: Img 1676
+      description: ''
+      collections:
+        - "events/networking/Presentation"
+    exif: {}
+  - path: events/networking/Presentation/IMG_1684.webp
+    meta:
+      title: Img 1684
+      description: ''
+      collections:
+        - "events/networking/Presentation"
+    exif: {}
+  - path: events/networking/Presentation/IMG_1702.webp
+    meta:
+      title: Img 1702
+      description: ''
+      collections:
+        - "events/networking/Presentation"
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2059.webp"
+    meta:
+      title: Img 2059
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2065.webp"
+    meta:
+      title: Img 2065
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+        - featured
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2095.webp"
+    meta:
+      title: Img 2095
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2106.webp"
+    meta:
+      title: Img 2106
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2110.webp"
+    meta:
+      title: Img 2110
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2121.webp"
+    meta:
+      title: Img 2121
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2130.webp"
+    meta:
+      title: Img 2130
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2149.webp"
+    meta:
+      title: Img 2149
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2162.webp"
+    meta:
+      title: Img 2162
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2170.webp"
+    meta:
+      title: Img 2170
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2179.webp"
+    meta:
+      title: Img 2179
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2196.webp"
+    meta:
+      title: Img 2196
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2227.webp"
+    meta:
+      title: Img 2227
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2232.webp"
+    meta:
+      title: Img 2232
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2240.webp"
+    meta:
+      title: Img 2240
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2246.webp"
+    meta:
+      title: Img 2246
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2251.webp"
+    meta:
+      title: Img 2251
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2259.webp"
+    meta:
+      title: Img 2259
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2287.webp"
+    meta:
+      title: Img 2287
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2293.webp"
+    meta:
+      title: Img 2293
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2303.webp"
+    meta:
+      title: Img 2303
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2313.webp"
+    meta:
+      title: Img 2313
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2329.webp"
+    meta:
+      title: Img 2329
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+        - featured
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2350.webp"
+    meta:
+      title: Img 2350
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2382.webp"
+    meta:
+      title: Img 2382
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+        - featured
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2446.webp"
+    meta:
+      title: Img 2446
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2454.webp"
+    meta:
+      title: Img 2454
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2470.webp"
+    meta:
+      title: Img 2470
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2487.webp"
+    meta:
+      title: Img 2487
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2489.webp"
+    meta:
+      title: Img 2489
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2502.webp"
+    meta:
+      title: Img 2502
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+        - featured
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2527.webp"
+    meta:
+      title: Img 2527
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2584.webp"
+    meta:
+      title: Img 2584
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2597.webp"
+    meta:
+      title: Img 2597
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2623.webp"
+    meta:
+      title: Img 2623
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2627.webp"
+    meta:
+      title: Img 2627
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2639.webp"
+    meta:
+      title: Img 2639
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2643.webp"
+    meta:
+      title: Img 2643
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2644.webp"
+    meta:
+      title: Img 2644
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2659.webp"
+    meta:
+      title: Img 2659
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+        - featured
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2671.webp"
+    meta:
+      title: Img 2671
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2675.webp"
+    meta:
+      title: Img 2675
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+    exif: {}
+  - path: "events/networking/Venture capital party/IMG_2692.webp"
+    meta:
+      title: Img 2692
+      description: ''
+      collections:
+        - "events/networking/Venture capital party"
+    exif: {}
+  - path: weddings/IMG_2036.webp
+    meta:
+      title: Img 2036
+      description: ''
+      collections:
+        - weddings
+        - featured
+    exif: {}
+  - path: weddings/IMG_2243.webp
+    meta:
+      title: Img 2243
+      description: ''
+      collections:
+        - weddings
+    exif: {}
+  - path: weddings/IMG_2248-Edit.webp
+    meta:
+      title: Img 2248 Edit
+      description: ''
+      collections:
+        - weddings
+    exif: {}
+  - path: weddings/IMG_2273.webp
+    meta:
+      title: Img 2273
+      description: ''
+      collections:
+        - weddings
+    exif: {}
+  - path: weddings/IMG_2351.webp
+    meta:
+      title: Img 2351
+      description: ''
+      collections:
+        - weddings
+    exif: {}
+  - path: weddings/IMG_2368.webp
+    meta:
+      title: Img 2368
+      description: ''
+      collections:
+        - weddings
+    exif: {}
+  - path: weddings/IMG_2383.webp
+    meta:
+      title: Img 2383
+      description: ''
+      collections:
+        - weddings
+        - featured
+    exif: {}
+  - path: weddings/IMG_2422.webp
+    meta:
+      title: Img 2422
+      description: ''
+      collections:
+        - weddings
+        - featured
+    exif: {}
+  - path: weddings/IMG_2425.webp
+    meta:
+      title: Img 2425
+      description: ''
+      collections:
+        - weddings
+    exif: {}
+  - path: weddings/IMG_2452.webp
+    meta:
+      title: Img 2452
+      description: ''
+      collections:
+        - weddings
+    exif: {}
+  - path: weddings/IMG_2465.webp
+    meta:
+      title: Img 2465
+      description: ''
+      collections:
+        - weddings
+    exif: {}
+  - path: weddings/IMG_2498.webp
+    meta:
+      title: Img 2498
+      description: ''
+      collections:
+        - weddings
+    exif: {}
+  - path: weddings/IMG_2504.webp
+    meta:
+      title: Img 2504
+      description: ''
+      collections:
+        - weddings
+    exif: {}
+  - path: weddings/IMG_2514.webp
+    meta:
+      title: Img 2514
+      description: ''
+      collections:
+        - weddings
+        - featured
+    exif: {}
+  - path: weddings/IMG_2535.webp
+    meta:
+      title: Img 2535
+      description: ''
+      collections:
+        - weddings
+    exif: {}
+  - path: weddings/IMG_2553.webp
+    meta:
+      title: Img 2553
+      description: ''
+      collections:
+        - weddings
     exif: {}
