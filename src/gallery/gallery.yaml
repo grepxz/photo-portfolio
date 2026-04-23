@@ -171,6 +171,7 @@ images:
       description: ''
       collections:
         - 'activism/Ukraine'
+        - featured
     exif: {}
   - path: activism/Ukraine/IMG_9258.webp
     meta:
@@ -192,6 +193,7 @@ images:
       description: ''
       collections:
         - 'activism/Ukraine'
+        - featured
     exif: {}
   - path: activism/Ukraine/IMG_9268.webp
     meta:
@@ -213,6 +215,7 @@ images:
       description: ''
       collections:
         - 'activism/Ukraine'
+        - featured
     exif: {}
   - path: activism/Ukraine/IMG_9294.webp
     meta:

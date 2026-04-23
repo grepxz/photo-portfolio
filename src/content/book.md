@@ -10,4 +10,4 @@ My approach centers on raw emotion, genuine reaction, natural movement, and mini
 
 I still have much to learn, and I believe a good photographer never settles for being good.
 
-I also maintain a separate photography project, which you can view at website.com.
+<!-- I also maintain a separate photography project, which you can view at website.com. -->
