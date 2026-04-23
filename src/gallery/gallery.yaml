@@ -1,6 +1,8 @@
 collections:
-  - id: activism
-    name: Activism
+  - id: 'activism/Mexico'
+    name: Activism Mexico
+  - id: 'activism/Ukraine'
+    name: Activism Ukraine
   - id: 'events/birthday'
     name: Events Birthday
   - id: 'events/networking/Christmas corporate dinner'
@@ -14,112 +16,252 @@ collections:
   - id: weddings
     name: Weddings
 images:
-  - path: activism/IMG_8345-1.webp
+  - path: activism/Mexico/IMG_8345-1.webp
     meta:
       title: Img 8345 1
       description: ''
       collections:
-        - activism
+        - 'activism/Mexico'
     exif: {}
-  - path: activism/IMG_8352-1.webp
+  - path: activism/Mexico/IMG_8352-1.webp
     meta:
       title: Img 8352 1
       description: ''
       collections:
-        - activism
+        - 'activism/Mexico'
     exif: {}
-  - path: activism/IMG_8360-1.webp
+  - path: activism/Mexico/IMG_8360-1.webp
     meta:
       title: Img 8360 1
       description: ''
       collections:
-        - activism
+        - 'activism/Mexico'
         - featured
     exif: {}
-  - path: activism/IMG_8372-1.webp
+  - path: activism/Mexico/IMG_8372-1.webp
     meta:
       title: Img 8372 1
       description: ''
       collections:
-        - activism
+        - 'activism/Mexico'
     exif: {}
-  - path: activism/IMG_8383-1.webp
+  - path: activism/Mexico/IMG_8383-1.webp
     meta:
       title: Img 8383 1
       description: ''
       collections:
-        - activism
+        - 'activism/Mexico'
     exif: {}
-  - path: activism/IMG_8392-1.webp
+  - path: activism/Mexico/IMG_8392-1.webp
     meta:
       title: Img 8392 1
       description: ''
       collections:
-        - activism
+        - 'activism/Mexico'
     exif: {}
-  - path: activism/IMG_8436-1.webp
+  - path: activism/Mexico/IMG_8436-1.webp
     meta:
       title: Img 8436 1
       description: ''
       collections:
-        - activism
+        - 'activism/Mexico'
     exif: {}
-  - path: activism/IMG_8475-1.webp
+  - path: activism/Mexico/IMG_8475-1.webp
     meta:
       title: Img 8475 1
       description: ''
       collections:
-        - activism
+        - 'activism/Mexico'
     exif: {}
-  - path: activism/IMG_8530-1.webp
+  - path: activism/Mexico/IMG_8530-1.webp
     meta:
       title: Img 8530 1
       description: ''
       collections:
-        - activism
+        - 'activism/Mexico'
     exif: {}
-  - path: activism/IMG_8541-1.webp
+  - path: activism/Mexico/IMG_8541-1.webp
     meta:
       title: Img 8541 1
       description: ''
       collections:
-        - activism
+        - 'activism/Mexico'
         - featured
     exif: {}
-  - path: activism/IMG_8549-1.webp
+  - path: activism/Mexico/IMG_8549-1.webp
     meta:
       title: Img 8549 1
       description: ''
       collections:
-        - activism
+        - 'activism/Mexico'
     exif: {}
-  - path: activism/IMG_8559-1.webp
+  - path: activism/Mexico/IMG_8559-1.webp
     meta:
       title: Img 8559 1
       description: ''
       collections:
-        - activism
+        - 'activism/Mexico'
     exif: {}
-  - path: activism/IMG_8583-1.webp
+  - path: activism/Mexico/IMG_8583-1.webp
     meta:
       title: Img 8583 1
       description: ''
       collections:
-        - activism
+        - 'activism/Mexico'
     exif: {}
-  - path: activism/IMG_8598-1.webp
+  - path: activism/Mexico/IMG_8598-1.webp
     meta:
       title: Img 8598 1
       description: ''
       collections:
-        - activism
+        - 'activism/Mexico'
     exif: {}
-  - path: activism/IMG_8689-1.webp
+  - path: activism/Mexico/IMG_8689-1.webp
     meta:
       title: Img 8689 1
       description: ''
       collections:
-        - activism
+        - 'activism/Mexico'
+    exif: {}
+  - path: activism/Ukraine/IMG_9212.webp
+    meta:
+      title: Img 9212
+      description: ''
+      collections:
+        - 'activism/Ukraine'
+    exif: {}
+  - path: activism/Ukraine/IMG_9214.webp
+    meta:
+      title: Img 9214
+      description: ''
+      collections:
+        - 'activism/Ukraine'
+    exif: {}
+  - path: activism/Ukraine/IMG_9227.webp
+    meta:
+      title: Img 9227
+      description: ''
+      collections:
+        - 'activism/Ukraine'
+    exif: {}
+  - path: activism/Ukraine/IMG_9231.webp
+    meta:
+      title: Img 9231
+      description: ''
+      collections:
+        - 'activism/Ukraine'
+    exif: {}
+  - path: activism/Ukraine/IMG_9235.webp
+    meta:
+      title: Img 9235
+      description: ''
+      collections:
+        - 'activism/Ukraine'
+    exif: {}
+  - path: activism/Ukraine/IMG_9243.webp
+    meta:
+      title: Img 9243
+      description: ''
+      collections:
+        - 'activism/Ukraine'
+    exif: {}
+  - path: activism/Ukraine/IMG_9251.webp
+    meta:
+      title: Img 9251
+      description: ''
+      collections:
+        - 'activism/Ukraine'
+    exif: {}
+  - path: activism/Ukraine/IMG_9258.webp
+    meta:
+      title: Img 9258
+      description: ''
+      collections:
+        - 'activism/Ukraine'
+    exif: {}
+  - path: activism/Ukraine/IMG_9259.webp
+    meta:
+      title: Img 9259
+      description: ''
+      collections:
+        - 'activism/Ukraine'
+    exif: {}
+  - path: activism/Ukraine/IMG_9267.webp
+    meta:
+      title: Img 9267
+      description: ''
+      collections:
+        - 'activism/Ukraine'
+    exif: {}
+  - path: activism/Ukraine/IMG_9268.webp
+    meta:
+      title: Img 9268
+      description: ''
+      collections:
+        - 'activism/Ukraine'
+    exif: {}
+  - path: activism/Ukraine/IMG_9271.webp
+    meta:
+      title: Img 9271
+      description: ''
+      collections:
+        - 'activism/Ukraine'
+    exif: {}
+  - path: activism/Ukraine/IMG_9281.webp
+    meta:
+      title: Img 9281
+      description: ''
+      collections:
+        - 'activism/Ukraine'
+    exif: {}
+  - path: activism/Ukraine/IMG_9294.webp
+    meta:
+      title: Img 9294
+      description: ''
+      collections:
+        - 'activism/Ukraine'
+    exif: {}
+  - path: activism/Ukraine/IMG_9298.webp
+    meta:
+      title: Img 9298
+      description: ''
+      collections:
+        - 'activism/Ukraine'
+    exif: {}
+  - path: activism/Ukraine/IMG_9304.webp
+    meta:
+      title: Img 9304
+      description: ''
+      collections:
+        - 'activism/Ukraine'
+    exif: {}
+  - path: activism/Ukraine/IMG_9305.webp
+    meta:
+      title: Img 9305
+      description: ''
+      collections:
+        - 'activism/Ukraine'
+    exif: {}
+  - path: activism/Ukraine/IMG_9309.webp
+    meta:
+      title: Img 9309
+      description: ''
+      collections:
+        - 'activism/Ukraine'
+    exif: {}
+  - path: activism/Ukraine/IMG_9310.webp
+    meta:
+      title: Img 9310
+      description: ''
+      collections:
+        - 'activism/Ukraine'
+    exif: {}
+  - path: activism/Ukraine/IMG_9316.webp
+    meta:
+      title: Img 9316
+      description: ''
+      collections:
+        - 'activism/Ukraine'
     exif: {}
   - path: events/birthday/IMG_0726.webp
     meta:
