@@ -74,7 +74,10 @@ async function createGalleryObjFrom(galleryDir: string): Promise<GalleryData> {
 
 function createCollectionsFrom(imageFiles: string[], galleryDir: string) {
 	const uniqueDirNames = new Set(
-		imageFiles.map((file) => path.dirname(path.relative(galleryDir, file))),
+		imageFiles.map((file) =>
+			// Forward slashes so ids match across OSes (Windows path.sep is "\").
+			path.dirname(path.relative(galleryDir, file)).split(path.sep).join('/'),
+		),
 	);
 
 	return [...uniqueDirNames]

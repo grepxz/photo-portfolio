@@ -28,3 +28,6 @@ pnpm-debug.log*
 
 # app
 src/data/__tests__/gallery/gallery.yaml
+
+# original full-size photos (kept locally, webp copies live in src/gallery)
+originals/

@@ -8,14 +8,13 @@ import FeaturedWorkScroll from '../components/FeaturedWorkScroll.astro';
 
 <MainLayout>
 	<section class="relative min-h-screen items-center flex py-20 md:py-16 overflow-hidden">
-		<video
-			class="absolute inset-0 w-full h-full object-cover opacity-20 z-0"
-			autoplay
-			loop
-			muted
-			playsinline
-			preload="auto"
-			src="/hero-bg.webm"></video>
+		<img
+			class="absolute inset-0 w-full h-full object-cover md:object-contain opacity-100 z-0 scale-100 md:scale-[0.4]"
+			src="/hero.webp"
+			alt=""
+			loading="eager"
+			decoding="async"
+			fetchpriority="high" />
 		<LandingHero />
 		<FeaturedWorkScroll />
 	</section>

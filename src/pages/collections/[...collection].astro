@@ -62,7 +62,7 @@ const rows: Row[] = [];
 			activeId: activeChild?.id,
 		};
 		if (depth > 0) {
-			row.items = [{ id: cur.id, name: `All ${cur.name}` }, ...row.items];
+			row.items = [...row.items, { id: cur.id, name: `All ${cur.name}` }];
 		}
 		rows.push(row);
 		cur = activeChild;
@@ -108,7 +108,7 @@ export const getStaticPaths = async () => {
 					<div class={`flex justify-center ${idx === rows.length - 1 ? 'mb-10' : 'mb-4'}`}>
 						<div class="flex flex-wrap gap-2 justify-center">
 							{idx === 0 && (
-								<a href="/collections/">
+								<a href="/collections/" class="order-last">
 									<div
 										class={`px-4 py-2 border ${
 											!collection

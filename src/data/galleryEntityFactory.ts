@@ -6,8 +6,17 @@ export const createGalleryImage = async (
 	galleryDir: string,
 	file: string,
 ): Promise<GalleryImage> => {
-	const relativePath = path.relative(galleryDir, file);
-	const exifData = await exifr.parse(file);
+	// Normalize to forward slashes so collection ids/paths are identical across OSes
+	// (path.relative uses "\" on Windows, which would duplicate every collection).
+	const relativePath = path.relative(galleryDir, file).split(path.sep).join('/');
+	// EXIF is optional metadata; some formats (e.g. stripped WebP) make exifr throw
+	// "Unknown file format". A failed read must not abort manifest generation.
+	let exifData;
+	try {
+		exifData = await exifr.parse(file);
+	} catch {
+		exifData = undefined;
+	}
 	const image = {
 		path: relativePath,
 		meta: {

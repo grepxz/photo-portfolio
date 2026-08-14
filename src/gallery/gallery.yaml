@@ -1,41 +1,143 @@
 collections:
-  - id: 'activism/Mexico'
-    name: Activism Mexico
-  - id: 'activism/Ukraine'
-    name: Activism Ukraine
-  - id: 'events/birthday'
-    name: Events Birthday
-  - id: 'events/networking/Christmas corporate dinner'
-    name: Events Networking Christmas Corporate Dinner
-  - id: 'events/networking/Lecture'
-    name: Events Networking Lecture
-  - id: 'events/networking/Presentation'
-    name: Events Networking Presentation
-  - id: 'events/networking/Venture capital party'
+  - id: events/nightclub
+    name: Events Nightclub
+  - id: events/networking/Venture capital party
     name: Events Networking Venture Capital Party
+  - id: events/networking/Pitch deck
+    name: Events Networking Pitch Deck
+  - id: events/networking/Startup panel
+    name: Events Networking Startup Panel
+  - id: events/networking/corporate dinner
+    name: Events Networking Corporate Dinner
+  - id: events/sport
+    name: Events Sport
+  - id: events/birthday
+    name: Events Birthday
+  - id: activism/Barcelona Pride
+    name: Activism Barcelona Pride
+  - id: activism/Mexico
+    name: Activism Mexico
+  - id: activism/Ukraine
+    name: Activism Ukraine
   - id: weddings
     name: Weddings
 images:
+  - path: events/nightclub/IMG_7348.webp
+    meta:
+      title: Img 7348
+      description: ''
+      collections:
+        - events/nightclub
+        - featured
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 051.webp
+    meta:
+      title: Pride 051
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+        - featured
+    exif: {}
+  - path: events/nightclub/IMG_7996.webp
+    meta:
+      title: Img 7996
+      description: ''
+      collections:
+        - events/nightclub
+        - featured
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 055.webp
+    meta:
+      title: Pride 055
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+        - featured
+    exif: {}
+  - path: events/nightclub/IMG_7459.webp
+    meta:
+      title: Img 7459
+      description: ''
+      collections:
+        - events/nightclub
+        - featured
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 035.webp
+    meta:
+      title: Pride 035
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+        - featured
+    exif: {}
+  - path: events/sport/IMG_6739.webp
+    meta:
+      title: Img 6739
+      description: ''
+      collections:
+        - events/sport
+        - featured
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 010.webp
+    meta:
+      title: Pride 010
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+        - featured
+    exif: {}
+  - path: events/nightclub/IMG_7706.webp
+    meta:
+      title: Img 7706
+      description: ''
+      collections:
+        - events/nightclub
+        - featured
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 018-2.webp
+    meta:
+      title: Pride 018 2
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+        - featured
+    exif: {}
+  - path: events/sport/IMG_6468.webp
+    meta:
+      title: Img 6468
+      description: ''
+      collections:
+        - events/sport
+        - featured
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 016.webp
+    meta:
+      title: Pride 016
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+        - featured
+    exif: {}
   - path: activism/Mexico/IMG_8345-1.webp
     meta:
       title: Img 8345 1
       description: ''
       collections:
-        - 'activism/Mexico'
+        - activism/Mexico
     exif: {}
   - path: activism/Mexico/IMG_8352-1.webp
     meta:
       title: Img 8352 1
       description: ''
       collections:
-        - 'activism/Mexico'
+        - activism/Mexico
     exif: {}
   - path: activism/Mexico/IMG_8360-1.webp
     meta:
       title: Img 8360 1
       description: ''
       collections:
-        - 'activism/Mexico'
+        - activism/Mexico
         - featured
     exif: {}
   - path: activism/Mexico/IMG_8372-1.webp
@@ -43,49 +145,49 @@ images:
       title: Img 8372 1
       description: ''
       collections:
-        - 'activism/Mexico'
+        - activism/Mexico
     exif: {}
   - path: activism/Mexico/IMG_8383-1.webp
     meta:
       title: Img 8383 1
       description: ''
       collections:
-        - 'activism/Mexico'
+        - activism/Mexico
     exif: {}
   - path: activism/Mexico/IMG_8392-1.webp
     meta:
       title: Img 8392 1
       description: ''
       collections:
-        - 'activism/Mexico'
+        - activism/Mexico
     exif: {}
   - path: activism/Mexico/IMG_8436-1.webp
     meta:
       title: Img 8436 1
       description: ''
       collections:
-        - 'activism/Mexico'
+        - activism/Mexico
     exif: {}
   - path: activism/Mexico/IMG_8475-1.webp
     meta:
       title: Img 8475 1
       description: ''
       collections:
-        - 'activism/Mexico'
+        - activism/Mexico
     exif: {}
   - path: activism/Mexico/IMG_8530-1.webp
     meta:
       title: Img 8530 1
       description: ''
       collections:
-        - 'activism/Mexico'
+        - activism/Mexico
     exif: {}
   - path: activism/Mexico/IMG_8541-1.webp
     meta:
       title: Img 8541 1
       description: ''
       collections:
-        - 'activism/Mexico'
+        - activism/Mexico
         - featured
     exif: {}
   - path: activism/Mexico/IMG_8549-1.webp
@@ -93,84 +195,84 @@ images:
       title: Img 8549 1
       description: ''
       collections:
-        - 'activism/Mexico'
+        - activism/Mexico
     exif: {}
   - path: activism/Mexico/IMG_8559-1.webp
     meta:
       title: Img 8559 1
       description: ''
       collections:
-        - 'activism/Mexico'
+        - activism/Mexico
     exif: {}
   - path: activism/Mexico/IMG_8583-1.webp
     meta:
       title: Img 8583 1
       description: ''
       collections:
-        - 'activism/Mexico'
+        - activism/Mexico
     exif: {}
   - path: activism/Mexico/IMG_8598-1.webp
     meta:
       title: Img 8598 1
       description: ''
       collections:
-        - 'activism/Mexico'
+        - activism/Mexico
     exif: {}
   - path: activism/Mexico/IMG_8689-1.webp
     meta:
       title: Img 8689 1
       description: ''
       collections:
-        - 'activism/Mexico'
+        - activism/Mexico
     exif: {}
   - path: activism/Ukraine/IMG_9212.webp
     meta:
       title: Img 9212
       description: ''
       collections:
-        - 'activism/Ukraine'
+        - activism/Ukraine
     exif: {}
   - path: activism/Ukraine/IMG_9214.webp
     meta:
       title: Img 9214
       description: ''
       collections:
-        - 'activism/Ukraine'
+        - activism/Ukraine
     exif: {}
   - path: activism/Ukraine/IMG_9227.webp
     meta:
       title: Img 9227
       description: ''
       collections:
-        - 'activism/Ukraine'
+        - activism/Ukraine
     exif: {}
   - path: activism/Ukraine/IMG_9231.webp
     meta:
       title: Img 9231
       description: ''
       collections:
-        - 'activism/Ukraine'
+        - activism/Ukraine
     exif: {}
   - path: activism/Ukraine/IMG_9235.webp
     meta:
       title: Img 9235
       description: ''
       collections:
-        - 'activism/Ukraine'
+        - activism/Ukraine
     exif: {}
   - path: activism/Ukraine/IMG_9243.webp
     meta:
       title: Img 9243
       description: ''
       collections:
-        - 'activism/Ukraine'
+        - activism/Ukraine
     exif: {}
   - path: activism/Ukraine/IMG_9251.webp
     meta:
       title: Img 9251
       description: ''
       collections:
-        - 'activism/Ukraine'
+        - activism/Ukraine
         - featured
     exif: {}
   - path: activism/Ukraine/IMG_9258.webp
@@ -178,21 +280,21 @@ images:
       title: Img 9258
       description: ''
       collections:
-        - 'activism/Ukraine'
+        - activism/Ukraine
     exif: {}
   - path: activism/Ukraine/IMG_9259.webp
     meta:
       title: Img 9259
       description: ''
       collections:
-        - 'activism/Ukraine'
+        - activism/Ukraine
     exif: {}
   - path: activism/Ukraine/IMG_9267.webp
     meta:
       title: Img 9267
       description: ''
       collections:
-        - 'activism/Ukraine'
+        - activism/Ukraine
         - featured
     exif: {}
   - path: activism/Ukraine/IMG_9268.webp
@@ -200,21 +302,21 @@ images:
       title: Img 9268
       description: ''
       collections:
-        - 'activism/Ukraine'
+        - activism/Ukraine
     exif: {}
   - path: activism/Ukraine/IMG_9271.webp
     meta:
       title: Img 9271
       description: ''
       collections:
-        - 'activism/Ukraine'
+        - activism/Ukraine
     exif: {}
   - path: activism/Ukraine/IMG_9281.webp
     meta:
       title: Img 9281
       description: ''
       collections:
-        - 'activism/Ukraine'
+        - activism/Ukraine
         - featured
     exif: {}
   - path: activism/Ukraine/IMG_9294.webp
@@ -222,617 +324,411 @@ images:
       title: Img 9294
       description: ''
       collections:
-        - 'activism/Ukraine'
+        - activism/Ukraine
     exif: {}
   - path: activism/Ukraine/IMG_9298.webp
     meta:
       title: Img 9298
       description: ''
       collections:
-        - 'activism/Ukraine'
+        - activism/Ukraine
     exif: {}
   - path: activism/Ukraine/IMG_9304.webp
     meta:
       title: Img 9304
       description: ''
       collections:
-        - 'activism/Ukraine'
+        - activism/Ukraine
     exif: {}
   - path: activism/Ukraine/IMG_9305.webp
     meta:
       title: Img 9305
       description: ''
       collections:
-        - 'activism/Ukraine'
+        - activism/Ukraine
     exif: {}
   - path: activism/Ukraine/IMG_9309.webp
     meta:
       title: Img 9309
       description: ''
       collections:
-        - 'activism/Ukraine'
+        - activism/Ukraine
     exif: {}
   - path: activism/Ukraine/IMG_9310.webp
     meta:
       title: Img 9310
       description: ''
       collections:
-        - 'activism/Ukraine'
+        - activism/Ukraine
     exif: {}
   - path: activism/Ukraine/IMG_9316.webp
     meta:
       title: Img 9316
       description: ''
       collections:
-        - 'activism/Ukraine'
+        - activism/Ukraine
     exif: {}
   - path: events/birthday/IMG_0726.webp
     meta:
       title: Img 0726
       description: ''
       collections:
-        - 'events/birthday'
+        - events/birthday
     exif: {}
   - path: events/birthday/IMG_0727.webp
     meta:
       title: Img 0727
       description: ''
       collections:
-        - 'events/birthday'
+        - events/birthday
     exif: {}
   - path: events/birthday/IMG_0729.webp
     meta:
       title: Img 0729
       description: ''
       collections:
-        - 'events/birthday'
+        - events/birthday
     exif: {}
   - path: events/birthday/IMG_0732.webp
     meta:
       title: Img 0732
       description: ''
       collections:
-        - 'events/birthday'
+        - events/birthday
     exif: {}
   - path: events/birthday/IMG_0764.webp
     meta:
       title: Img 0764
       description: ''
       collections:
-        - 'events/birthday'
+        - events/birthday
     exif: {}
   - path: events/birthday/IMG_0800.webp
     meta:
       title: Img 0800
       description: ''
       collections:
-        - 'events/birthday'
+        - events/birthday
     exif: {}
   - path: events/birthday/IMG_0803.webp
     meta:
       title: Img 0803
       description: ''
       collections:
-        - 'events/birthday'
+        - events/birthday
     exif: {}
   - path: events/birthday/IMG_0805.webp
     meta:
       title: Img 0805
       description: ''
       collections:
-        - 'events/birthday'
+        - events/birthday
     exif: {}
-  - path: 'events/networking/Christmas corporate dinner/IMG_6974.webp'
-    meta:
-      title: Img 6974
-      description: ''
-      collections:
-        - 'events/networking/Christmas corporate dinner'
-    exif: {}
-  - path: 'events/networking/Christmas corporate dinner/IMG_7012.webp'
-    meta:
-      title: Img 7012
-      description: ''
-      collections:
-        - 'events/networking/Christmas corporate dinner'
-    exif: {}
-  - path: 'events/networking/Christmas corporate dinner/IMG_7117.webp'
-    meta:
-      title: Img 7117
-      description: ''
-      collections:
-        - 'events/networking/Christmas corporate dinner'
-    exif: {}
-  - path: 'events/networking/Christmas corporate dinner/IMG_7146.webp'
-    meta:
-      title: Img 7146
-      description: ''
-      collections:
-        - 'events/networking/Christmas corporate dinner'
-    exif: {}
-  - path: 'events/networking/Christmas corporate dinner/IMG_7162.webp'
-    meta:
-      title: Img 7162
-      description: ''
-      collections:
-        - 'events/networking/Christmas corporate dinner'
-    exif: {}
-  - path: 'events/networking/Christmas corporate dinner/IMG_7167.webp'
-    meta:
-      title: Img 7167
-      description: ''
-      collections:
-        - 'events/networking/Christmas corporate dinner'
-    exif: {}
-  - path: 'events/networking/Christmas corporate dinner/IMG_7183.webp'
-    meta:
-      title: Img 7183
-      description: ''
-      collections:
-        - 'events/networking/Christmas corporate dinner'
-    exif: {}
-  - path: 'events/networking/Christmas corporate dinner/IMG_7237.webp'
-    meta:
-      title: Img 7237
-      description: ''
-      collections:
-        - 'events/networking/Christmas corporate dinner'
-    exif: {}
-  - path: 'events/networking/Christmas corporate dinner/IMG_7269.webp'
-    meta:
-      title: Img 7269
-      description: ''
-      collections:
-        - 'events/networking/Christmas corporate dinner'
-    exif: {}
-  - path: 'events/networking/Christmas corporate dinner/IMG_7275.webp'
-    meta:
-      title: Img 7275
-      description: ''
-      collections:
-        - 'events/networking/Christmas corporate dinner'
-    exif: {}
-  - path: 'events/networking/Christmas corporate dinner/IMG_7300.webp'
-    meta:
-      title: Img 7300
-      description: ''
-      collections:
-        - 'events/networking/Christmas corporate dinner'
-    exif: {}
-  - path: events/networking/Lecture/IMG_0864.webp
-    meta:
-      title: Img 0864
-      description: ''
-      collections:
-        - 'events/networking/Lecture'
-    exif: {}
-  - path: events/networking/Lecture/IMG_0881-1.webp
-    meta:
-      title: Img 0881 1
-      description: ''
-      collections:
-        - 'events/networking/Lecture'
-        - featured
-    exif: {}
-  - path: events/networking/Lecture/IMG_0966.webp
-    meta:
-      title: Img 0966
-      description: ''
-      collections:
-        - 'events/networking/Lecture'
-    exif: {}
-  - path: events/networking/Lecture/IMG_0984.webp
-    meta:
-      title: Img 0984
-      description: ''
-      collections:
-        - 'events/networking/Lecture'
-        - featured
-    exif: {}
-  - path: events/networking/Lecture/IMG_1040.webp
-    meta:
-      title: Img 1040
-      description: ''
-      collections:
-        - 'events/networking/Lecture'
-    exif: {}
-  - path: events/networking/Presentation/IMG_1451.webp
-    meta:
-      title: Img 1451
-      description: ''
-      collections:
-        - 'events/networking/Presentation'
-    exif: {}
-  - path: events/networking/Presentation/IMG_1458.webp
-    meta:
-      title: Img 1458
-      description: ''
-      collections:
-        - 'events/networking/Presentation'
-        - featured
-    exif: {}
-  - path: events/networking/Presentation/IMG_1473.webp
-    meta:
-      title: Img 1473
-      description: ''
-      collections:
-        - 'events/networking/Presentation'
-    exif: {}
-  - path: events/networking/Presentation/IMG_1511.webp
-    meta:
-      title: Img 1511
-      description: ''
-      collections:
-        - 'events/networking/Presentation'
-    exif: {}
-  - path: events/networking/Presentation/IMG_1549.webp
-    meta:
-      title: Img 1549
-      description: ''
-      collections:
-        - 'events/networking/Presentation'
-    exif: {}
-  - path: events/networking/Presentation/IMG_1593.webp
-    meta:
-      title: Img 1593
-      description: ''
-      collections:
-        - 'events/networking/Presentation'
-    exif: {}
-  - path: events/networking/Presentation/IMG_1617.webp
-    meta:
-      title: Img 1617
-      description: ''
-      collections:
-        - 'events/networking/Presentation'
-    exif: {}
-  - path: events/networking/Presentation/IMG_1628.webp
-    meta:
-      title: Img 1628
-      description: ''
-      collections:
-        - 'events/networking/Presentation'
-    exif: {}
-  - path: events/networking/Presentation/IMG_1640.webp
-    meta:
-      title: Img 1640
-      description: ''
-      collections:
-        - 'events/networking/Presentation'
-    exif: {}
-  - path: events/networking/Presentation/IMG_1650.webp
-    meta:
-      title: Img 1650
-      description: ''
-      collections:
-        - 'events/networking/Presentation'
-    exif: {}
-  - path: events/networking/Presentation/IMG_1676.webp
-    meta:
-      title: Img 1676
-      description: ''
-      collections:
-        - 'events/networking/Presentation'
-    exif: {}
-  - path: events/networking/Presentation/IMG_1684.webp
-    meta:
-      title: Img 1684
-      description: ''
-      collections:
-        - 'events/networking/Presentation'
-    exif: {}
-  - path: events/networking/Presentation/IMG_1702.webp
-    meta:
-      title: Img 1702
-      description: ''
-      collections:
-        - 'events/networking/Presentation'
-    exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2059.webp'
+  - path: events/networking/Venture capital party/IMG_2059.webp
     meta:
       title: Img 2059
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2065.webp'
+  - path: events/networking/Venture capital party/IMG_2065.webp
     meta:
       title: Img 2065
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
         - featured
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2095.webp'
+  - path: events/networking/Venture capital party/IMG_2095.webp
     meta:
       title: Img 2095
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2106.webp'
+  - path: events/networking/Venture capital party/IMG_2106.webp
     meta:
       title: Img 2106
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2110.webp'
+  - path: events/networking/Venture capital party/IMG_2110.webp
     meta:
       title: Img 2110
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2121.webp'
+  - path: events/networking/Venture capital party/IMG_2121.webp
     meta:
       title: Img 2121
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2130.webp'
+  - path: events/networking/Venture capital party/IMG_2130.webp
     meta:
       title: Img 2130
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2149.webp'
+  - path: events/networking/Venture capital party/IMG_2149.webp
     meta:
       title: Img 2149
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2162.webp'
+  - path: events/networking/Venture capital party/IMG_2162.webp
     meta:
       title: Img 2162
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2170.webp'
+  - path: events/networking/Venture capital party/IMG_2170.webp
     meta:
       title: Img 2170
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2179.webp'
+  - path: events/networking/Venture capital party/IMG_2179.webp
     meta:
       title: Img 2179
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2196.webp'
+  - path: events/networking/Venture capital party/IMG_2196.webp
     meta:
       title: Img 2196
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2227.webp'
+  - path: events/networking/Venture capital party/IMG_2227.webp
     meta:
       title: Img 2227
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2232.webp'
+  - path: events/networking/Venture capital party/IMG_2232.webp
     meta:
       title: Img 2232
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2240.webp'
+  - path: events/networking/Venture capital party/IMG_2240.webp
     meta:
       title: Img 2240
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2246.webp'
+  - path: events/networking/Venture capital party/IMG_2246.webp
     meta:
       title: Img 2246
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2251.webp'
+  - path: events/networking/Venture capital party/IMG_2251.webp
     meta:
       title: Img 2251
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2259.webp'
+  - path: events/networking/Venture capital party/IMG_2259.webp
     meta:
       title: Img 2259
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2287.webp'
+  - path: events/networking/Venture capital party/IMG_2287.webp
     meta:
       title: Img 2287
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2293.webp'
+  - path: events/networking/Venture capital party/IMG_2293.webp
     meta:
       title: Img 2293
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2303.webp'
+  - path: events/networking/Venture capital party/IMG_2303.webp
     meta:
       title: Img 2303
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2313.webp'
+  - path: events/networking/Venture capital party/IMG_2313.webp
     meta:
       title: Img 2313
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2329.webp'
+  - path: events/networking/Venture capital party/IMG_2329.webp
     meta:
       title: Img 2329
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
         - featured
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2350.webp'
+  - path: events/networking/Venture capital party/IMG_2350.webp
     meta:
       title: Img 2350
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2382.webp'
+  - path: events/networking/Venture capital party/IMG_2382.webp
     meta:
       title: Img 2382
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
         - featured
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2446.webp'
+  - path: events/networking/Venture capital party/IMG_2446.webp
     meta:
       title: Img 2446
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2454.webp'
+  - path: events/networking/Venture capital party/IMG_2454.webp
     meta:
       title: Img 2454
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2470.webp'
+  - path: events/networking/Venture capital party/IMG_2470.webp
     meta:
       title: Img 2470
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2487.webp'
+  - path: events/networking/Venture capital party/IMG_2487.webp
     meta:
       title: Img 2487
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2489.webp'
+  - path: events/networking/Venture capital party/IMG_2489.webp
     meta:
       title: Img 2489
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2502.webp'
+  - path: events/networking/Venture capital party/IMG_2502.webp
     meta:
       title: Img 2502
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
         - featured
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2527.webp'
+  - path: events/networking/Venture capital party/IMG_2527.webp
     meta:
       title: Img 2527
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2584.webp'
+  - path: events/networking/Venture capital party/IMG_2584.webp
     meta:
       title: Img 2584
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2597.webp'
+  - path: events/networking/Venture capital party/IMG_2597.webp
     meta:
       title: Img 2597
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2623.webp'
+  - path: events/networking/Venture capital party/IMG_2623.webp
     meta:
       title: Img 2623
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2627.webp'
+  - path: events/networking/Venture capital party/IMG_2627.webp
     meta:
       title: Img 2627
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2639.webp'
+  - path: events/networking/Venture capital party/IMG_2639.webp
     meta:
       title: Img 2639
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2643.webp'
+  - path: events/networking/Venture capital party/IMG_2643.webp
     meta:
       title: Img 2643
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2644.webp'
+  - path: events/networking/Venture capital party/IMG_2644.webp
     meta:
       title: Img 2644
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2659.webp'
+  - path: events/networking/Venture capital party/IMG_2659.webp
     meta:
       title: Img 2659
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
         - featured
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2671.webp'
+  - path: events/networking/Venture capital party/IMG_2671.webp
     meta:
       title: Img 2671
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2675.webp'
+  - path: events/networking/Venture capital party/IMG_2675.webp
     meta:
       title: Img 2675
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
     exif: {}
-  - path: 'events/networking/Venture capital party/IMG_2692.webp'
+  - path: events/networking/Venture capital party/IMG_2692.webp
     meta:
       title: Img 2692
       description: ''
       collections:
-        - 'events/networking/Venture capital party'
+        - events/networking/Venture capital party
     exif: {}
   - path: weddings/IMG_2036.webp
     meta:
@@ -949,4 +845,903 @@ images:
       description: ''
       collections:
         - weddings
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 002.webp
+    meta:
+      title: Pride 002
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 003.webp
+    meta:
+      title: Pride 003
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 004.webp
+    meta:
+      title: Pride 004
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 005.webp
+    meta:
+      title: Pride 005
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 006.webp
+    meta:
+      title: Pride 006
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 007.webp
+    meta:
+      title: Pride 007
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 009.webp
+    meta:
+      title: Pride 009
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 013.webp
+    meta:
+      title: Pride 013
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 014.webp
+    meta:
+      title: Pride 014
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 020-2.webp
+    meta:
+      title: Pride 020 2
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 021.webp
+    meta:
+      title: Pride 021
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 024.webp
+    meta:
+      title: Pride 024
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 025.webp
+    meta:
+      title: Pride 025
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 026.webp
+    meta:
+      title: Pride 026
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 027.webp
+    meta:
+      title: Pride 027
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 028.webp
+    meta:
+      title: Pride 028
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 031.webp
+    meta:
+      title: Pride 031
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 032.webp
+    meta:
+      title: Pride 032
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 034.webp
+    meta:
+      title: Pride 034
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 037.webp
+    meta:
+      title: Pride 037
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 039.webp
+    meta:
+      title: Pride 039
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 040.webp
+    meta:
+      title: Pride 040
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 041.webp
+    meta:
+      title: Pride 041
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 042.webp
+    meta:
+      title: Pride 042
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 043.webp
+    meta:
+      title: Pride 043
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 046.webp
+    meta:
+      title: Pride 046
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 047.webp
+    meta:
+      title: Pride 047
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 048.webp
+    meta:
+      title: Pride 048
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 049.webp
+    meta:
+      title: Pride 049
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 050.webp
+    meta:
+      title: Pride 050
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 052.webp
+    meta:
+      title: Pride 052
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 053.webp
+    meta:
+      title: Pride 053
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 054.webp
+    meta:
+      title: Pride 054
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 056.webp
+    meta:
+      title: Pride 056
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 057.webp
+    meta:
+      title: Pride 057
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 058.webp
+    meta:
+      title: Pride 058
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 059.webp
+    meta:
+      title: Pride 059
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+    exif: {}
+  - path: activism/Barcelona Pride/pride - 060.webp
+    meta:
+      title: Pride 060
+      description: ''
+      collections:
+        - activism/Barcelona Pride
+    exif: {}
+  - path: events/nightclub/IMG_7232.webp
+    meta:
+      title: Img 7232
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_7236.webp
+    meta:
+      title: Img 7236
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_7261.webp
+    meta:
+      title: Img 7261
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_7299.webp
+    meta:
+      title: Img 7299
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_7332.webp
+    meta:
+      title: Img 7332
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_7337.webp
+    meta:
+      title: Img 7337
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_7345.webp
+    meta:
+      title: Img 7345
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_7406.webp
+    meta:
+      title: Img 7406
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_7431.webp
+    meta:
+      title: Img 7431
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_7432.webp
+    meta:
+      title: Img 7432
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_7436.webp
+    meta:
+      title: Img 7436
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_7455.webp
+    meta:
+      title: Img 7455
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_7465.webp
+    meta:
+      title: Img 7465
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_7491.webp
+    meta:
+      title: Img 7491
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_7519.webp
+    meta:
+      title: Img 7519
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_7521.webp
+    meta:
+      title: Img 7521
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_7532.webp
+    meta:
+      title: Img 7532
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_7541.webp
+    meta:
+      title: Img 7541
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_7543.webp
+    meta:
+      title: Img 7543
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_7551.webp
+    meta:
+      title: Img 7551
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_7552.webp
+    meta:
+      title: Img 7552
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_7556.webp
+    meta:
+      title: Img 7556
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_7564.webp
+    meta:
+      title: Img 7564
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_7610.webp
+    meta:
+      title: Img 7610
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_7632.webp
+    meta:
+      title: Img 7632
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_7693.webp
+    meta:
+      title: Img 7693
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_7711.webp
+    meta:
+      title: Img 7711
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_7716.webp
+    meta:
+      title: Img 7716
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_7729.webp
+    meta:
+      title: Img 7729
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_7733.webp
+    meta:
+      title: Img 7733
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_7753.webp
+    meta:
+      title: Img 7753
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_7760.webp
+    meta:
+      title: Img 7760
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_7805.webp
+    meta:
+      title: Img 7805
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_7811.webp
+    meta:
+      title: Img 7811
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_7818.webp
+    meta:
+      title: Img 7818
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_7845.webp
+    meta:
+      title: Img 7845
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_7910.webp
+    meta:
+      title: Img 7910
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_7940.webp
+    meta:
+      title: Img 7940
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_7972.webp
+    meta:
+      title: Img 7972
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_8040.webp
+    meta:
+      title: Img 8040
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_8046.webp
+    meta:
+      title: Img 8046
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/IMG_8056.webp
+    meta:
+      title: Img 8056
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/lapalomabdn - 01.webp
+    meta:
+      title: Lapalomabdn 01
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/nightclub/lapalomabdn - 02.webp
+    meta:
+      title: Lapalomabdn 02
+      description: ''
+      collections:
+        - events/nightclub
+    exif: {}
+  - path: events/sport/IMG_6432.webp
+    meta:
+      title: Img 6432
+      description: ''
+      collections:
+        - events/sport
+    exif: {}
+  - path: events/sport/IMG_6437.webp
+    meta:
+      title: Img 6437
+      description: ''
+      collections:
+        - events/sport
+    exif: {}
+  - path: events/sport/IMG_6460.webp
+    meta:
+      title: Img 6460
+      description: ''
+      collections:
+        - events/sport
+    exif: {}
+  - path: events/sport/IMG_6471.webp
+    meta:
+      title: Img 6471
+      description: ''
+      collections:
+        - events/sport
+    exif: {}
+  - path: events/sport/IMG_6507.webp
+    meta:
+      title: Img 6507
+      description: ''
+      collections:
+        - events/sport
+    exif: {}
+  - path: events/sport/IMG_6585.webp
+    meta:
+      title: Img 6585
+      description: ''
+      collections:
+        - events/sport
+    exif: {}
+  - path: events/sport/IMG_6591.webp
+    meta:
+      title: Img 6591
+      description: ''
+      collections:
+        - events/sport
+    exif: {}
+  - path: events/sport/IMG_6628.webp
+    meta:
+      title: Img 6628
+      description: ''
+      collections:
+        - events/sport
+    exif: {}
+  - path: events/sport/IMG_6657.webp
+    meta:
+      title: Img 6657
+      description: ''
+      collections:
+        - events/sport
+    exif: {}
+  - path: events/sport/IMG_6663.webp
+    meta:
+      title: Img 6663
+      description: ''
+      collections:
+        - events/sport
+    exif: {}
+  - path: events/sport/IMG_6667.webp
+    meta:
+      title: Img 6667
+      description: ''
+      collections:
+        - events/sport
+    exif: {}
+  - path: events/sport/IMG_6670.webp
+    meta:
+      title: Img 6670
+      description: ''
+      collections:
+        - events/sport
+    exif: {}
+  - path: events/sport/IMG_6703.webp
+    meta:
+      title: Img 6703
+      description: ''
+      collections:
+        - events/sport
+    exif: {}
+  - path: events/sport/IMG_6714.webp
+    meta:
+      title: Img 6714
+      description: ''
+      collections:
+        - events/sport
+    exif: {}
+  - path: events/sport/IMG_6715.webp
+    meta:
+      title: Img 6715
+      description: ''
+      collections:
+        - events/sport
+    exif: {}
+  - path: events/sport/IMG_6728.webp
+    meta:
+      title: Img 6728
+      description: ''
+      collections:
+        - events/sport
+    exif: {}
+  - path: events/sport/IMG_6741.webp
+    meta:
+      title: Img 6741
+      description: ''
+      collections:
+        - events/sport
+    exif: {}
+  - path: events/networking/corporate dinner/IMG_6974.webp
+    meta:
+      title: Img 6974
+      description: ''
+      collections:
+        - events/networking/corporate dinner
+    exif: {}
+  - path: events/networking/corporate dinner/IMG_7012.webp
+    meta:
+      title: Img 7012
+      description: ''
+      collections:
+        - events/networking/corporate dinner
+    exif: {}
+  - path: events/networking/corporate dinner/IMG_7117.webp
+    meta:
+      title: Img 7117
+      description: ''
+      collections:
+        - events/networking/corporate dinner
+    exif: {}
+  - path: events/networking/corporate dinner/IMG_7146.webp
+    meta:
+      title: Img 7146
+      description: ''
+      collections:
+        - events/networking/corporate dinner
+    exif: {}
+  - path: events/networking/corporate dinner/IMG_7162.webp
+    meta:
+      title: Img 7162
+      description: ''
+      collections:
+        - events/networking/corporate dinner
+    exif: {}
+  - path: events/networking/corporate dinner/IMG_7167.webp
+    meta:
+      title: Img 7167
+      description: ''
+      collections:
+        - events/networking/corporate dinner
+    exif: {}
+  - path: events/networking/corporate dinner/IMG_7183.webp
+    meta:
+      title: Img 7183
+      description: ''
+      collections:
+        - events/networking/corporate dinner
+    exif: {}
+  - path: events/networking/corporate dinner/IMG_7237.webp
+    meta:
+      title: Img 7237
+      description: ''
+      collections:
+        - events/networking/corporate dinner
+    exif: {}
+  - path: events/networking/corporate dinner/IMG_7269.webp
+    meta:
+      title: Img 7269
+      description: ''
+      collections:
+        - events/networking/corporate dinner
+    exif: {}
+  - path: events/networking/corporate dinner/IMG_7275.webp
+    meta:
+      title: Img 7275
+      description: ''
+      collections:
+        - events/networking/corporate dinner
+    exif: {}
+  - path: events/networking/corporate dinner/IMG_7300.webp
+    meta:
+      title: Img 7300
+      description: ''
+      collections:
+        - events/networking/corporate dinner
+    exif: {}
+  - path: events/networking/Pitch deck/IMG_0864.webp
+    meta:
+      title: Img 0864
+      description: ''
+      collections:
+        - events/networking/Pitch deck
+    exif: {}
+  - path: events/networking/Pitch deck/IMG_0881-1.webp
+    meta:
+      title: Img 0881 1
+      description: ''
+      collections:
+        - events/networking/Pitch deck
+        - featured
+    exif: {}
+  - path: events/networking/Pitch deck/IMG_0966.webp
+    meta:
+      title: Img 0966
+      description: ''
+      collections:
+        - events/networking/Pitch deck
+    exif: {}
+  - path: events/networking/Pitch deck/IMG_0984.webp
+    meta:
+      title: Img 0984
+      description: ''
+      collections:
+        - events/networking/Pitch deck
+        - featured
+    exif: {}
+  - path: events/networking/Pitch deck/IMG_1040.webp
+    meta:
+      title: Img 1040
+      description: ''
+      collections:
+        - events/networking/Pitch deck
+    exif: {}
+  - path: events/networking/Startup panel/IMG_1451.webp
+    meta:
+      title: Img 1451
+      description: ''
+      collections:
+        - events/networking/Startup panel
+    exif: {}
+  - path: events/networking/Startup panel/IMG_1458.webp
+    meta:
+      title: Img 1458
+      description: ''
+      collections:
+        - events/networking/Startup panel
+        - featured
+    exif: {}
+  - path: events/networking/Startup panel/IMG_1473.webp
+    meta:
+      title: Img 1473
+      description: ''
+      collections:
+        - events/networking/Startup panel
+    exif: {}
+  - path: events/networking/Startup panel/IMG_1511.webp
+    meta:
+      title: Img 1511
+      description: ''
+      collections:
+        - events/networking/Startup panel
+    exif: {}
+  - path: events/networking/Startup panel/IMG_1549.webp
+    meta:
+      title: Img 1549
+      description: ''
+      collections:
+        - events/networking/Startup panel
+    exif: {}
+  - path: events/networking/Startup panel/IMG_1593.webp
+    meta:
+      title: Img 1593
+      description: ''
+      collections:
+        - events/networking/Startup panel
+    exif: {}
+  - path: events/networking/Startup panel/IMG_1617.webp
+    meta:
+      title: Img 1617
+      description: ''
+      collections:
+        - events/networking/Startup panel
+    exif: {}
+  - path: events/networking/Startup panel/IMG_1628.webp
+    meta:
+      title: Img 1628
+      description: ''
+      collections:
+        - events/networking/Startup panel
+    exif: {}
+  - path: events/networking/Startup panel/IMG_1640.webp
+    meta:
+      title: Img 1640
+      description: ''
+      collections:
+        - events/networking/Startup panel
+    exif: {}
+  - path: events/networking/Startup panel/IMG_1650.webp
+    meta:
+      title: Img 1650
+      description: ''
+      collections:
+        - events/networking/Startup panel
+    exif: {}
+  - path: events/networking/Startup panel/IMG_1676.webp
+    meta:
+      title: Img 1676
+      description: ''
+      collections:
+        - events/networking/Startup panel
+    exif: {}
+  - path: events/networking/Startup panel/IMG_1684.webp
+    meta:
+      title: Img 1684
+      description: ''
+      collections:
+        - events/networking/Startup panel
+    exif: {}
+  - path: events/networking/Startup panel/IMG_1702.webp
+    meta:
+      title: Img 1702
+      description: ''
+      collections:
+        - events/networking/Startup panel
     exif: {}
