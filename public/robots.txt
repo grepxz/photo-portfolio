@@ -1,0 +1,19 @@
+# Search engines: welcome.
+User-agent: *
+Allow: /
+
+# AI training crawlers: the photographs are the product.
+# Blocking Google-Extended does not affect Google Search or Google Images.
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+Sitemap: https://cedar4st.com/sitemap-index.xml
