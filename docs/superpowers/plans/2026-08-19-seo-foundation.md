@@ -46,11 +46,13 @@ Still outstanding, blocking one task only:
 Pure functions with no Astro dependency. Nothing renders yet; this task exists so the metadata logic is tested in isolation before anything consumes it.
 
 **Files:**
+
 - Create: `src/seo/defaults.ts`
 - Create: `src/seo/meta.ts`
 - Test: `src/seo/__tests__/meta.test.ts`
 
 **Interfaces:**
+
 - Consumes: nothing.
 - Produces: `SITE`, `BRAND`, `OWNER`, `DEFAULT_OG_IMAGE`, `LOCALES`, `DEFAULT_LOCALE`, `type Locale` from `defaults.ts`; `composeTitle(title: string): string`, `canonicalFor(path: string): string`, `buildMeta(input: MetaInput): ResolvedMeta`, and the `MetaInput` / `ResolvedMeta` interfaces from `meta.ts`.
 
@@ -64,89 +66,89 @@ import { BRAND, SITE } from '../defaults.ts';
 import { buildMeta, canonicalFor, composeTitle } from '../meta.ts';
 
 describe('composeTitle', () => {
-	it('appends the brand to a bare page title', () => {
-		expect(composeTitle('Wedding Photography in Barcelona')).toEqual(
-			`Wedding Photography in Barcelona — ${BRAND}`,
-		);
-	});
+  it('appends the brand to a bare page title', () => {
+    expect(composeTitle('Wedding Photography in Barcelona')).toEqual(
+      `Wedding Photography in Barcelona — ${BRAND}`,
+    );
+  });
 
-	it('does not append the brand twice', () => {
-		expect(composeTitle(`Photography Portfolio — ${BRAND}`)).toEqual(
-			`Photography Portfolio — ${BRAND}`,
-		);
-	});
+  it('does not append the brand twice', () => {
+    expect(composeTitle(`Photography Portfolio — ${BRAND}`)).toEqual(
+      `Photography Portfolio — ${BRAND}`,
+    );
+  });
 
-	it('collapses surrounding whitespace', () => {
-		expect(composeTitle('  Book Me  ')).toEqual(`Book Me — ${BRAND}`);
-	});
+  it('collapses surrounding whitespace', () => {
+    expect(composeTitle('  Book Me  ')).toEqual(`Book Me — ${BRAND}`);
+  });
 });
 
 describe('canonicalFor', () => {
-	it('builds an absolute URL from a site-relative path', () => {
-		expect(canonicalFor('/collections/weddings/')).toEqual(`${SITE}/collections/weddings/`);
-	});
+  it('builds an absolute URL from a site-relative path', () => {
+    expect(canonicalFor('/collections/weddings/')).toEqual(`${SITE}/collections/weddings/`);
+  });
 
-	it('adds a trailing slash', () => {
-		expect(canonicalFor('/collections/weddings')).toEqual(`${SITE}/collections/weddings/`);
-	});
+  it('adds a trailing slash', () => {
+    expect(canonicalFor('/collections/weddings')).toEqual(`${SITE}/collections/weddings/`);
+  });
 
-	it('leaves the root path as a single slash', () => {
-		expect(canonicalFor('/')).toEqual(`${SITE}/`);
-	});
+  it('leaves the root path as a single slash', () => {
+    expect(canonicalFor('/')).toEqual(`${SITE}/`);
+  });
 
-	it('normalises a missing leading slash', () => {
-		expect(canonicalFor('book')).toEqual(`${SITE}/book/`);
-	});
+  it('normalises a missing leading slash', () => {
+    expect(canonicalFor('book')).toEqual(`${SITE}/book/`);
+  });
 });
 
 describe('buildMeta', () => {
-	const input = {
-		title: 'Book Me',
-		description: 'Booking enquiries for photography in Barcelona.',
-		path: '/book/',
-	};
+  const input = {
+    title: 'Book Me',
+    description: 'Booking enquiries for photography in Barcelona.',
+    path: '/book/',
+  };
 
-	it('resolves title, description and canonical', () => {
-		const meta = buildMeta(input);
-		expect(meta.title).toEqual(`Book Me — ${BRAND}`);
-		expect(meta.description).toEqual(input.description);
-		expect(meta.canonical).toEqual(`${SITE}/book/`);
-	});
+  it('resolves title, description and canonical', () => {
+    const meta = buildMeta(input);
+    expect(meta.title).toEqual(`Book Me — ${BRAND}`);
+    expect(meta.description).toEqual(input.description);
+    expect(meta.canonical).toEqual(`${SITE}/book/`);
+  });
 
-	it('mirrors the resolved values into Open Graph tags', () => {
-		const meta = buildMeta(input);
-		expect(meta.og.title).toEqual(meta.title);
-		expect(meta.og.description).toEqual(meta.description);
-		expect(meta.og.url).toEqual(meta.canonical);
-		expect(meta.og.type).toEqual('website');
-	});
+  it('mirrors the resolved values into Open Graph tags', () => {
+    const meta = buildMeta(input);
+    expect(meta.og.title).toEqual(meta.title);
+    expect(meta.og.description).toEqual(meta.description);
+    expect(meta.og.url).toEqual(meta.canonical);
+    expect(meta.og.type).toEqual('website');
+  });
 
-	it('falls back to the default Open Graph image', () => {
-		const meta = buildMeta(input);
-		expect(meta.og.image).toEqual(`${SITE}/images/profile.webp`);
-	});
+  it('falls back to the default Open Graph image', () => {
+    const meta = buildMeta(input);
+    expect(meta.og.image).toEqual(`${SITE}/images/profile.webp`);
+  });
 
-	it('makes a supplied relative image absolute', () => {
-		const meta = buildMeta({ ...input, image: '/images/custom.webp' });
-		expect(meta.og.image).toEqual(`${SITE}/images/custom.webp`);
-	});
+  it('makes a supplied relative image absolute', () => {
+    const meta = buildMeta({ ...input, image: '/images/custom.webp' });
+    expect(meta.og.image).toEqual(`${SITE}/images/custom.webp`);
+  });
 
-	it('leaves an already-absolute image untouched', () => {
-		const meta = buildMeta({ ...input, image: 'https://cdn.example.com/a.webp' });
-		expect(meta.og.image).toEqual('https://cdn.example.com/a.webp');
-	});
+  it('leaves an already-absolute image untouched', () => {
+    const meta = buildMeta({ ...input, image: 'https://cdn.example.com/a.webp' });
+    expect(meta.og.image).toEqual('https://cdn.example.com/a.webp');
+  });
 
-	it('uses a large summary card', () => {
-		expect(buildMeta(input).twitter.card).toEqual('summary_large_image');
-	});
+  it('uses a large summary card', () => {
+    expect(buildMeta(input).twitter.card).toEqual('summary_large_image');
+  });
 
-	it('defaults to the English locale', () => {
-		expect(buildMeta(input).og.locale).toEqual('en');
-	});
+  it('defaults to the English locale', () => {
+    expect(buildMeta(input).og.locale).toEqual('en');
+  });
 
-	it('carries an explicit locale through', () => {
-		expect(buildMeta({ ...input, locale: 'es' }).og.locale).toEqual('es');
-	});
+  it('carries an explicit locale through', () => {
+    expect(buildMeta({ ...input, locale: 'es' }).og.locale).toEqual('es');
+  });
 });
 ```
 
@@ -193,49 +195,49 @@ export const POSITIONING = 'Documentary, event and wedding photographer in Barce
 
 ```ts
 import {
-	BRAND,
-	DEFAULT_LOCALE,
-	DEFAULT_OG_IMAGE,
-	SITE,
-	TITLE_SEPARATOR,
-	type Locale,
+  BRAND,
+  DEFAULT_LOCALE,
+  DEFAULT_OG_IMAGE,
+  SITE,
+  TITLE_SEPARATOR,
+  type Locale,
 } from './defaults.ts';
 
 export interface MetaInput {
-	/** Page title without the brand suffix. */
-	title: string;
-	description: string;
-	/** Site-relative path, with or without leading and trailing slashes. */
-	path: string;
-	/** Site-relative or absolute image URL. Falls back to DEFAULT_OG_IMAGE. */
-	image?: string;
-	locale?: Locale;
+  /** Page title without the brand suffix. */
+  title: string;
+  description: string;
+  /** Site-relative path, with or without leading and trailing slashes. */
+  path: string;
+  /** Site-relative or absolute image URL. Falls back to DEFAULT_OG_IMAGE. */
+  image?: string;
+  locale?: Locale;
 }
 
 export interface ResolvedMeta {
-	title: string;
-	description: string;
-	canonical: string;
-	og: {
-		title: string;
-		description: string;
-		url: string;
-		image: string;
-		type: 'website';
-		locale: Locale;
-	};
-	twitter: {
-		card: 'summary_large_image';
-		title: string;
-		description: string;
-		image: string;
-	};
+  title: string;
+  description: string;
+  canonical: string;
+  og: {
+    title: string;
+    description: string;
+    url: string;
+    image: string;
+    type: 'website';
+    locale: Locale;
+  };
+  twitter: {
+    card: 'summary_large_image';
+    title: string;
+    description: string;
+    image: string;
+  };
 }
 
 /** Appends the brand unless the title already carries it. */
 export const composeTitle = (title: string): string => {
-	const trimmed = title.trim();
-	return trimmed.includes(BRAND) ? trimmed : `${trimmed}${TITLE_SEPARATOR}${BRAND}`;
+  const trimmed = title.trim();
+  return trimmed.includes(BRAND) ? trimmed : `${trimmed}${TITLE_SEPARATOR}${BRAND}`;
 };
 
 /**
@@ -245,27 +247,27 @@ export const composeTitle = (title: string): string => {
  * trailing-slash URL. Canonicals must agree or they self-conflict.
  */
 export const canonicalFor = (path: string): string => {
-	const trimmed = path.trim().replace(/^\/+/, '').replace(/\/+$/, '');
-	return trimmed === '' ? `${SITE}/` : `${SITE}/${trimmed}/`;
+  const trimmed = path.trim().replace(/^\/+/, '').replace(/\/+$/, '');
+  return trimmed === '' ? `${SITE}/` : `${SITE}/${trimmed}/`;
 };
 
 const absoluteUrl = (value: string): string =>
-	/^https?:\/\//.test(value) ? value : `${SITE}${value.startsWith('/') ? '' : '/'}${value}`;
+  /^https?:\/\//.test(value) ? value : `${SITE}${value.startsWith('/') ? '' : '/'}${value}`;
 
 export const buildMeta = (input: MetaInput): ResolvedMeta => {
-	const title = composeTitle(input.title);
-	const description = input.description.trim();
-	const canonical = canonicalFor(input.path);
-	const image = absoluteUrl(input.image ?? DEFAULT_OG_IMAGE);
-	const locale = input.locale ?? DEFAULT_LOCALE;
+  const title = composeTitle(input.title);
+  const description = input.description.trim();
+  const canonical = canonicalFor(input.path);
+  const image = absoluteUrl(input.image ?? DEFAULT_OG_IMAGE);
+  const locale = input.locale ?? DEFAULT_LOCALE;
 
-	return {
-		title,
-		description,
-		canonical,
-		og: { title, description, url: canonical, image, type: 'website', locale },
-		twitter: { card: 'summary_large_image', title, description, image },
-	};
+  return {
+    title,
+    description,
+    canonical,
+    og: { title, description, url: canonical, image, type: 'website', locale },
+    twitter: { card: 'summary_large_image', title, description, image },
+  };
 };
 ```
 
@@ -288,10 +290,12 @@ git commit -m "Add SEO defaults and metadata composition"
 Still pure. Describes the business as a Barcelona service-area photographer with no street address, matching what will eventually go into Google Business Profile.
 
 **Files:**
+
 - Create: `src/seo/schema.ts`
 - Test: `src/seo/__tests__/schema.test.ts`
 
 **Interfaces:**
+
 - Consumes: `SITE`, `BRAND`, `OWNER`, `POSITIONING`, `DEFAULT_OG_IMAGE` from `defaults.ts`.
 - Produces: `professionalService(): JsonLd`, `person(): JsonLd`, `breadcrumbList(crumbs: Crumb[]): JsonLd`, `type Crumb = { name: string; path: string }`, `BUSINESS_ID`, `PERSON_ID`.
 
@@ -305,87 +309,87 @@ import { BRAND, OWNER, SITE } from '../defaults.ts';
 import { BUSINESS_ID, breadcrumbList, person, professionalService } from '../schema.ts';
 
 describe('professionalService', () => {
-	const schema = professionalService();
+  const schema = professionalService();
 
-	it('is a ProfessionalService in the schema.org context', () => {
-		expect(schema['@context']).toEqual('https://schema.org');
-		expect(schema['@type']).toEqual('ProfessionalService');
-	});
+  it('is a ProfessionalService in the schema.org context', () => {
+    expect(schema['@context']).toEqual('https://schema.org');
+    expect(schema['@type']).toEqual('ProfessionalService');
+  });
 
-	it('carries a stable identifier other nodes can reference', () => {
-		expect(schema['@id']).toEqual(BUSINESS_ID);
-	});
+  it('carries a stable identifier other nodes can reference', () => {
+    expect(schema['@id']).toEqual(BUSINESS_ID);
+  });
 
-	it('is named for the brand and points at the site', () => {
-		expect(schema.name).toEqual(BRAND);
-		expect(schema.url).toEqual(`${SITE}/`);
-	});
+  it('is named for the brand and points at the site', () => {
+    expect(schema.name).toEqual(BRAND);
+    expect(schema.url).toEqual(`${SITE}/`);
+  });
 
-	it('emits no postal address, because this is a service-area business', () => {
-		expect(schema).not.toHaveProperty('address');
-	});
+  it('emits no postal address, because this is a service-area business', () => {
+    expect(schema).not.toHaveProperty('address');
+  });
 
-	it('serves Barcelona', () => {
-		expect(schema.areaServed).toMatchObject({ '@type': 'City', name: 'Barcelona' });
-	});
+  it('serves Barcelona', () => {
+    expect(schema.areaServed).toMatchObject({ '@type': 'City', name: 'Barcelona' });
+  });
 
-	it('lists the service types that have galleries behind them', () => {
-		expect(schema.serviceType).toEqual(
-			expect.arrayContaining([
-				'Wedding photography',
-				'Event photography',
-				'Documentary photography',
-			]),
-		);
-	});
+  it('lists the service types that have galleries behind them', () => {
+    expect(schema.serviceType).toEqual(
+      expect.arrayContaining([
+        'Wedding photography',
+        'Event photography',
+        'Documentary photography',
+      ]),
+    );
+  });
 
-	it('links the Instagram profile as sameAs', () => {
-		expect(schema.sameAs).toContain('https://www.instagram.com/bluecatch.ca/');
-	});
+  it('links the Instagram profile as sameAs', () => {
+    expect(schema.sameAs).toContain('https://www.instagram.com/bluecatch.ca/');
+  });
 
-	it('never claims the bare instagram.com domain as an identity', () => {
-		expect(schema.sameAs).not.toContain('https://www.instagram.com');
-	});
+  it('never claims the bare instagram.com domain as an identity', () => {
+    expect(schema.sameAs).not.toContain('https://www.instagram.com');
+  });
 });
 
 describe('person', () => {
-	const schema = person();
+  const schema = person();
 
-	it('describes the owner and links to the business', () => {
-		expect(schema['@type']).toEqual('Person');
-		expect(schema.name).toEqual(OWNER);
-		expect(schema.worksFor).toEqual({ '@id': BUSINESS_ID });
-	});
+  it('describes the owner and links to the business', () => {
+    expect(schema['@type']).toEqual('Person');
+    expect(schema.name).toEqual(OWNER);
+    expect(schema.worksFor).toEqual({ '@id': BUSINESS_ID });
+  });
 
-	it('states the occupation', () => {
-		expect(schema.jobTitle).toEqual('Photographer');
-	});
+  it('states the occupation', () => {
+    expect(schema.jobTitle).toEqual('Photographer');
+  });
 });
 
 describe('breadcrumbList', () => {
-	it('numbers positions from one and resolves absolute URLs', () => {
-		const schema = breadcrumbList([
-			{ name: 'Gallery', path: '/collections/' },
-			{ name: 'Events', path: '/collections/events/' },
-			{ name: 'Nightclub', path: '/collections/events/nightclub/' },
-		]);
+  it('numbers positions from one and resolves absolute URLs', () => {
+    const schema = breadcrumbList([
+      { name: 'Gallery', path: '/collections/' },
+      { name: 'Events', path: '/collections/events/' },
+      { name: 'Nightclub', path: '/collections/events/nightclub/' },
+    ]);
 
-		expect(schema['@type']).toEqual('BreadcrumbList');
-		expect(schema.itemListElement).toHaveLength(3);
-		expect(schema.itemListElement[0]).toMatchObject({
-			position: 1,
-			name: 'Gallery',
-			item: `${SITE}/collections/`,
-		});
-		expect(schema.itemListElement[2]).toMatchObject({
-			position: 3,
-			item: `${SITE}/collections/events/nightclub/`,
-		});
-	});
+    expect(schema['@type']).toEqual('BreadcrumbList');
+    expect(schema.itemListElement).toHaveLength(3);
+    expect(schema.itemListElement[0]).toMatchObject({
+      position: 1,
+      name: 'Gallery',
+      item: `${SITE}/collections/`,
+    });
+    expect(schema.itemListElement[2]).toMatchObject({
+      position: 3,
+      item: `${SITE}/collections/events/nightclub/`,
+    });
+  });
 
-	it('returns an empty list for no crumbs', () => {
-		expect(breadcrumbList([]).itemListElement).toEqual([]);
-	});
+  it('returns an empty list for no crumbs', () => {
+    expect(breadcrumbList([]).itemListElement).toEqual([]);
+  });
 });
 ```
 
@@ -415,64 +419,64 @@ const SAME_AS: string[] = ['https://www.instagram.com/bluecatch.ca/'];
 
 /** Categories with actual galleries behind them. Kept honest on purpose. */
 const SERVICE_TYPES = [
-	'Wedding photography',
-	'Event photography',
-	'Documentary photography',
-	'Concert and nightlife photography',
-	'Sports photography',
-	'Portrait photography',
+  'Wedding photography',
+  'Event photography',
+  'Documentary photography',
+  'Concert and nightlife photography',
+  'Sports photography',
+  'Portrait photography',
 ];
 
 export const professionalService = (): JsonLd => {
-	const schema: JsonLd = {
-		'@context': 'https://schema.org',
-		'@type': 'ProfessionalService',
-		'@id': BUSINESS_ID,
-		name: BRAND,
-		description: POSITIONING,
-		url: `${SITE}/`,
-		image: `${SITE}${DEFAULT_OG_IMAGE}`,
-		areaServed: {
-			'@type': 'City',
-			name: 'Barcelona',
-			address: { '@type': 'PostalAddress', addressCountry: 'ES' },
-		},
-		serviceType: SERVICE_TYPES,
-		founder: { '@id': PERSON_ID },
-		knowsLanguage: ['en', 'es'],
-	};
+  const schema: JsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfessionalService',
+    '@id': BUSINESS_ID,
+    name: BRAND,
+    description: POSITIONING,
+    url: `${SITE}/`,
+    image: `${SITE}${DEFAULT_OG_IMAGE}`,
+    areaServed: {
+      '@type': 'City',
+      name: 'Barcelona',
+      address: { '@type': 'PostalAddress', addressCountry: 'ES' },
+    },
+    serviceType: SERVICE_TYPES,
+    founder: { '@id': PERSON_ID },
+    knowsLanguage: ['en', 'es'],
+  };
 
-	if (SAME_AS.length > 0) {
-		schema.sameAs = SAME_AS;
-	}
+  if (SAME_AS.length > 0) {
+    schema.sameAs = SAME_AS;
+  }
 
-	return schema;
+  return schema;
 };
 
 export const person = (): JsonLd => ({
-	'@context': 'https://schema.org',
-	'@type': 'Person',
-	'@id': PERSON_ID,
-	name: OWNER,
-	jobTitle: 'Photographer',
-	url: `${SITE}/book/`,
-	worksFor: { '@id': BUSINESS_ID },
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': PERSON_ID,
+  name: OWNER,
+  jobTitle: 'Photographer',
+  url: `${SITE}/book/`,
+  worksFor: { '@id': BUSINESS_ID },
 });
 
 export interface Crumb {
-	name: string;
-	path: string;
+  name: string;
+  path: string;
 }
 
 export const breadcrumbList = (crumbs: Crumb[]): JsonLd => ({
-	'@context': 'https://schema.org',
-	'@type': 'BreadcrumbList',
-	itemListElement: crumbs.map((crumb, index) => ({
-		'@type': 'ListItem',
-		position: index + 1,
-		name: crumb.name,
-		item: canonicalFor(crumb.path),
-	})),
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: crumbs.map((crumb, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: crumb.name,
+    item: canonicalFor(crumb.path),
+  })),
 });
 ```
 
@@ -495,10 +499,12 @@ git commit -m "Add JSON-LD builders for a Barcelona service-area business"
 Collection routes are built from directory names containing spaces and capitals, so they serve as percent-encoded URLs like `/collections/activism/Barcelona%20Pride/`. This must land before the sitemap is submitted.
 
 **Files:**
+
 - Create: `src/seo/slug.ts`
 - Test: `src/seo/__tests__/slug.test.ts`
 
 **Interfaces:**
+
 - Consumes: nothing.
 - Produces: `slugifySegment(segment: string): string`, `slugifyId(id: string): string`, `buildSlugMap(ids: string[]): Map<string, string>` (slug → original id), `SlugCollisionError`.
 
@@ -511,72 +517,72 @@ import { describe, expect, it } from 'vitest';
 import { SlugCollisionError, buildSlugMap, slugifyId, slugifySegment } from '../slug.ts';
 
 describe('slugifySegment', () => {
-	it('lowercases', () => {
-		expect(slugifySegment('Weddings')).toEqual('weddings');
-	});
+  it('lowercases', () => {
+    expect(slugifySegment('Weddings')).toEqual('weddings');
+  });
 
-	it('replaces spaces with hyphens', () => {
-		expect(slugifySegment('Barcelona Pride')).toEqual('barcelona-pride');
-	});
+  it('replaces spaces with hyphens', () => {
+    expect(slugifySegment('Barcelona Pride')).toEqual('barcelona-pride');
+  });
 
-	it('collapses runs of separators into one hyphen', () => {
-		expect(slugifySegment('Venture  capital   party')).toEqual('venture-capital-party');
-	});
+  it('collapses runs of separators into one hyphen', () => {
+    expect(slugifySegment('Venture  capital   party')).toEqual('venture-capital-party');
+  });
 
-	it('strips accents', () => {
-		expect(slugifySegment('Café Münster')).toEqual('cafe-munster');
-	});
+  it('strips accents', () => {
+    expect(slugifySegment('Café Münster')).toEqual('cafe-munster');
+  });
 
-	it('drops leading and trailing separators', () => {
-		expect(slugifySegment(' -Pitch deck- ')).toEqual('pitch-deck');
-	});
+  it('drops leading and trailing separators', () => {
+    expect(slugifySegment(' -Pitch deck- ')).toEqual('pitch-deck');
+  });
 
-	it('removes punctuation', () => {
-		expect(slugifySegment("Hanna's Work!")).toEqual('hanna-s-work');
-	});
+  it('removes punctuation', () => {
+    expect(slugifySegment("Hanna's Work!")).toEqual('hanna-s-work');
+  });
 });
 
 describe('slugifyId', () => {
-	it('slugifies each segment and preserves nesting', () => {
-		expect(slugifyId('events/networking/Venture capital party')).toEqual(
-			'events/networking/venture-capital-party',
-		);
-	});
+  it('slugifies each segment and preserves nesting', () => {
+    expect(slugifyId('events/networking/Venture capital party')).toEqual(
+      'events/networking/venture-capital-party',
+    );
+  });
 
-	it('handles a single segment', () => {
-		expect(slugifyId('weddings')).toEqual('weddings');
-	});
+  it('handles a single segment', () => {
+    expect(slugifyId('weddings')).toEqual('weddings');
+  });
 });
 
 describe('buildSlugMap', () => {
-	it('maps every slug back to its original id', () => {
-		const map = buildSlugMap(['weddings', 'activism/Barcelona Pride']);
-		expect(map.get('weddings')).toEqual('weddings');
-		expect(map.get('activism/barcelona-pride')).toEqual('activism/Barcelona Pride');
-	});
+  it('maps every slug back to its original id', () => {
+    const map = buildSlugMap(['weddings', 'activism/Barcelona Pride']);
+    expect(map.get('weddings')).toEqual('weddings');
+    expect(map.get('activism/barcelona-pride')).toEqual('activism/Barcelona Pride');
+  });
 
-	it('maps the real gallery ids without collision', () => {
-		const ids = [
-			'events/nightclub',
-			'events/networking/Venture capital party',
-			'events/networking/Pitch deck',
-			'events/networking/Startup panel',
-			'events/networking/corporate dinner',
-			'events/sport',
-			'events/birthday',
-			'activism/Barcelona Pride',
-			'activism/Mexico',
-			'activism/Ukraine',
-			'weddings',
-		];
-		expect(buildSlugMap(ids).size).toEqual(ids.length);
-	});
+  it('maps the real gallery ids without collision', () => {
+    const ids = [
+      'events/nightclub',
+      'events/networking/Venture capital party',
+      'events/networking/Pitch deck',
+      'events/networking/Startup panel',
+      'events/networking/corporate dinner',
+      'events/sport',
+      'events/birthday',
+      'activism/Barcelona Pride',
+      'activism/Mexico',
+      'activism/Ukraine',
+      'weddings',
+    ];
+    expect(buildSlugMap(ids).size).toEqual(ids.length);
+  });
 
-	it('throws when two ids collapse to the same slug', () => {
-		expect(() => buildSlugMap(['events/Pitch Deck', 'events/pitch deck'])).toThrow(
-			SlugCollisionError,
-		);
-	});
+  it('throws when two ids collapse to the same slug', () => {
+    expect(() => buildSlugMap(['events/Pitch Deck', 'events/pitch deck'])).toThrow(
+      SlugCollisionError,
+    );
+  });
 });
 ```
 
@@ -596,19 +602,19 @@ Expected: FAIL — cannot resolve `../slug.ts`.
  */
 
 export class SlugCollisionError extends Error {
-	constructor(message: string) {
-		super(message);
-		this.name = 'SlugCollisionError';
-	}
+  constructor(message: string) {
+    super(message);
+    this.name = 'SlugCollisionError';
+  }
 }
 
 export const slugifySegment = (segment: string): string =>
-	segment
-		.normalize('NFD')
-		.replace(/[̀-ͯ]/g, '')
-		.toLowerCase()
-		.replace(/[^a-z0-9]+/g, '-')
-		.replace(/^-+|-+$/g, '');
+  segment
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
 
 export const slugifyId = (id: string): string => id.split('/').map(slugifySegment).join('/');
 
@@ -618,18 +624,18 @@ export const slugifyId = (id: string): string => id.split('/').map(slugifySegmen
  * ids collapse to the same slug.
  */
 export const buildSlugMap = (ids: string[]): Map<string, string> => {
-	const map = new Map<string, string>();
-	for (const id of ids) {
-		const slug = slugifyId(id);
-		const existing = map.get(slug);
-		if (existing !== undefined && existing !== id) {
-			throw new SlugCollisionError(
-				`Collections '${existing}' and '${id}' both slugify to '${slug}'`,
-			);
-		}
-		map.set(slug, id);
-	}
-	return map;
+  const map = new Map<string, string>();
+  for (const id of ids) {
+    const slug = slugifyId(id);
+    const existing = map.get(slug);
+    if (existing !== undefined && existing !== id) {
+      throw new SlugCollisionError(
+        `Collections '${existing}' and '${id}' both slugify to '${slug}'`,
+      );
+    }
+    map.set(slug, id);
+  }
+  return map;
 };
 ```
 
@@ -652,6 +658,7 @@ git commit -m "Add collection URL slugification"
 Wires Tasks 1 and 2 into the page head, and fixes the duplicate font load on the same critical path.
 
 **Files:**
+
 - Modify: `src/layouts/MainLayout.astro` (whole file)
 - Modify: `src/components/NavBar.astro:11-17` (remove the duplicated font block)
 - Modify: `src/pages/index.astro`
@@ -659,6 +666,7 @@ Wires Tasks 1 and 2 into the page head, and fixes the duplicate font load on the
 - Modify: `site.config.mts:18-27` (correct both social URLs)
 
 **Interfaces:**
+
 - Consumes: `buildMeta`, `ResolvedMeta` from `src/seo/meta.ts`; `professionalService`, `person`, `type JsonLd` from `src/seo/schema.ts`.
 - Produces: `MainLayout` accepting `Props { title: string; description: string; image?: string; jsonLd?: JsonLd[] }`.
 
@@ -676,11 +684,11 @@ import { buildMeta } from '../seo/meta.ts';
 import { person, professionalService, type JsonLd } from '../seo/schema.ts';
 
 interface Props {
-	title: string;
-	description: string;
-	image?: string;
-	/** Page-specific structured data, appended after the site-wide nodes. */
-	jsonLd?: JsonLd[];
+  title: string;
+  description: string;
+  image?: string;
+  /** Page-specific structured data, appended after the site-wide nodes. */
+  jsonLd?: JsonLd[];
 }
 
 const { title, description, image, jsonLd = [] } = Astro.props;
@@ -691,49 +699,49 @@ const structuredData: JsonLd[] = [professionalService(), person(), ...jsonLd];
 ---
 
 <html lang="en" class="h-full">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="generator" content={Astro.generator} />
-		<link rel="icon" type="image/x-icon" href={`/${favicon}`} />
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/x-icon" href={`/${favicon}`} />
 
-		<title>{meta.title}</title>
-		<meta name="description" content={meta.description} />
-		<link rel="canonical" href={meta.canonical} />
+    <title>{meta.title}</title>
+    <meta name="description" content={meta.description} />
+    <link rel="canonical" href={meta.canonical} />
 
-		<meta property="og:site_name" content="Cedar4st" />
-		<meta property="og:type" content={meta.og.type} />
-		<meta property="og:title" content={meta.og.title} />
-		<meta property="og:description" content={meta.og.description} />
-		<meta property="og:url" content={meta.og.url} />
-		<meta property="og:image" content={meta.og.image} />
-		<meta property="og:locale" content={meta.og.locale} />
+    <meta property="og:site_name" content="Cedar4st" />
+    <meta property="og:type" content={meta.og.type} />
+    <meta property="og:title" content={meta.og.title} />
+    <meta property="og:description" content={meta.og.description} />
+    <meta property="og:url" content={meta.og.url} />
+    <meta property="og:image" content={meta.og.image} />
+    <meta property="og:locale" content={meta.og.locale} />
 
-		<meta name="twitter:card" content={meta.twitter.card} />
-		<meta name="twitter:title" content={meta.twitter.title} />
-		<meta name="twitter:description" content={meta.twitter.description} />
-		<meta name="twitter:image" content={meta.twitter.image} />
+    <meta name="twitter:card" content={meta.twitter.card} />
+    <meta name="twitter:title" content={meta.twitter.title} />
+    <meta name="twitter:description" content={meta.twitter.description} />
+    <meta name="twitter:image" content={meta.twitter.image} />
 
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap"
-			rel="stylesheet"
-		/>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
 
-		{
-			structuredData.map((node) => (
-				<script type="application/ld+json" set:html={JSON.stringify(node)} />
-			))
-		}
-	</head>
-	<body>
-		<NavBar />
-		<main>
-			<slot />
-		</main>
-		<Footer />
-	</body>
+    {
+      structuredData.map((node) => (
+        <script type="application/ld+json" set:html={JSON.stringify(node)} />
+      ))
+    }
+  </head>
+  <body>
+    <NavBar />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
 </html>
 
 <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -749,8 +757,8 @@ Delete these seven lines from the top of the template (they sit between the fron
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
-	href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap"
-	rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap"
+  rel="stylesheet"
 />
 ```
 
@@ -760,9 +768,9 @@ Change the `<MainLayout>` opening tag to:
 
 ```astro
 <MainLayout
-	title="Photographer in Barcelona"
-	description="Hanna is a documentary, event and wedding photographer based in Barcelona. Weddings, nightlife, concerts, sport and journalistic work."
->
+  title="Photographer in Barcelona"
+  description="Hanna is a documentary, event and wedding photographer based in Barcelona. Weddings, nightlife, concerts, sport and journalistic work."
+/>
 ```
 
 - [ ] **Step 4: Give `src/pages/book.astro` its metadata**
@@ -771,9 +779,9 @@ Change the `<MainLayout>` opening tag to:
 
 ```astro
 <MainLayout
-	title="Book a Photographer in Barcelona"
-	description="Book Hanna for weddings, events, portraits and documentary work in Barcelona. Reduced rates and TFP available for selected shoot types."
->
+  title="Book a Photographer in Barcelona"
+  description="Book Hanna for weddings, events, portraits and documentary work in Barcelona. Reduced rates and TFP available for selected shoot types."
+/>
 ```
 
 - [ ] **Step 4b: Correct the social URLs in `site.config.mts`**
@@ -826,6 +834,7 @@ Also confirm the schema picked up the profile:
 The largest task. Applies slugs to the route, gives each of the 15 routes its own title, description, `<h1>` and tagline, and adds breadcrumb structured data.
 
 **Files:**
+
 - Modify: `src/gallery/gallery.yaml` (collections block only)
 - Modify: `src/data/galleryData.ts` (the `Collection` interface)
 - Modify: `src/pages/collections/[...collection].astro`
@@ -833,6 +842,7 @@ The largest task. Applies slugs to the route, gives each of the 15 routes its ow
 - Create: `src/seo/collectionMeta.ts`
 
 **Interfaces:**
+
 - Consumes: `slugifyId`, `buildSlugMap` from `src/seo/slug.ts`; `composeTitle` from `src/seo/meta.ts`; `breadcrumbList`, `type Crumb` from `src/seo/schema.ts`; `getCollections`, `getImages` from `src/data/imageStore.ts`.
 - Produces: `collectionMeta(id: string | undefined, collections: Collection[]): CollectionMeta` where `CollectionMeta = { heading: string; tagline: string; title: string; description: string }`.
 
@@ -849,10 +859,10 @@ In `src/data/galleryData.ts`, replace the `Collection` interface with:
  * @property {string} [tagline] - Sub-heading and meta description source.
  */
 export interface Collection {
-	id: string;
-	name: string;
-	heading?: string;
-	tagline?: string;
+  id: string;
+  name: string;
+  heading?: string;
+  tagline?: string;
 }
 ```
 
@@ -866,49 +876,49 @@ import type { Collection } from '../../data/galleryData.ts';
 import { collectionMeta } from '../collectionMeta.ts';
 
 const COLLECTIONS: Collection[] = [
-	{
-		id: 'weddings',
-		name: 'Weddings',
-		heading: 'Wedding Photography in Barcelona',
-		tagline: 'Ceremonies and celebrations photographed as they happen.',
-	},
-	{ id: 'events/sport', name: 'Events Sport' },
+  {
+    id: 'weddings',
+    name: 'Weddings',
+    heading: 'Wedding Photography in Barcelona',
+    tagline: 'Ceremonies and celebrations photographed as they happen.',
+  },
+  { id: 'events/sport', name: 'Events Sport' },
 ];
 
 describe('collectionMeta', () => {
-	it('describes the root gallery when no collection is given', () => {
-		const meta = collectionMeta(undefined, COLLECTIONS);
-		expect(meta.heading).toEqual('Photography Portfolio — Barcelona');
-		expect(meta.tagline).toContain('Weddings, events, nightlife');
-		expect(meta.title).toEqual('Photography Portfolio — Barcelona');
-	});
+  it('describes the root gallery when no collection is given', () => {
+    const meta = collectionMeta(undefined, COLLECTIONS);
+    expect(meta.heading).toEqual('Photography Portfolio — Barcelona');
+    expect(meta.tagline).toContain('Weddings, events, nightlife');
+    expect(meta.title).toEqual('Photography Portfolio — Barcelona');
+  });
 
-	it('uses the configured heading and tagline when present', () => {
-		const meta = collectionMeta('weddings', COLLECTIONS);
-		expect(meta.heading).toEqual('Wedding Photography in Barcelona');
-		expect(meta.tagline).toEqual('Ceremonies and celebrations photographed as they happen.');
-		expect(meta.description).toEqual('Ceremonies and celebrations photographed as they happen.');
-	});
+  it('uses the configured heading and tagline when present', () => {
+    const meta = collectionMeta('weddings', COLLECTIONS);
+    expect(meta.heading).toEqual('Wedding Photography in Barcelona');
+    expect(meta.tagline).toEqual('Ceremonies and celebrations photographed as they happen.');
+    expect(meta.description).toEqual('Ceremonies and celebrations photographed as they happen.');
+  });
 
-	it('falls back to a template for collections without copy', () => {
-		const meta = collectionMeta('events/sport', COLLECTIONS);
-		expect(meta.heading).toEqual('Events Sport Photography');
-		expect(meta.tagline).toContain('Barcelona');
-		expect(meta.description).toContain('Events Sport');
-	});
+  it('falls back to a template for collections without copy', () => {
+    const meta = collectionMeta('events/sport', COLLECTIONS);
+    expect(meta.heading).toEqual('Events Sport Photography');
+    expect(meta.tagline).toContain('Barcelona');
+    expect(meta.description).toContain('Events Sport');
+  });
 
-	it('derives a name for an intermediate node absent from the collections list', () => {
-		const meta = collectionMeta('events', COLLECTIONS);
-		expect(meta.heading).toEqual('Events Photography');
-	});
+  it('derives a name for an intermediate node absent from the collections list', () => {
+    const meta = collectionMeta('events', COLLECTIONS);
+    expect(meta.heading).toEqual('Events Photography');
+  });
 
-	it('always produces a non-empty title and description', () => {
-		for (const id of [undefined, 'weddings', 'events/sport', 'events']) {
-			const meta = collectionMeta(id, COLLECTIONS);
-			expect(meta.title.length).toBeGreaterThan(0);
-			expect(meta.description.length).toBeGreaterThan(0);
-		}
-	});
+  it('always produces a non-empty title and description', () => {
+    for (const id of [undefined, 'weddings', 'events/sport', 'events']) {
+      const meta = collectionMeta(id, COLLECTIONS);
+      expect(meta.title.length).toBeGreaterThan(0);
+      expect(meta.description.length).toBeGreaterThan(0);
+    }
+  });
 });
 ```
 
@@ -923,50 +933,50 @@ Expected: FAIL — cannot resolve `../collectionMeta.ts`.
 import type { Collection } from '../data/galleryData.ts';
 
 export interface CollectionMeta {
-	/** Visible page h1. */
-	heading: string;
-	/** Visible sub-heading, reused as the meta description. */
-	tagline: string;
-	/** Page title, before the brand suffix is appended. */
-	title: string;
-	description: string;
+  /** Visible page h1. */
+  heading: string;
+  /** Visible sub-heading, reused as the meta description. */
+  tagline: string;
+  /** Page title, before the brand suffix is appended. */
+  title: string;
+  description: string;
 }
 
 const ROOT: CollectionMeta = {
-	heading: 'Photography Portfolio — Barcelona',
-	tagline: 'Weddings, events, nightlife and documentary work, shot across Barcelona and beyond.',
-	title: 'Photography Portfolio — Barcelona',
-	description:
-		'Weddings, events, nightlife and documentary work, shot across Barcelona and beyond by photographer Hanna.',
+  heading: 'Photography Portfolio — Barcelona',
+  tagline: 'Weddings, events, nightlife and documentary work, shot across Barcelona and beyond.',
+  title: 'Photography Portfolio — Barcelona',
+  description:
+    'Weddings, events, nightlife and documentary work, shot across Barcelona and beyond by photographer Hanna.',
 };
 
 /** Turns a path segment into a display name, matching the page component. */
 const humanise = (segment: string): string =>
-	segment
-		.replace(/[^a-zA-Z0-9]+/g, ' ')
-		.split(' ')
-		.filter(Boolean)
-		.map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-		.join(' ');
+  segment
+    .replace(/[^a-zA-Z0-9]+/g, ' ')
+    .split(' ')
+    .filter(Boolean)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(' ');
 
 export const collectionMeta = (
-	id: string | undefined,
-	collections: Collection[],
+  id: string | undefined,
+  collections: Collection[],
 ): CollectionMeta => {
-	if (!id) return ROOT;
+  if (!id) return ROOT;
 
-	const configured = collections.find((collection) => collection.id === id);
-	const name = configured?.name ?? humanise(id.split('/').pop() ?? id);
+  const configured = collections.find((collection) => collection.id === id);
+  const name = configured?.name ?? humanise(id.split('/').pop() ?? id);
 
-	const heading = configured?.heading ?? `${name} Photography`;
-	const tagline = configured?.tagline ?? `${name} photography in Barcelona by Hanna.`;
+  const heading = configured?.heading ?? `${name} Photography`;
+  const tagline = configured?.tagline ?? `${name} photography in Barcelona by Hanna.`;
 
-	return {
-		heading,
-		tagline,
-		title: heading,
-		description: tagline,
-	};
+  return {
+    heading,
+    tagline,
+    title: heading,
+    description: tagline,
+  };
 };
 ```
 
@@ -1030,54 +1040,54 @@ import { breadcrumbList, type Crumb } from '../../seo/schema.ts';
 import { buildSlugMap, slugifyId } from '../../seo/slug.ts';
 
 const cap = (s: string) =>
-	s
-		.replace(/[^a-zA-Z0-9]+/g, ' ')
-		.split(' ')
-		.filter(Boolean)
-		.map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
-		.join(' ');
+  s
+    .replace(/[^a-zA-Z0-9]+/g, ' ')
+    .split(' ')
+    .filter(Boolean)
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+    .join(' ');
 
 /**
  * Copy for the intermediate tree nodes, which are synthesised from the id paths
  * rather than declared in gallery.yaml.
  */
 const SYNTHETIC: Collection[] = [
-	{
-		id: 'events',
-		name: 'Events',
-		heading: 'Event Photography in Barcelona',
-		tagline: 'Nightlife, corporate evenings, sport and private celebrations.',
-	},
-	{
-		id: 'activism',
-		name: 'Activism',
-		heading: 'Documentary & Journalistic Work',
-		tagline: 'Protest, movement and street photography from Barcelona, Mexico and Ukraine.',
-	},
-	{ id: 'events/networking', name: 'Events Networking' },
+  {
+    id: 'events',
+    name: 'Events',
+    heading: 'Event Photography in Barcelona',
+    tagline: 'Nightlife, corporate evenings, sport and private celebrations.',
+  },
+  {
+    id: 'activism',
+    name: 'Activism',
+    heading: 'Documentary & Journalistic Work',
+    tagline: 'Protest, movement and street photography from Barcelona, Mexico and Ukraine.',
+  },
+  { id: 'events/networking', name: 'Events Networking' },
 ];
 
 type Node = {
-	id: string;
-	name: string;
-	children: Map<string, Node>;
+  id: string;
+  name: string;
+  children: Map<string, Node>;
 };
 
 const buildTree = (ids: string[]): Node => {
-	const root: Node = { id: '', name: 'All', children: new Map() };
-	for (const id of ids) {
-		const segments = id.split('/');
-		let cur = root;
-		for (let i = 0; i < segments.length; i++) {
-			const seg = segments[i];
-			const fullId = segments.slice(0, i + 1).join('/');
-			if (!cur.children.has(seg)) {
-				cur.children.set(seg, { id: fullId, name: cap(seg), children: new Map() });
-			}
-			cur = cur.children.get(seg)!;
-		}
-	}
-	return root;
+  const root: Node = { id: '', name: 'All', children: new Map() };
+  for (const id of ids) {
+    const segments = id.split('/');
+    let cur = root;
+    for (let i = 0; i < segments.length; i++) {
+      const seg = segments[i];
+      const fullId = segments.slice(0, i + 1).join('/');
+      if (!cur.children.has(seg)) {
+        cur.children.set(seg, { id: fullId, name: cap(seg), children: new Map() });
+      }
+      cur = cur.children.get(seg)!;
+    }
+  }
+  return root;
 };
 
 const rawCollections = await getCollections();
@@ -1095,127 +1105,123 @@ const meta = collectionMeta(collection, allCollections);
 
 const crumbs: Crumb[] = [{ name: 'Gallery', path: '/collections/' }];
 if (collection) {
-	const segments = collection.split('/');
-	for (let i = 0; i < segments.length; i++) {
-		const id = segments.slice(0, i + 1).join('/');
-		crumbs.push({
-			name: collectionMeta(id, allCollections).heading,
-			path: `/collections/${slugifyId(id)}/`,
-		});
-	}
+  const segments = collection.split('/');
+  for (let i = 0; i < segments.length; i++) {
+    const id = segments.slice(0, i + 1).join('/');
+    crumbs.push({
+      name: collectionMeta(id, allCollections).heading,
+      path: `/collections/${slugifyId(id)}/`,
+    });
+  }
 }
 
 type Row = {
-	parentId: string | undefined;
-	parentName: string;
-	items: { id: string; name: string }[];
-	activeId: string | undefined;
+  parentId: string | undefined;
+  parentName: string;
+  items: { id: string; name: string }[];
+  activeId: string | undefined;
 };
 
 const rows: Row[] = [];
 {
-	let cur: Node | undefined = tree;
-	for (let depth = 0; cur && cur.children.size > 0; depth++) {
-		const items = [...cur.children.values()].map((c) => ({ id: c.id, name: c.name }));
-		const activeChildSeg = activeSegments[depth];
-		const activeChild = activeChildSeg ? cur.children.get(activeChildSeg) : undefined;
-		const row: Row = {
-			parentId: cur.id || undefined,
-			parentName: cur.id ? cur.name : 'All',
-			items,
-			activeId: activeChild?.id,
-		};
-		if (depth > 0) {
-			row.items = [...row.items, { id: cur.id, name: `All ${cur.name}` }];
-		}
-		rows.push(row);
-		cur = activeChild;
-	}
+  let cur: Node | undefined = tree;
+  for (let depth = 0; cur && cur.children.size > 0; depth++) {
+    const items = [...cur.children.values()].map((c) => ({ id: c.id, name: c.name }));
+    const activeChildSeg = activeSegments[depth];
+    const activeChild = activeChildSeg ? cur.children.get(activeChildSeg) : undefined;
+    const row: Row = {
+      parentId: cur.id || undefined,
+      parentName: cur.id ? cur.name : 'All',
+      items,
+      activeId: activeChild?.id,
+    };
+    if (depth > 0) {
+      row.items = [...row.items, { id: cur.id, name: `All ${cur.name}` }];
+    }
+    rows.push(row);
+    cur = activeChild;
+  }
 }
 
 export const getStaticPaths = async () => {
-	const cols = await getCollections();
-	const t = (() => {
-		const root: { children: Map<string, any> } = { children: new Map() };
-		for (const c of cols) {
-			const segs = c.id.split('/');
-			let cur: any = root;
-			for (let i = 0; i < segs.length; i++) {
-				const seg = segs[i];
-				const fullId = segs.slice(0, i + 1).join('/');
-				if (!cur.children.has(seg)) cur.children.set(seg, { id: fullId, children: new Map() });
-				cur = cur.children.get(seg);
-			}
-		}
-		return root;
-	})();
-	const ids = new Set<string | undefined>([undefined]);
-	const walk = (n: any) => {
-		if (n.id) ids.add(n.id);
-		for (const c of n.children.values()) walk(c);
-	};
-	walk(t);
-	// Routes are emitted under slugs; the page resolves the slug back to the id.
-	return [...ids].map((id) => ({ params: { collection: id ? slugifyId(id) : undefined } }));
+  const cols = await getCollections();
+  const t = (() => {
+    const root: { children: Map<string, any> } = { children: new Map() };
+    for (const c of cols) {
+      const segs = c.id.split('/');
+      let cur: any = root;
+      for (let i = 0; i < segs.length; i++) {
+        const seg = segs[i];
+        const fullId = segs.slice(0, i + 1).join('/');
+        if (!cur.children.has(seg)) cur.children.set(seg, { id: fullId, children: new Map() });
+        cur = cur.children.get(seg);
+      }
+    }
+    return root;
+  })();
+  const ids = new Set<string | undefined>([undefined]);
+  const walk = (n: any) => {
+    if (n.id) ids.add(n.id);
+    for (const c of n.children.values()) walk(c);
+  };
+  walk(t);
+  // Routes are emitted under slugs; the page resolves the slug back to the id.
+  return [...ids].map((id) => ({ params: { collection: id ? slugifyId(id) : undefined } }));
 };
 ---
 
-<MainLayout
-	title={meta.title}
-	description={meta.description}
-	jsonLd={[breadcrumbList(crumbs)]}
->
-	<section class="py-16 pt-24">
-		<div class="container-custom">
-			<div class="mb-16 text-center">
-				<h1 class="text-4xl md:text-5xl font-bold mb-4">{meta.heading}</h1>
-				<p class="text-gray-600 max-w-xl mx-auto italic">{meta.tagline}</p>
-			</div>
+<MainLayout title={meta.title} description={meta.description} jsonLd={[breadcrumbList(crumbs)]}>
+  <section class="py-16 pt-24">
+    <div class="container-custom">
+      <div class="mb-16 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">{meta.heading}</h1>
+        <p class="text-gray-600 max-w-xl mx-auto italic">{meta.tagline}</p>
+      </div>
 
-			{
-				rows.map((row, idx) => (
-					<div class={`flex justify-center ${idx === rows.length - 1 ? 'mb-10' : 'mb-4'}`}>
-						<div class="flex flex-wrap gap-2 justify-center">
-							{idx === 0 && (
-								<a href="/collections/" class="order-last">
-									<div
-										class={`px-4 py-2 border ${
-											!collection
-												? 'border-black bg-black text-white'
-												: 'border-gray-200 text-gray-700 hover:border-gray-300'
-										} transition-all`}
-									>
-										All
-									</div>
-								</a>
-							)}
-							{row.items.map((item) => {
-								const isActive =
-									item.id === collection ||
-									(collection !== undefined && collection.startsWith(item.id + '/'));
-								const sizeClass = idx === 0 ? 'px-4 py-2' : 'px-3 py-1 text-sm';
-								return (
-									<a href={`/collections/${slugifyId(item.id)}/`}>
-										<div
-											class={`${sizeClass} border ${
-												isActive
-													? 'border-black bg-black text-white'
-													: 'border-gray-200 text-gray-700 hover:border-gray-300'
-											} transition-all`}
-										>
-											{item.name}
-										</div>
-									</a>
-								);
-							})}
-						</div>
-					</div>
-				))
-			}
+      {
+        rows.map((row, idx) => (
+          <div class={`flex justify-center ${idx === rows.length - 1 ? 'mb-10' : 'mb-4'}`}>
+            <div class="flex flex-wrap gap-2 justify-center">
+              {idx === 0 && (
+                <a href="/collections/" class="order-last">
+                  <div
+                    class={`px-4 py-2 border ${
+                      !collection
+                        ? 'border-black bg-black text-white'
+                        : 'border-gray-200 text-gray-700 hover:border-gray-300'
+                    } transition-all`}
+                  >
+                    All
+                  </div>
+                </a>
+              )}
+              {row.items.map((item) => {
+                const isActive =
+                  item.id === collection ||
+                  (collection !== undefined && collection.startsWith(item.id + '/'));
+                const sizeClass = idx === 0 ? 'px-4 py-2' : 'px-3 py-1 text-sm';
+                return (
+                  <a href={`/collections/${slugifyId(item.id)}/`}>
+                    <div
+                      class={`${sizeClass} border ${
+                        isActive
+                          ? 'border-black bg-black text-white'
+                          : 'border-gray-200 text-gray-700 hover:border-gray-300'
+                      } transition-all`}
+                    >
+                      {item.name}
+                    </div>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        ))
+      }
 
-			<PhotoGrid images={images} />
-		</div>
-	</section>
+      <PhotoGrid images={images} />
+    </div>
+  </section>
 </MainLayout>
 ```
 
@@ -1271,11 +1277,13 @@ git commit -m "Slugify collection URLs and give each route its own copy and meta
 Runs after slugs are settled so the sitemap never contains a URL that is about to change.
 
 **Files:**
+
 - Modify: `astro.config.mts`
 - Modify: `package.json` (dependency)
 - Create: `public/robots.txt`
 
 **Interfaces:**
+
 - Consumes: the slugged routes from Task 5.
 - Produces: `dist/sitemap-index.xml` and `dist/sitemap-0.xml`.
 
@@ -1292,11 +1300,11 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://cedar4st.com',
-	integrations: [sitemap()],
-	vite: {
-		plugins: [tailwindcss()],
-	},
+  site: 'https://cedar4st.com',
+  integrations: [sitemap()],
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });
 ```
 
@@ -1345,12 +1353,14 @@ git commit -m "Generate a sitemap and add robots.txt"
 The homepage currently contains neither "photographer" nor "Barcelona" in crawlable text; the parallax wall is a WebGL canvas, so its images are invisible to crawlers.
 
 **Files:**
+
 - Modify: `src/components/LandingHero-1.astro`
 - Modify: `src/components/FeaturedGallery.astro:8-11`
 - Create: `src/components/HomeIntro.astro`
 - Modify: `src/pages/index.astro`
 
 **Interfaces:**
+
 - Consumes: nothing new.
 - Produces: `HomeIntro.astro`, a props-free section component.
 
@@ -1366,7 +1376,7 @@ Then, immediately after the closing `</div>` of `#hero-card` and before the `<a 
 
 ```astro
 <h1 class="mt-5 max-w-xl text-center text-base font-normal text-gray-700 md:text-lg">
-	Hanna — documentary, event and wedding photographer in Barcelona.
+  Hanna — documentary, event and wedding photographer in Barcelona.
 </h1>
 ```
 
@@ -1376,10 +1386,10 @@ Replace the heading block with:
 
 ```astro
 <div class="max-w-2xl mx-auto text-center mb-16">
-	<h2 class="text-3xl md:text-4xl font-bold mb-4">Featured Works</h2>
-	<p class="text-gray-600 italic">
-		Selected work from weddings, events and documentary shoots across Barcelona.
-	</p>
+  <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured Works</h2>
+  <p class="text-gray-600 italic">
+    Selected work from weddings, events and documentary shoots across Barcelona.
+  </p>
 </div>
 ```
 
@@ -1395,28 +1405,28 @@ Replace the heading block with:
 ---
 
 <section class="container-custom py-20">
-	<div class="prose mx-auto max-w-2xl text-gray-700">
-		<h2 class="text-2xl md:text-3xl font-bold">Photography in Barcelona</h2>
+  <div class="prose mx-auto max-w-2xl text-gray-700">
+    <h2 class="text-2xl md:text-3xl font-bold">Photography in Barcelona</h2>
 
-		<p>
-			I photograph <a href="/collections/weddings/">weddings</a>, <a href="/collections/events/"
-				>events</a
-			> and <a href="/collections/activism/">documentary work</a> in Barcelona and wherever else the
-			work takes me. My approach centres on raw emotion, genuine reaction, natural movement and
-			minimal editing.
-		</p>
+    <p>
+      I photograph <a href="/collections/weddings/">weddings</a>, <a href="/collections/events/"
+        >events</a
+      > and <a href="/collections/activism/">documentary work</a> in Barcelona and wherever else the
+      work takes me. My approach centres on raw emotion, genuine reaction, natural movement and minimal
+      editing.
+    </p>
 
-		<p>
-			That covers ceremonies and celebrations, corporate evenings and networking nights, sport,
-			concerts and <a href="/collections/events/nightclub/">nightlife</a>, and long-form
-			journalistic projects — Pride in Barcelona, protest movements in Mexico and Ukraine.
-		</p>
+    <p>
+      That covers ceremonies and celebrations, corporate evenings and networking nights, sport,
+      concerts and <a href="/collections/events/nightclub/">nightlife</a>, and long-form
+      journalistic projects — Pride in Barcelona, protest movements in Mexico and Ukraine.
+    </p>
 
-		<p>
-			There is also work I am actively building and shooting at reduced rates or TFP, including
-			creative and conceptual shoots. <a href="/book/">The details are on the booking page.</a>
-		</p>
-	</div>
+    <p>
+      There is also work I am actively building and shooting at reduced rates or TFP, including
+      creative and conceptual shoots. <a href="/book/">The details are on the booking page.</a>
+    </p>
+  </div>
 </section>
 ```
 
@@ -1455,9 +1465,11 @@ git commit -m "Give the homepage crawlable subject matter"
 The mechanism by which shoot categories without galleries earn legitimate keyword coverage.
 
 **Files:**
+
 - Modify: `src/content/book.md`
 
 **Interfaces:**
+
 - Consumes: nothing.
 - Produces: nothing consumed elsewhere.
 
@@ -1517,6 +1529,7 @@ git commit -m "Add the TFP and reduced-rate offer to the booking page"
 242 images currently render `alt="Img 7348"`. This task adds the mechanism and the fallback; Task 10 supplies hand-written text for the 29 that matter most.
 
 **Files:**
+
 - Modify: `src/data/galleryData.ts` (the `Meta` and `Image` interfaces)
 - Modify: `src/data/imageStore.ts`
 - Modify: `src/components/PhotoGrid.astro:29`
@@ -1524,6 +1537,7 @@ git commit -m "Add the TFP and reduced-rate offer to the booking page"
 - Test: `src/data/__tests__/imageStore.test.ts`
 
 **Interfaces:**
+
 - Consumes: `Collection`, `Meta` from `galleryData.ts`.
 - Produces: `Image` gains a required `alt: string`; `Meta` gains an optional `alt?: string`.
 
@@ -1533,27 +1547,27 @@ Append to the `describe('Get Images', ...)` block in `src/data/__tests__/imageSt
 
 ```ts
 it('prefers an explicit alt when one is set', async () => {
-	const images = await getImages({ galleryPath: GALLERY.VALID, collection: 'popo' });
-	expect(images[0].alt).toEqual('A view over popo valley at dusk');
+  const images = await getImages({ galleryPath: GALLERY.VALID, collection: 'popo' });
+  expect(images[0].alt).toEqual('A view over popo valley at dusk');
 });
 
 it('derives a descriptive alt from the collection when none is set', async () => {
-	const images = await getImages({ galleryPath: GALLERY.VALID, collection: 'kuku' });
-	expect(images[0].alt).toEqual('Kuku — photography by Hanna, Barcelona');
+  const images = await getImages({ galleryPath: GALLERY.VALID, collection: 'kuku' });
+  expect(images[0].alt).toEqual('Kuku — photography by Hanna, Barcelona');
 });
 
 it('never leaks a raw filename-style title into alt', async () => {
-	const images = await getImages({ galleryPath: GALLERY.VALID });
-	for (const image of images) {
-		expect(image.alt).not.toMatch(/^Img \d+$/);
-	}
+  const images = await getImages({ galleryPath: GALLERY.VALID });
+  for (const image of images) {
+    expect(image.alt).not.toMatch(/^Img \d+$/);
+  }
 });
 ```
 
 Then add the explicit alt to the popo entry in `src/data/__tests__/gallery/valid-gallery.yaml`, inside its `meta:` block:
 
 ```yaml
-      alt: A view over popo valley at dusk
+alt: A view over popo valley at dusk
 ```
 
 - [ ] **Step 2: Run the test to verify it fails**
@@ -1573,8 +1587,8 @@ In `Meta`, add after `title`:
 In `Image`, add after `title`:
 
 ```ts
-	/** Resolved alt text. Never a raw filename. */
-	alt: string;
+/** Resolved alt text. Never a raw filename. */
+alt: string;
 ```
 
 - [ ] **Step 4: Resolve alt in `src/data/imageStore.ts`**
@@ -1588,12 +1602,12 @@ Add the resolver above `processImages`:
  * "Img 7348" title, which helps neither screen readers nor Google Images.
  */
 const resolveAlt = (img: GalleryImage, collections: Collection[]): string => {
-	if (img.meta.alt?.trim()) return img.meta.alt.trim();
+  if (img.meta.alt?.trim()) return img.meta.alt.trim();
 
-	const collectionId = img.meta.collections.find((c) => !builtInCollections.includes(c));
-	const name = collections.find((c) => c.id === collectionId)?.name;
+  const collectionId = img.meta.collections.find((c) => !builtInCollections.includes(c));
+  const name = collections.find((c) => c.id === collectionId)?.name;
 
-	return name ? `${name} — photography by Hanna, Barcelona` : 'Photography by Hanna, Barcelona';
+  return name ? `${name} — photography by Hanna, Barcelona` : 'Photography by Hanna, Barcelona';
 };
 ```
 
@@ -1601,39 +1615,39 @@ Thread the collections through. Change `processImages` and `createImageDataFor` 
 
 ```ts
 const processImages = (
-	images: GalleryImage[],
-	galleryPath: string,
-	collections: Collection[],
+  images: GalleryImage[],
+  galleryPath: string,
+  collections: Collection[],
 ): Image[] => {
-	return images.reduce<Image[]>((acc, imageEntry) => {
-		const imagePath = path.posix.join('/', path.parse(galleryPath).dir, imageEntry.path);
-		try {
-			acc.push(createImageDataFor(imagePath, imageEntry, collections));
-		} catch (error) {
-			console.warn(`[WARN] ${getErrorMsgFrom(error)}`);
-		}
-		return acc;
-	}, []);
+  return images.reduce<Image[]>((acc, imageEntry) => {
+    const imagePath = path.posix.join('/', path.parse(galleryPath).dir, imageEntry.path);
+    try {
+      acc.push(createImageDataFor(imagePath, imageEntry, collections));
+    } catch (error) {
+      console.warn(`[WARN] ${getErrorMsgFrom(error)}`);
+    }
+    return acc;
+  }, []);
 };
 
 const createImageDataFor = (
-	imagePath: string,
-	img: GalleryImage,
-	collections: Collection[],
+  imagePath: string,
+  img: GalleryImage,
+  collections: Collection[],
 ): Image => {
-	const imageModule = imageModules[imagePath] as ImageModule | undefined;
+  const imageModule = imageModules[imagePath] as ImageModule | undefined;
 
-	if (!imageModule) {
-		throw new ImageStoreError(`Image not found: ${imagePath}`);
-	}
+  if (!imageModule) {
+    throw new ImageStoreError(`Image not found: ${imagePath}`);
+  }
 
-	return {
-		src: imageModule.default,
-		title: img.meta.title,
-		alt: resolveAlt(img, collections),
-		description: img.meta.description,
-		collections: img.meta.collections,
-	};
+  return {
+    src: imageModule.default,
+    title: img.meta.title,
+    alt: resolveAlt(img, collections),
+    description: img.meta.description,
+    collections: img.meta.collections,
+  };
 };
 ```
 
@@ -1694,9 +1708,11 @@ git commit -m "Resolve descriptive image alt text instead of filenames"
 The 29 `featured` images appear on the homepage and carry the most weight. This is data entry that requires looking at each photograph, so it is deliberately separated from the mechanism in Task 9.
 
 **Files:**
+
 - Modify: `src/gallery/gallery.yaml` (the `images:` block, `featured` entries only)
 
 **Interfaces:**
+
 - Consumes: the optional `Meta.alt` field from Task 9.
 - Produces: nothing consumed elsewhere.
 
@@ -1713,6 +1729,7 @@ Expected: 29 paths.
 For each path, read the file at `src/gallery/<path>` and write one line describing what is actually visible.
 
 Rules:
+
 - Describe the photograph, not the keyword. "Two dancers lit by a red strobe in a Barcelona club" is good; "Barcelona nightlife photographer photography" is keyword stuffing and will be treated as such.
 - 8–16 words. No "image of" or "photo of" — the element is already an image.
 - Include a place name only when it is genuinely identifiable in the frame.
@@ -1721,24 +1738,24 @@ Rules:
 Worked examples, matching the required YAML shape:
 
 ```yaml
-  - path: events/nightclub/IMG_7348.webp
-    meta:
-      title: Img 7348
-      alt: Dancers lit by red strobe on a crowded Barcelona club floor
-      description: ''
-      collections:
-        - events/nightclub
-        - featured
-    exif: {}
-  - path: activism/Barcelona Pride/pride - 051.webp
-    meta:
-      title: Pride 051
-      alt: Marchers carrying a rainbow banner through central Barcelona at Pride
-      description: ''
-      collections:
-        - activism/Barcelona Pride
-        - featured
-    exif: {}
+- path: events/nightclub/IMG_7348.webp
+  meta:
+    title: Img 7348
+    alt: Dancers lit by red strobe on a crowded Barcelona club floor
+    description: ''
+    collections:
+      - events/nightclub
+      - featured
+  exif: {}
+- path: activism/Barcelona Pride/pride - 051.webp
+  meta:
+    title: Pride 051
+    alt: Marchers carrying a rainbow banner through central Barcelona at Pride
+    description: ''
+    collections:
+      - activism/Barcelona Pride
+      - featured
+  exif: {}
 ```
 
 - [ ] **Step 3: Verify all 29 are filled and unique**
@@ -1774,12 +1791,14 @@ git commit -m "Write alt text for the featured images"
 Configures the URL structure so Spanish is later a content task rather than a URL migration. No Spanish content ships here.
 
 **Files:**
+
 - Modify: `astro.config.mts`
 - Create: `src/seo/hreflang.ts`
 - Test: `src/seo/__tests__/hreflang.test.ts`
 - Modify: `src/layouts/MainLayout.astro`
 
 **Interfaces:**
+
 - Consumes: `LOCALES`, `DEFAULT_LOCALE`, `SITE`, `type Locale` from `defaults.ts`; `canonicalFor` from `meta.ts`.
 - Produces: `alternates(path: string, availableLocales: Locale[]): Alternate[]` where `Alternate = { hreflang: string; href: string }`.
 
@@ -1793,37 +1812,37 @@ import { SITE } from '../defaults.ts';
 import { alternates } from '../hreflang.ts';
 
 describe('alternates', () => {
-	it('emits nothing when only the default locale exists', () => {
-		// A hreflang pointing at a page that does not exist is worse than none.
-		expect(alternates('/book/', ['en'])).toEqual([]);
-	});
+  it('emits nothing when only the default locale exists', () => {
+    // A hreflang pointing at a page that does not exist is worse than none.
+    expect(alternates('/book/', ['en'])).toEqual([]);
+  });
 
-	it('emits nothing for an empty locale list', () => {
-		expect(alternates('/book/', [])).toEqual([]);
-	});
+  it('emits nothing for an empty locale list', () => {
+    expect(alternates('/book/', [])).toEqual([]);
+  });
 
-	it('emits both locales plus x-default once Spanish exists', () => {
-		expect(alternates('/book/', ['en', 'es'])).toEqual([
-			{ hreflang: 'en', href: `${SITE}/book/` },
-			{ hreflang: 'es', href: `${SITE}/es/book/` },
-			{ hreflang: 'x-default', href: `${SITE}/book/` },
-		]);
-	});
+  it('emits both locales plus x-default once Spanish exists', () => {
+    expect(alternates('/book/', ['en', 'es'])).toEqual([
+      { hreflang: 'en', href: `${SITE}/book/` },
+      { hreflang: 'es', href: `${SITE}/es/book/` },
+      { hreflang: 'x-default', href: `${SITE}/book/` },
+    ]);
+  });
 
-	it('handles the root path', () => {
-		expect(alternates('/', ['en', 'es'])).toEqual([
-			{ hreflang: 'en', href: `${SITE}/` },
-			{ hreflang: 'es', href: `${SITE}/es/` },
-			{ hreflang: 'x-default', href: `${SITE}/` },
-		]);
-	});
+  it('handles the root path', () => {
+    expect(alternates('/', ['en', 'es'])).toEqual([
+      { hreflang: 'en', href: `${SITE}/` },
+      { hreflang: 'es', href: `${SITE}/es/` },
+      { hreflang: 'x-default', href: `${SITE}/` },
+    ]);
+  });
 
-	it('strips an existing locale prefix before rebuilding', () => {
-		expect(alternates('/es/book/', ['en', 'es'])[0]).toEqual({
-			hreflang: 'en',
-			href: `${SITE}/book/`,
-		});
-	});
+  it('strips an existing locale prefix before rebuilding', () => {
+    expect(alternates('/es/book/', ['en', 'es'])[0]).toEqual({
+      hreflang: 'en',
+      href: `${SITE}/book/`,
+    });
+  });
 });
 ```
 
@@ -1839,21 +1858,21 @@ import { DEFAULT_LOCALE, LOCALES, type Locale } from './defaults.ts';
 import { canonicalFor } from './meta.ts';
 
 export interface Alternate {
-	hreflang: string;
-	href: string;
+  hreflang: string;
+  href: string;
 }
 
 /** Removes a leading locale prefix so the bare path can be rebuilt per locale. */
 const stripLocale = (path: string): string => {
-	const trimmed = path.replace(/^\/+/, '');
-	const [first, ...rest] = trimmed.split('/');
-	return LOCALES.includes(first as Locale) && first !== DEFAULT_LOCALE
-		? `/${rest.join('/')}`
-		: `/${trimmed}`;
+  const trimmed = path.replace(/^\/+/, '');
+  const [first, ...rest] = trimmed.split('/');
+  return LOCALES.includes(first as Locale) && first !== DEFAULT_LOCALE
+    ? `/${rest.join('/')}`
+    : `/${trimmed}`;
 };
 
 const localised = (bare: string, locale: Locale): string =>
-	locale === DEFAULT_LOCALE ? canonicalFor(bare) : canonicalFor(`${locale}${bare}`);
+  locale === DEFAULT_LOCALE ? canonicalFor(bare) : canonicalFor(`${locale}${bare}`);
 
 /**
  * Alternate language URLs for a page.
@@ -1863,16 +1882,16 @@ const localised = (bare: string, locale: Locale): string =>
  * site, so this stays dormant until Spanish content lands.
  */
 export const alternates = (path: string, availableLocales: Locale[]): Alternate[] => {
-	if (availableLocales.length < 2) return [];
+  if (availableLocales.length < 2) return [];
 
-	const bare = stripLocale(path);
-	const links: Alternate[] = availableLocales.map((locale) => ({
-		hreflang: locale,
-		href: localised(bare, locale),
-	}));
+  const bare = stripLocale(path);
+  const links: Alternate[] = availableLocales.map((locale) => ({
+    hreflang: locale,
+    href: localised(bare, locale),
+  }));
 
-	links.push({ hreflang: 'x-default', href: localised(bare, DEFAULT_LOCALE) });
-	return links;
+  links.push({ hreflang: 'x-default', href: localised(bare, DEFAULT_LOCALE) });
+  return links;
 };
 ```
 
@@ -1916,11 +1935,7 @@ const languageLinks = alternates(Astro.url.pathname, availableLocales);
 ```
 
 ```astro
-		{
-			languageLinks.map((link) => (
-				<link rel="alternate" hreflang={link.hreflang} href={link.href} />
-			))
-		}
+{languageLinks.map((link) => <link rel="alternate" hreflang={link.hreflang} href={link.href} />)}
 ```
 
 - [ ] **Step 7: Build and verify hreflang is dormant**
@@ -1940,12 +1955,14 @@ git commit -m "Configure i18n routing and dormant hreflang"
 ### Task 12: Remove dead weight, self-host Alpine, verify the parallax wall
 
 **Files:**
+
 - Delete: `public/hero-bg.webm`
 - Modify: `src/layouts/MainLayout.astro` (the trailing script tag)
 - Modify: `package.json`
 - Verify only, do not modify: `src/components/ParallaxWall.astro`
 
 **Interfaces:**
+
 - Consumes: nothing.
 - Produces: nothing.
 
@@ -1973,10 +1990,10 @@ Replace the trailing `<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/c
 
 ```astro
 <script>
-	import Alpine from 'alpinejs';
+  import Alpine from 'alpinejs';
 
-	window.Alpine = Alpine;
-	Alpine.start();
+  window.Alpine = Alpine;
+  Alpine.start();
 </script>
 ```
 
@@ -1988,9 +2005,9 @@ Add the global type declaration to `src/env.d.ts`, creating the file if absent:
 import type { Alpine } from 'alpinejs';
 
 declare global {
-	interface Window {
-		Alpine: Alpine;
-	}
+  interface Window {
+    Alpine: Alpine;
+  }
 }
 ```
 
@@ -2051,10 +2068,12 @@ git commit -m "Delete the unused hero video and bundle Alpine"
 **Blocked on the owner supplying a Cloudflare Web Analytics site token.** If it is not available, skip this task and return to it — nothing else depends on it.
 
 **Files:**
+
 - Modify: `site.config.mts`
 - Modify: `src/layouts/MainLayout.astro`
 
 **Interfaces:**
+
 - Consumes: nothing.
 - Produces: nothing.
 
@@ -2072,15 +2091,15 @@ Inside the default-exported object:
 Add `const analyticsToken = siteConfig.analyticsToken;` to the frontmatter, and place before `</body>`:
 
 ```astro
-		{
-			analyticsToken && (
-				<script
-					defer
-					src="https://static.cloudflareinsights.com/beacon.min.js"
-					data-cf-beacon={`{"token": "${analyticsToken}"}`}
-				/>
-			)
-		}
+{
+  analyticsToken && (
+    <script
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon={`{"token": "${analyticsToken}"}`}
+    />
+  )
+}
 ```
 
 - [ ] **Step 3: Verify it stays absent while the token is empty**
@@ -2106,11 +2125,13 @@ git commit -m "Add cookieless Cloudflare Web Analytics"
 Duplicate titles are the exact failure mode the site is in today, and they return silently. This adds a check that runs against the built output.
 
 **Files:**
+
 - Create: `scripts/check-seo.ts`
 - Modify: `package.json` (scripts)
 - Modify: `.github/workflows/test.yml`
 
 **Interfaces:**
+
 - Consumes: `dist/**/*.html`.
 - Produces: `npm run seo:check`, exiting non-zero on any violation.
 
@@ -2127,62 +2148,65 @@ import { promises as fs } from 'fs';
 import fg from 'fast-glob';
 
 interface PageMeta {
-	file: string;
-	title: string;
-	description: string;
-	canonical: string;
-	h1Count: number;
+  file: string;
+  title: string;
+  description: string;
+  canonical: string;
+  h1Count: number;
 }
 
 const extract = (html: string, pattern: RegExp): string => html.match(pattern)?.[1]?.trim() ?? '';
 
 const read = async (file: string): Promise<PageMeta> => {
-	const html = await fs.readFile(file, 'utf8');
-	return {
-		file,
-		title: extract(html, /<title>([^<]*)<\/title>/),
-		description: extract(html, /<meta name="description" content="([^"]*)"/),
-		canonical: extract(html, /<link rel="canonical" href="([^"]*)"/),
-		h1Count: (html.match(/<h1[\s>]/g) ?? []).length,
-	};
+  const html = await fs.readFile(file, 'utf8');
+  return {
+    file,
+    title: extract(html, /<title>([^<]*)<\/title>/),
+    description: extract(html, /<meta name="description" content="([^"]*)"/),
+    canonical: extract(html, /<link rel="canonical" href="([^"]*)"/),
+    h1Count: (html.match(/<h1[\s>]/g) ?? []).length,
+  };
 };
 
 const duplicates = (pages: PageMeta[], key: 'title' | 'description'): string[] => {
-	const seen = new Map<string, string[]>();
-	for (const page of pages) {
-		seen.set(page[key], [...(seen.get(page[key]) ?? []), page.file]);
-	}
-	return [...seen.entries()]
-		.filter(([, files]) => files.length > 1)
-		.map(([value, files]) => `  ${key} "${value}" shared by:\n${files.map((f) => `    ${f}`).join('\n')}`);
+  const seen = new Map<string, string[]>();
+  for (const page of pages) {
+    seen.set(page[key], [...(seen.get(page[key]) ?? []), page.file]);
+  }
+  return [...seen.entries()]
+    .filter(([, files]) => files.length > 1)
+    .map(
+      ([value, files]) =>
+        `  ${key} "${value}" shared by:\n${files.map((f) => `    ${f}`).join('\n')}`,
+    );
 };
 
 const main = async () => {
-	const files = await fg('dist/**/*.html');
-	if (files.length === 0) {
-		console.error('No HTML found in dist/. Run `npm run build` first.');
-		process.exit(1);
-	}
+  const files = await fg('dist/**/*.html');
+  if (files.length === 0) {
+    console.error('No HTML found in dist/. Run `npm run build` first.');
+    process.exit(1);
+  }
 
-	const pages = await Promise.all(files.map(read));
-	const problems: string[] = [];
+  const pages = await Promise.all(files.map(read));
+  const problems: string[] = [];
 
-	for (const page of pages) {
-		if (!page.title) problems.push(`  missing title: ${page.file}`);
-		if (!page.description) problems.push(`  missing description: ${page.file}`);
-		if (!page.canonical) problems.push(`  missing canonical: ${page.file}`);
-		if (page.h1Count !== 1) problems.push(`  ${page.h1Count} h1 elements: ${page.file}`);
-		if (/alt="Img \d+"/.test(page.title)) problems.push(`  filename-style title: ${page.file}`);
-	}
+  for (const page of pages) {
+    if (!page.title) problems.push(`  missing title: ${page.file}`);
+    if (!page.description) problems.push(`  missing description: ${page.file}`);
+    if (!page.canonical) problems.push(`  missing canonical: ${page.file}`);
+    if (page.h1Count !== 1) problems.push(`  ${page.h1Count} h1 elements: ${page.file}`);
+    if (/alt="Img \d+"/.test(page.title)) problems.push(`  filename-style title: ${page.file}`);
+  }
 
-	problems.push(...duplicates(pages, 'title'), ...duplicates(pages, 'description'));
+  problems.push(...duplicates(pages, 'title'), ...duplicates(pages, 'description'));
 
-	if (problems.length > 0) {
-		console.error(`SEO check failed across ${pages.length} pages:\n${problems.join('\n')}`);
-		process.exit(1);
-	}
+  if (problems.length > 0) {
+    console.error(`SEO check failed across ${pages.length} pages:\n${problems.join('\n')}`);
+    process.exit(1);
+  }
 
-	console.log(`SEO check passed: ${pages.length} pages, all unique.`);
+  console.log(`SEO check passed: ${pages.length} pages, all unique.`);
 };
 
 main();
@@ -2212,8 +2236,8 @@ Temporarily set both `index.astro` and `book.astro` to `title="Hanna"`, run `npm
 In `.github/workflows/test.yml`, in the `build` job, after the "Build the Astro site" step:
 
 ```yaml
-      - name: Check SEO invariants
-        run: npm run seo:check
+- name: Check SEO invariants
+  run: npm run seo:check
 ```
 
 - [ ] **Step 6: Commit**
@@ -2230,6 +2254,7 @@ git commit -m "Fail the build on duplicate or missing page metadata"
 The final step, and the one that requires the owner. Everything before this is reversible; submission is when the site becomes visible.
 
 **Files:**
+
 - Create: `public/google<verification-code>.html` (name supplied by Search Console)
 - Create: `public/BingSiteAuth.xml` (only if the Search Console import is not used)
 

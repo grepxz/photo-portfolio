@@ -44,20 +44,20 @@ still being written.
 
 ## Decisions
 
-| Decision | Choice | Rationale |
-|---|---|---|
-| Languages | English + Spanish | Barcelona traffic splits across both; Spanish is the larger local-client pool. |
-| Language rollout | Structure now, content later | Retrofitting i18n after indexing forces a URL migration, which costs rankings. |
-| Service page scope | Only categories with real galleries | Pages without photographs are thin doorway pages and damage domain quality. |
-| Absent categories | Named in copy under a TFP / reduced-rate offer | Earns the keyword mentions legitimately and doubles as model recruitment. |
-| Landscape and night work | Editorial content, not service pages | Low commercial intent; builds topical authority without diluting service pages. |
-| Local business type | Service-area, no published address | Owner works without a client-visitable studio. |
-| Google Business Profile timing | Deferred until after indexing | Owner's chosen sequence: get indexed first, build local discoverability after. Not a Phase 1 dependency. |
-| Analytics | Cloudflare Web Analytics (cookieless) | No GDPR consent banner, no cookies, negligible page weight. Analytics does not affect ranking. |
-| GTM / GA4 | Not installed | Would require a consent banner in Spain, costing visitors before they see any work. |
-| Copy authorship | Claude drafts English, owner edits; Spanish after English is final | Owner supplies specifics only she knows; Spanish gets a native proofread before publishing. |
-| AI training crawlers | Blocked in robots.txt | The images are the product. Blocking `Google-Extended` does not affect Google Search or Google Images. |
-| Collection URL slugs | Slugified in Phase 1, before indexing | Current URLs contain spaces and capitals. Changing them post-indexing needs redirects, which GitHub Pages cannot serve cleanly. |
+| Decision                       | Choice                                                             | Rationale                                                                                                                       |
+| ------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- |
+| Languages                      | English + Spanish                                                  | Barcelona traffic splits across both; Spanish is the larger local-client pool.                                                  |
+| Language rollout               | Structure now, content later                                       | Retrofitting i18n after indexing forces a URL migration, which costs rankings.                                                  |
+| Service page scope             | Only categories with real galleries                                | Pages without photographs are thin doorway pages and damage domain quality.                                                     |
+| Absent categories              | Named in copy under a TFP / reduced-rate offer                     | Earns the keyword mentions legitimately and doubles as model recruitment.                                                       |
+| Landscape and night work       | Editorial content, not service pages                               | Low commercial intent; builds topical authority without diluting service pages.                                                 |
+| Local business type            | Service-area, no published address                                 | Owner works without a client-visitable studio.                                                                                  |
+| Google Business Profile timing | Deferred until after indexing                                      | Owner's chosen sequence: get indexed first, build local discoverability after. Not a Phase 1 dependency.                        |
+| Analytics                      | Cloudflare Web Analytics (cookieless)                              | No GDPR consent banner, no cookies, negligible page weight. Analytics does not affect ranking.                                  |
+| GTM / GA4                      | Not installed                                                      | Would require a consent banner in Spain, costing visitors before they see any work.                                             |
+| Copy authorship                | Claude drafts English, owner edits; Spanish after English is final | Owner supplies specifics only she knows; Spanish gets a native proofread before publishing.                                     |
+| AI training crawlers           | Blocked in robots.txt                                              | The images are the product. Blocking `Google-Extended` does not affect Google Search or Google Images.                          |
+| Collection URL slugs           | Slugified in Phase 1, before indexing                              | Current URLs contain spaces and capitals. Changing them post-indexing needs redirects, which GitHub Pages cannot serve cleanly. |
 
 ### Correction to the original plan
 
@@ -184,12 +184,12 @@ joke definition plus two button labels.
 
 The card stays visually identical. Changes:
 
-- Add one line beneath it: *"Hanna — documentary, event and wedding photographer
-  in Barcelona."* This becomes the `<h1>`.
+- Add one line beneath it: _"Hanna — documentary, event and wedding photographer
+  in Barcelona."_ This becomes the `<h1>`.
 - `"good photo"` remains as styled text within the card, demoted from `<h1>`.
-- Replace the filler subtitle in `FeaturedGallery.astro:10`, currently *"I think
-  you might be interested in this"*, with *"Selected work from weddings, events
-  and documentary shoots across Barcelona."* Deliberately worded differently from
+- Replace the filler subtitle in `FeaturedGallery.astro:10`, currently _"I think
+  you might be interested in this"_, with _"Selected work from weddings, events
+  and documentary shoots across Barcelona."_ Deliberately worded differently from
   the `<h1>` — an identical sentence repeated on one page wastes the second slot.
 - Add a short intro section below the fold: two or three paragraphs naming the
   service categories that have galleries behind them (weddings, events,
@@ -210,19 +210,19 @@ Copy therefore lives in one YAML file rather than in the page component.
 
 Approved copy for the root route:
 
-- Heading: *Photography Portfolio — Barcelona*
-- Tagline: *Weddings, events, nightlife and documentary work, shot across
-  Barcelona and beyond.*
+- Heading: _Photography Portfolio — Barcelona_
+- Tagline: _Weddings, events, nightlife and documentary work, shot across
+  Barcelona and beyond._
 
 Per-collection, approved:
 
-| Route | Heading | Tagline |
-|---|---|---|
-| `weddings` | Wedding Photography in Barcelona | Ceremonies and celebrations photographed as they happen — minimal direction, minimal editing. |
-| `events` | Event Photography in Barcelona | Nightlife, corporate evenings, sport and private celebrations. |
-| `events/nightclub` | Nightlife & Club Photography | Late nights in Barcelona, shot in available light. |
-| `activism` | Documentary & Journalistic Work | Protest, movement and street photography from Barcelona, Mexico and Ukraine. |
-| `activism/barcelona-pride` | Barcelona Pride | Documentary coverage of Pride in Barcelona. |
+| Route                      | Heading                          | Tagline                                                                                       |
+| -------------------------- | -------------------------------- | --------------------------------------------------------------------------------------------- |
+| `weddings`                 | Wedding Photography in Barcelona | Ceremonies and celebrations photographed as they happen — minimal direction, minimal editing. |
+| `events`                   | Event Photography in Barcelona   | Nightlife, corporate evenings, sport and private celebrations.                                |
+| `events/nightclub`         | Nightlife & Club Photography     | Late nights in Barcelona, shot in available light.                                            |
+| `activism`                 | Documentary & Journalistic Work  | Protest, movement and street photography from Barcelona, Mexico and Ukraine.                  |
+| `activism/barcelona-pride` | Barcelona Pride                  | Documentary coverage of Pride in Barcelona.                                                   |
 
 Remaining collections take the template fallback until copy is written for them.
 
@@ -259,8 +259,8 @@ Approved copy:
 >
 > If any of this is yours, write to me. Tell me what you want to make.
 
-This places *portrait*, *studio*, *proposal*, *romantic*, *backstage*,
-*streetstyle*, *concert*, *Airbnb*, *creative*, *landscape* and *night* into
+This places _portrait_, _studio_, _proposal_, _romantic_, _backstage_,
+_streetstyle_, _concert_, _Airbnb_, _creative_, _landscape_ and _night_ into
 indexable text, attached to a genuine offer on a page with a real purpose. That
 attachment is what separates it from a thin doorway page.
 
@@ -276,7 +276,7 @@ Three tiers:
    `meta.alt ?? derived`.
 2. The derived fallback composes a descriptive string from the collection rather
    than the filename, in the form `"<Collection name> — photography by Hanna,
-   Barcelona"`, e.g. `"Barcelona Pride — photography by Hanna, Barcelona"`.
+Barcelona"`, e.g. `"Barcelona Pride — photography by Hanna, Barcelona"`.
    Duplicate alt text within a collection is a weak signal, not a penalty — this
    is a floor, not the target.
 3. The 29 `featured` images get hand-written alt text in Phase 1. They appear on
@@ -342,7 +342,7 @@ mismatched details devalue both.
 
 Two notes for whoever picks this up later:
 
-- It feeds the local map pack, which renders *above* organic results for
+- It feeds the local map pack, which renders _above_ organic results for
   "photographer in Barcelona". It remains the single largest available lever,
   which is why it is deferred rather than dropped.
 - Verification carries a lead time of days to weeks depending on the method
