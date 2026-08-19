@@ -35,6 +35,23 @@ describe('Images Store', () => {
 			expect(images[0].description).toContain('popo album');
 		});
 
+		it('prefers an explicit alt when one is set', async () => {
+			const images = await getImages({ galleryPath: GALLERY.VALID, collection: 'popo' });
+			expect(images[0].alt).toEqual('A view over popo valley at dusk');
+		});
+
+		it('derives a descriptive alt from the collection when none is set', async () => {
+			const images = await getImages({ galleryPath: GALLERY.VALID, collection: 'kuku' });
+			expect(images[0].alt).toEqual('Kuku — photography by Hanna');
+		});
+
+		it('never leaks a raw filename-style title into alt', async () => {
+			const images = await getImages({ galleryPath: GALLERY.VALID });
+			for (const image of images) {
+				expect(image.alt).not.toMatch(/^Img \d+$/);
+			}
+		});
+
 		describe('Failures', () => {
 			it('should fail on a missing gallery file', async () => {
 				await expect(getImages({ galleryPath: GALLERY.MISSING })).rejects.toThrow(ImageStoreError);

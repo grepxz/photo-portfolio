@@ -41,3 +41,6 @@ jobs:
 
       - name: Build the Astro site
         run: npm run build
+
+      - name: Check SEO invariants
+        run: npm run seo:check

@@ -10,6 +10,8 @@ export interface SocialLink {
 export default {
 	title: 'Cedar4st',
 	favicon: 'favicon.ico',
+	/** Cloudflare Web Analytics site token. Empty disables the beacon. */
+	analyticsToken: '',
 	owner: 'Hanna',
 	profileImage: 'profile.webp',
 	calcom: {
@@ -20,12 +22,12 @@ export default {
 	socialLinks: [
 		{
 			name: 'GitHub',
-			url: 'https://github.com/rockem/astro-photography-portfolio',
+			url: 'https://github.com/grepxz/photo-portfolio',
 			icon: Github,
 		} as SocialLink,
 		{
 			name: 'Instagram',
-			url: 'https://www.instagram.com',
+			url: 'https://www.instagram.com/bluecatch.ca/',
 			icon: Instagram,
 		} as SocialLink,
 	],

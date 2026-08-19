@@ -14,12 +14,16 @@ export interface GalleryData {
 
 /**
  * Represents a collection of images
- * @property {string} name - Name of the collection
- * @property {GalleryImage[]} getImages - Array of images in the collection
+ * @property {string} id - Collection identifier, mirroring its directory path
+ * @property {string} name - Display name of the collection
+ * @property {string} [heading] - Page h1. Falls back to a template.
+ * @property {string} [tagline] - Sub-heading and meta description source.
  */
 export interface Collection {
 	id: string;
 	name: string;
+	heading?: string;
+	tagline?: string;
 }
 
 /**
@@ -44,6 +48,8 @@ export interface GalleryImage {
  */
 export interface Meta {
 	title: string;
+	/** Explicit alt text. Falls back to a collection-derived description. */
+	alt?: string;
 	description: string;
 	collections: string[];
 }
@@ -78,6 +84,8 @@ export interface ImageExif {
 export interface Image {
 	src: ImageMetadata;
 	title: string;
+	/** Resolved alt text. Never a raw filename. */
+	alt: string;
 	description: string;
 	collections: string[];
 }

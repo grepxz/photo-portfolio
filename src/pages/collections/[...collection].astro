@@ -2,6 +2,10 @@
 import MainLayout from '../../layouts/MainLayout.astro';
 import PhotoGrid from '../../components/PhotoGrid.astro';
 import { getCollections, getImages } from '../../data/imageStore';
+import type { Collection } from '../../data/galleryData';
+import { collectionMeta } from '../../seo/collectionMeta.ts';
+import { breadcrumbList, type Crumb } from '../../seo/schema.ts';
+import { buildSlugMap, slugifyId } from '../../seo/slug.ts';
 
 const cap = (s: string) =>
 	s
@@ -10,6 +14,33 @@ const cap = (s: string) =>
 		.filter(Boolean)
 		.map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
 		.join(' ');
+
+/**
+ * Copy for the intermediate tree nodes, which are synthesised from the id paths
+ * rather than declared in gallery.yaml.
+ */
+const SYNTHETIC: Collection[] = [
+	{
+		id: 'events',
+		name: 'Events',
+		heading: 'Event Photography in Barcelona & Beyond',
+		tagline:
+			'Nightlife and sport in Barcelona; networking, corporate evenings and private celebrations in Houston.',
+	},
+	{
+		id: 'activism',
+		name: 'Activism',
+		heading: 'Documentary & Journalistic Work',
+		tagline:
+			'Protest and movement photography — Pride in Barcelona, marches for Ukraine and Mexico in Houston.',
+	},
+	{
+		id: 'events/networking',
+		name: 'Events Networking',
+		heading: 'Networking & Corporate Events',
+		tagline: 'Startup panels, pitch nights and corporate dinners in Houston, Texas.',
+	},
+];
 
 type Node = {
 	id: string;
@@ -35,11 +66,38 @@ const buildTree = (ids: string[]): Node => {
 };
 
 const rawCollections = await getCollections();
+const allCollections = [...rawCollections, ...SYNTHETIC];
 const tree = buildTree(rawCollections.map((c) => c.id));
 
-const { collection } = Astro.params;
+// The route carries the slug; everything downstream works with the real id.
+const { collection: slug } = Astro.params;
+const slugMap = buildSlugMap(rawCollections.map((c) => c.id).concat(SYNTHETIC.map((c) => c.id)));
+const collection = slug ? slugMap.get(slug) : undefined;
+if (slug && !collection) {
+	throw new Error(
+		`Unmapped collection slug "${slug}": no matching id in slugMap. ` +
+			`getStaticPaths derives routes from every node in the real collection tree, ` +
+			`while slugMap is built from rawCollections plus the hand-maintained SYNTHETIC ` +
+			`array above — check whether a new collection was added without a matching ` +
+			`SYNTHETIC entry.`,
+	);
+}
+
 const images = await getImages(collection ? { collection } : {});
 const activeSegments = collection ? collection.split('/') : [];
+const meta = collectionMeta(collection, allCollections);
+
+const crumbs: Crumb[] = [{ name: 'Gallery', path: '/collections/' }];
+if (collection) {
+	const segments = collection.split('/');
+	for (let i = 0; i < segments.length; i++) {
+		const id = segments.slice(0, i + 1).join('/');
+		crumbs.push({
+			name: collectionMeta(id, allCollections).heading,
+			path: `/collections/${slugifyId(id)}/`,
+		});
+	}
+}
 
 type Row = {
 	parentId: string | undefined;
@@ -91,16 +149,17 @@ export const getStaticPaths = async () => {
 		for (const c of n.children.values()) walk(c);
 	};
 	walk(t);
-	return [...ids].map((id) => ({ params: { collection: id } }));
+	// Routes are emitted under slugs; the page resolves the slug back to the id.
+	return [...ids].map((id) => ({ params: { collection: id ? slugifyId(id) : undefined } }));
 };
 ---
 
-<MainLayout>
+<MainLayout title={meta.title} description={meta.description} jsonLd={[breadcrumbList(crumbs)]}>
 	<section class="py-16 pt-24">
 		<div class="container-custom">
 			<div class="mb-16 text-center">
-				<h1 class="text-4xl md:text-5xl font-bold mb-4">Gallery</h1>
-				<p class="text-gray-600 max-w-xl mx-auto italic">Explore my collection of photographic works</p>
+				<h1 class="text-4xl md:text-5xl font-bold mb-4">{meta.heading}</h1>
+				<p class="text-gray-600 max-w-xl mx-auto italic">{meta.tagline}</p>
 			</div>
 
 			{
@@ -126,7 +185,7 @@ export const getStaticPaths = async () => {
 									(collection !== undefined && collection.startsWith(item.id + '/'));
 								const sizeClass = idx === 0 ? 'px-4 py-2' : 'px-3 py-1 text-sm';
 								return (
-									<a href={`/collections/${item.id}`}>
+									<a href={`/collections/${slugifyId(item.id)}/`}>
 										<div
 											class={`${sizeClass} border ${
 												isActive

@@ -21,6 +21,9 @@ export const createGalleryImage = async (
 		path: relativePath,
 		meta: {
 			title: toReadableCaption(path.basename(relativePath, path.extname(relativePath))),
+			// Left blank on purpose: an empty alt is a visible prompt to write one,
+			// and imageStore falls back to a collection-derived description meanwhile.
+			alt: '',
 			description: '',
 			collections: collectionIdForImage(relativePath),
 		},

@@ -4,14 +4,20 @@ import LandingHero from '../components/LandingHero-1.astro';
 import FeaturedGallery from '../components/FeaturedGallery.astro';
 import FeaturedWorkScroll from '../components/FeaturedWorkScroll.astro';
 import ParallaxWall from '../components/ParallaxWall.astro';
+import HomeIntro from '../components/HomeIntro.astro';
 ---
 
-<MainLayout>
+<MainLayout
+	title="Photographer in Barcelona"
+	description="Hanna is a documentary, event and wedding photographer based in Barcelona. Weddings, nightlife, concerts, sport and journalistic work."
+>
 	<section class="relative min-h-screen items-center flex py-20 md:py-16 overflow-hidden">
 		<ParallaxWall />
 		<LandingHero />
 		<FeaturedWorkScroll />
 	</section>
+
+	<HomeIntro />
 
 	<section class="featured-section py-20">
 		<FeaturedGallery />

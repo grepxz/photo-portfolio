@@ -56,10 +56,11 @@ interface GetImagesOptions {
 export const getImages = async (options: GetImagesOptions = {}): Promise<Image[]> => {
 	const { galleryPath = defaultGalleryPath, collection } = options;
 	try {
-		let images = (await loadGalleryData(galleryPath)).images;
+		const gallery = await loadGalleryData(galleryPath);
+		let images = gallery.images;
 		images = filterImagesByCollection(collection, images);
 		images = sortImages(images, options);
-		return processImages(images, galleryPath);
+		return processImages(images, galleryPath, gallery.collections);
 	} catch (error) {
 		throw new ImageStoreError(
 			`Failed to load images from ${galleryPath}: ${getErrorMsgFrom(error)}`,
@@ -126,17 +127,36 @@ function sortImages(images: GalleryImage[], options: GetImagesOptions) {
 }
 
 /**
+ * Alt text, in order of preference: an explicit value, then a description
+ * composed from the image's first real collection. Never the auto-generated
+ * "Img 7348" title, which helps neither screen readers nor Google Images.
+ */
+const resolveAlt = (img: GalleryImage, collections: Collection[]): string => {
+	if (img.meta.alt?.trim()) return img.meta.alt.trim();
+
+	const collectionId = img.meta.collections.find((c) => !builtInCollections.includes(c));
+	const name = collections.find((c) => c.id === collectionId)?.name;
+
+	return name ? `${name} — photography by Hanna` : 'Photography by Hanna';
+};
+
+/**
  * Processes gallery images and returns an array of Image objects
  * @param {GalleryImage[]} images - Array of images to process
  * @param {string} galleryPath - Path to the collections directory
+ * @param {Collection[]} collections - Collections referenced by the gallery
  * @returns {Image[]} Array of processed images with metadata
  * @throws {ImageStoreError} If an image module cannot be found
  */
-const processImages = (images: GalleryImage[], galleryPath: string): Image[] => {
+const processImages = (
+	images: GalleryImage[],
+	galleryPath: string,
+	collections: Collection[],
+): Image[] => {
 	return images.reduce<Image[]>((acc, imageEntry) => {
 		const imagePath = path.posix.join('/', path.parse(galleryPath).dir, imageEntry.path);
 		try {
-			acc.push(createImageDataFor(imagePath, imageEntry));
+			acc.push(createImageDataFor(imagePath, imageEntry, collections));
 		} catch (error) {
 			console.warn(`[WARN] ${getErrorMsgFrom(error)}`);
 		}
@@ -148,10 +168,15 @@ const processImages = (images: GalleryImage[], galleryPath: string): Image[] => 
  * Creates image data for a given image path and entry
  * @param {string} imagePath - Path to the image file
  * @param {GalleryImage} img - Gallery image entry
+ * @param {Collection[]} collections - Collections referenced by the gallery
  * @returns {Image} Processed image with metadata
  * @throws {ImageStoreError} If image module cannot be found
  */
-const createImageDataFor = (imagePath: string, img: GalleryImage): Image => {
+const createImageDataFor = (
+	imagePath: string,
+	img: GalleryImage,
+	collections: Collection[],
+): Image => {
 	const imageModule = imageModules[imagePath] as ImageModule | undefined;
 
 	if (!imageModule) {
@@ -161,6 +186,7 @@ const createImageDataFor = (imagePath: string, img: GalleryImage): Image => {
 	return {
 		src: imageModule.default,
 		title: img.meta.title,
+		alt: resolveAlt(img, collections),
 		description: img.meta.description,
 		collections: img.meta.collections,
 	};
