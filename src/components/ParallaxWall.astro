@@ -383,32 +383,41 @@ const preloaded = images.slice(0, 8);
 			head.forEach(request);
 		}
 
-		/* Drag to browse, with inertia. Listeners live on the wall only, so the
-		   overlaid hero card never drags the scene. No wheel handling: the page
-		   must keep scrolling normally. */
-		const pointerX = (e: MouseEvent | TouchEvent) =>
-			'touches' in e ? e.touches[0].clientX : e.clientX;
+		/* Drag to browse, with inertia — a pointer affordance only. Listeners live
+		   on the wall alone, so the overlaid hero card never drags the scene, and
+		   there is no wheel handling: the page must keep scrolling normally.
 
-		const beginDrag = (e: MouseEvent | TouchEvent) => {
-			dragActive = true;
-			lastX = pointerX(e);
-		};
-		const moveDrag = (e: MouseEvent | TouchEvent) => {
-			if (!dragActive) return;
-			const x = pointerX(e);
-			dragVelocity = (x - lastX) * 0.02;
-			lastX = x;
-		};
-		const endDrag = () => {
-			dragActive = false;
-		};
+		   Touch is deliberately excluded. The wall sits directly beneath the
+		   page's main scroll path, and a swipe up a phone screen is never
+		   perfectly vertical — its horizontal component used to spin the scene
+		   while someone was only trying to scroll past it. The gesture to browse
+		   and the gesture to leave were the same gesture.
 
-		container.addEventListener('mousedown', beginDrag);
-		container.addEventListener('mousemove', moveDrag);
-		window.addEventListener('mouseup', endDrag);
-		container.addEventListener('touchstart', beginDrag, { passive: true });
-		container.addEventListener('touchmove', moveDrag, { passive: true });
-		window.addEventListener('touchend', endDrag);
+		   The query tests the input device rather than the viewport, so a
+		   touchscreen laptop is judged by the pointer actually in use instead of
+		   by how wide its screen happens to be. Because no touch listener is
+		   registered, the compatibility mouse events a phone synthesises on tap
+		   have nothing to reach either. */
+		const canDrag = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+		if (canDrag) {
+			const beginDrag = (e: MouseEvent) => {
+				dragActive = true;
+				lastX = e.clientX;
+			};
+			const moveDrag = (e: MouseEvent) => {
+				if (!dragActive) return;
+				dragVelocity = (e.clientX - lastX) * 0.02;
+				lastX = e.clientX;
+			};
+			const endDrag = () => {
+				dragActive = false;
+			};
+
+			container.addEventListener('mousedown', beginDrag);
+			container.addEventListener('mousemove', moveDrag);
+			window.addEventListener('mouseup', endDrag);
+		}
 
 		window.addEventListener('resize', resize);
 
