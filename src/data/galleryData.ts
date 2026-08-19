@@ -48,6 +48,8 @@ export interface GalleryImage {
  */
 export interface Meta {
 	title: string;
+	/** Explicit alt text. Falls back to a collection-derived description. */
+	alt?: string;
 	description: string;
 	collections: string[];
 }
@@ -82,6 +84,8 @@ export interface ImageExif {
 export interface Image {
 	src: ImageMetadata;
 	title: string;
+	/** Resolved alt text. Never a raw filename. */
+	alt: string;
 	description: string;
 	collections: string[];
 }
