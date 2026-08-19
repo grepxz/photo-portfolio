@@ -77,4 +77,9 @@ const languageLinks = alternates(Astro.url.pathname, availableLocales);
 	</body>
 </html>
 
-<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script>
+	import Alpine from 'alpinejs';
+
+	window.Alpine = Alpine;
+	Alpine.start();
+</script>
