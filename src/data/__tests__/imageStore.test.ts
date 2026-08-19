@@ -42,7 +42,7 @@ describe('Images Store', () => {
 
 		it('derives a descriptive alt from the collection when none is set', async () => {
 			const images = await getImages({ galleryPath: GALLERY.VALID, collection: 'kuku' });
-			expect(images[0].alt).toEqual('Kuku — photography by Hanna, Barcelona');
+			expect(images[0].alt).toEqual('Kuku — photography by Hanna');
 		});
 
 		it('never leaks a raw filename-style title into alt', async () => {

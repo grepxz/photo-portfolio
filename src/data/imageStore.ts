@@ -137,7 +137,7 @@ const resolveAlt = (img: GalleryImage, collections: Collection[]): string => {
 	const collectionId = img.meta.collections.find((c) => !builtInCollections.includes(c));
 	const name = collections.find((c) => c.id === collectionId)?.name;
 
-	return name ? `${name} — photography by Hanna, Barcelona` : 'Photography by Hanna, Barcelona';
+	return name ? `${name} — photography by Hanna` : 'Photography by Hanna';
 };
 
 /**
