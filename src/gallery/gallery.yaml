@@ -33,6 +33,7 @@ images:
   - path: events/nightclub/IMG_7348.webp
     meta:
       title: Img 7348
+      alt: Club crowd under a mirror ball with crossing red and blue spotlight beams
       description: ''
       collections:
         - events/nightclub
@@ -41,6 +42,7 @@ images:
   - path: activism/Barcelona Pride/pride - 051.webp
     meta:
       title: Pride 051
+      alt: A drummer in a blue Pride t-shirt marches with a samba drum corps
       description: ''
       collections:
         - activism/Barcelona Pride
@@ -49,6 +51,7 @@ images:
   - path: events/nightclub/IMG_7996.webp
     meta:
       title: Img 7996
+      alt: A man's silhouette against purple stage lighting and hanging string lights
       description: ''
       collections:
         - events/nightclub
@@ -57,6 +60,7 @@ images:
   - path: activism/Barcelona Pride/pride - 055.webp
     meta:
       title: Pride 055
+      alt: A performer in a black lace veil and cape walks past a Pride crowd
       description: ''
       collections:
         - activism/Barcelona Pride
@@ -65,6 +69,7 @@ images:
   - path: events/nightclub/IMG_7459.webp
     meta:
       title: Img 7459
+      alt: Two smiling women embrace at a party, one holding beer bottles
       description: ''
       collections:
         - events/nightclub
@@ -73,6 +78,7 @@ images:
   - path: activism/Barcelona Pride/pride - 035.webp
     meta:
       title: Pride 035
+      alt: Marchers cross a sunlit street carrying rainbow flags and fans
       description: ''
       collections:
         - activism/Barcelona Pride
@@ -81,6 +87,7 @@ images:
   - path: events/sport/IMG_6739.webp
     meta:
       title: Img 6739
+      alt: Two women in workout gear pose with arms crossed on a rooftop terrace
       description: ''
       collections:
         - events/sport
@@ -89,6 +96,7 @@ images:
   - path: activism/Barcelona Pride/pride - 010.webp
     meta:
       title: Pride 010
+      alt: A couple dances close together on a city street, glitter on bare skin
       description: ''
       collections:
         - activism/Barcelona Pride
@@ -97,6 +105,7 @@ images:
   - path: events/nightclub/IMG_7706.webp
     meta:
       title: Img 7706
+      alt: Two DJs lean in to talk over turntables under bright stage light beams
       description: ''
       collections:
         - events/nightclub
@@ -105,6 +114,7 @@ images:
   - path: activism/Barcelona Pride/pride - 018-2.webp
     meta:
       title: Pride 018 2
+      alt: A drag performer in red lace and a corset raises an arm amid bubbles
       description: ''
       collections:
         - activism/Barcelona Pride
@@ -113,6 +123,7 @@ images:
   - path: events/sport/IMG_6468.webp
     meta:
       title: Img 6468
+      alt: Runners jump in unison mid-stride during an outdoor street workout
       description: ''
       collections:
         - events/sport
@@ -121,6 +132,7 @@ images:
   - path: activism/Barcelona Pride/pride - 016.webp
     meta:
       title: Pride 016
+      alt: A child peeks between marchers legs beside a wheelchair and rainbow flag
       description: ''
       collections:
         - activism/Barcelona Pride
@@ -143,6 +155,7 @@ images:
   - path: activism/Mexico/IMG_8360-1.webp
     meta:
       title: Img 8360 1
+      alt: A raised fist grips a railing beside a Mexican flag with its eagle emblem
       description: ''
       collections:
         - activism/Mexico
@@ -193,6 +206,7 @@ images:
   - path: activism/Mexico/IMG_8541-1.webp
     meta:
       title: Img 8541 1
+      alt: A woman waves a large Mexican flag on a street at dusk
       description: ''
       collections:
         - activism/Mexico
@@ -278,6 +292,7 @@ images:
   - path: activism/Ukraine/IMG_9251.webp
     meta:
       title: Img 9251
+      alt: A mother holds a baby in a yellow jacket amid a crowd of Ukrainian flags
       description: ''
       collections:
         - activism/Ukraine
@@ -300,6 +315,7 @@ images:
   - path: activism/Ukraine/IMG_9267.webp
     meta:
       title: Img 9267
+      alt: A girl in a flower crown sits on a man's shoulders beside war crimes signs
       description: ''
       collections:
         - activism/Ukraine
@@ -322,6 +338,7 @@ images:
   - path: activism/Ukraine/IMG_9281.webp
     meta:
       title: Img 9281
+      alt: A man reads from a tablet at a podium flanked by flags
       description: ''
       collections:
         - activism/Ukraine
@@ -442,6 +459,7 @@ images:
   - path: events/networking/Venture capital party/IMG_2065.webp
     meta:
       title: Img 2065
+      alt: Rows of beer bottles and canned drinks lined up on a bar counter
       description: ''
       collections:
         - events/networking/Venture capital party
@@ -590,6 +608,7 @@ images:
   - path: events/networking/Venture capital party/IMG_2329.webp
     meta:
       title: Img 2329
+      alt: Guests mingle with drinks under a hanging light at an evening party
       description: ''
       collections:
         - events/networking/Venture capital party
@@ -605,6 +624,7 @@ images:
   - path: events/networking/Venture capital party/IMG_2382.webp
     meta:
       title: Img 2382
+      alt: Two men in conversation lean against a decorative stone column outdoors
       description: ''
       collections:
         - events/networking/Venture capital party
@@ -648,6 +668,7 @@ images:
   - path: events/networking/Venture capital party/IMG_2502.webp
     meta:
       title: Img 2502
+      alt: A man claps while talking near a woven wooden screen at a party
       description: ''
       collections:
         - events/networking/Venture capital party
@@ -712,6 +733,7 @@ images:
   - path: events/networking/Venture capital party/IMG_2659.webp
     meta:
       title: Img 2659
+      alt: A smiling man in a polo shirt holds a phone beside a glass door
       description: ''
       collections:
         - events/networking/Venture capital party
@@ -741,6 +763,7 @@ images:
   - path: weddings/IMG_2036.webp
     meta:
       title: Img 2036
+      alt: White bridal shoes and pearl earrings arranged beside a lace veil
       description: ''
       collections:
         - weddings
@@ -784,6 +807,7 @@ images:
   - path: weddings/IMG_2383.webp
     meta:
       title: Img 2383
+      alt: A bride and groom share a close moment beneath a flower-trimmed veil
       description: ''
       collections:
         - weddings
@@ -792,6 +816,7 @@ images:
   - path: weddings/IMG_2422.webp
     meta:
       title: Img 2422
+      alt: A bride and groom look out over the sea from a columned terrace
       description: ''
       collections:
         - weddings
@@ -835,6 +860,7 @@ images:
   - path: weddings/IMG_2514.webp
     meta:
       title: Img 2514
+      alt: A bride in a full white gown pauses on a brick garden staircase
       description: ''
       collections:
         - weddings
@@ -1634,6 +1660,7 @@ images:
   - path: events/networking/Pitch deck/IMG_0881-1.webp
     meta:
       title: Img 0881 1
+      alt: A young man in glasses smiles for a portrait at an indoor event
       description: ''
       collections:
         - events/networking/Pitch deck
@@ -1649,6 +1676,7 @@ images:
   - path: events/networking/Pitch deck/IMG_0984.webp
     meta:
       title: Img 0984
+      alt: A seated man in plaid listens intently among a crowd of attendees
       description: ''
       collections:
         - events/networking/Pitch deck
@@ -1671,6 +1699,7 @@ images:
   - path: events/networking/Startup panel/IMG_1458.webp
     meta:
       title: Img 1458
+      alt: A man gestures with raised hands while talking to another indoors
       description: ''
       collections:
         - events/networking/Startup panel
