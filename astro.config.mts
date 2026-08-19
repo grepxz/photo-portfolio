@@ -1,10 +1,11 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
+import { SITE } from './src/seo/defaults.ts';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://cedar4st.com',
+	site: SITE,
 	i18n: {
 		locales: ['en', 'es'],
 		defaultLocale: 'en',
