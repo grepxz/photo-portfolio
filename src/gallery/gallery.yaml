@@ -132,7 +132,7 @@ images:
   - path: activism/Barcelona Pride/pride - 016.webp
     meta:
       title: Pride 016
-      alt: A child peeks between marchers legs beside a wheelchair and rainbow flag
+      alt: A child peeks between marchers' legs beside a wheelchair and rainbow flag
       description: ''
       collections:
         - activism/Barcelona Pride
@@ -292,7 +292,7 @@ images:
   - path: activism/Ukraine/IMG_9251.webp
     meta:
       title: Img 9251
-      alt: A mother holds a baby in a yellow jacket amid a crowd of Ukrainian flags
+      alt: A woman holds a baby in a yellow jacket amid a crowd of Ukrainian flags
       description: ''
       collections:
         - activism/Ukraine
@@ -338,7 +338,7 @@ images:
   - path: activism/Ukraine/IMG_9281.webp
     meta:
       title: Img 9281
-      alt: A man reads from a tablet at a podium flanked by flags
+      alt: A man reads from a tablet outside a stone building, flanked by flags
       description: ''
       collections:
         - activism/Ukraine
