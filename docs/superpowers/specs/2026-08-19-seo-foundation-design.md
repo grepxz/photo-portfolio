@@ -37,7 +37,8 @@ still being written.
 - The TFP / model-call page.
 - Any Spanish content.
 - Renaming the 242 gallery image files.
-- Google Business Profile setup (owner's task; checklist provided).
+- Google Business Profile setup. Deferred by choice — the sequence is to get
+  indexed first, then build local discoverability. See the manual-steps section.
 - Refactoring `ParallaxWall` beyond measured, targeted fixes.
 
 ## Decisions
@@ -50,6 +51,7 @@ still being written.
 | Absent categories | Named in copy under a TFP / reduced-rate offer | Earns the keyword mentions legitimately and doubles as model recruitment. |
 | Landscape and night work | Editorial content, not service pages | Low commercial intent; builds topical authority without diluting service pages. |
 | Local business type | Service-area, no published address | Owner works without a client-visitable studio. |
+| Google Business Profile timing | Deferred until after indexing | Owner's chosen sequence: get indexed first, build local discoverability after. Not a Phase 1 dependency. |
 | Analytics | Cloudflare Web Analytics (cookieless) | No GDPR consent banner, no cookies, negligible page weight. Analytics does not affect ranking. |
 | GTM / GA4 | Not installed | Would require a consent banner in Spain, costing visitors before they see any work. |
 | Copy authorship | Claude drafts English, owner edits; Spanish after English is final | Owner supplies specifics only she knows; Spanish gets a native proofread before publishing. |
@@ -249,18 +251,37 @@ owner.
 
 ## Manual steps for the site owner
 
-These cannot be done from the repository:
+These cannot be done from the repository.
 
-1. **Google Business Profile** — create as a service-area business covering
-   Barcelona, with the street address hidden. A phone number is required for
-   verification. This feeds the local map pack, which sits above organic results
-   for "photographer in Barcelona" and is the single largest available lever.
-   Business name, category, and service area must match the site's structured
-   data exactly.
-2. **Google Search Console** — create the property, place the verification file,
+### Required for Phase 1
+
+Indexing is the goal of this phase; these three steps are what it depends on.
+
+1. **Google Search Console** — create the property, place the verification file,
    submit the sitemap.
-3. **Bing Webmaster Tools** — import the Search Console property.
-4. **Cloudflare Web Analytics** — create the account, supply the site token.
+2. **Bing Webmaster Tools** — import the Search Console property.
+3. **Cloudflare Web Analytics** — create the account, supply the site token.
+
+### Deferred: Google Business Profile
+
+Explicitly **not** a Phase 1 dependency. The site indexes without it, and the
+owner's chosen sequence is to get indexed first and build local discoverability
+afterwards.
+
+When it is taken up: create as a service-area business covering Barcelona with
+the street address hidden. A phone number is required for verification. Business
+name, category, and service area must match the site's structured data exactly —
+mismatched details devalue both.
+
+Two notes for whoever picks this up later:
+
+- It feeds the local map pack, which renders *above* organic results for
+  "photographer in Barcelona". It remains the single largest available lever,
+  which is why it is deferred rather than dropped.
+- Verification carries a lead time of days to weeks depending on the method
+  Google offers. Since the profile is independent of all website work, the
+  verification request can be submitted early at no cost to the indexing work,
+  even if the profile itself is filled in later.
 
 ## Phase 2 outline
 
