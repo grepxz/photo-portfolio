@@ -9,6 +9,24 @@ interface Props {
 }
 
 const { images } = Astro.props;
+
+/**
+ * Widths to emit in the srcset for a source image.
+ *
+ * The justified layout caps a slot at roughly 800 CSS px, so 1600 covers a 2x
+ * display and nothing on screen can resolve more than that. Serving the native
+ * file instead — often 5626 px wide — ships ~16x the pixels any display can
+ * show. Candidates wider than the source are dropped rather than upscaled, and
+ * a source smaller than the narrowest candidate is served as-is.
+ *
+ * The lightbox is unaffected: it opens image.src.src, the original file, so
+ * zooming still gets full resolution.
+ */
+const GRID_WIDTHS = [400, 800, 1200, 1600];
+const widthsFor = (sourceWidth: number): number[] => {
+	const fitting = GRID_WIDTHS.filter((w) => w <= sourceWidth);
+	return fitting.length > 0 ? fitting : [sourceWidth];
+};
 ---
 
 <section id="photo-grid" class="relative w-full mx-auto overflow-hidden">
@@ -25,8 +43,8 @@ const { images } = Astro.props;
 					src={image.src}
 					quality={90}
 					format="webp"
-					width={image.src.width}
-					height={image.src.height}
+					widths={widthsFor(image.src.width)}
+					sizes="(max-width: 810px) 100vw, 800px"
 					loading="lazy"
 					decoding="async"
 					class="w-full h-full object-cover rounded-sm shadow-sm hover:shadow-lg transition-shadow"
