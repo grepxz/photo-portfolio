@@ -33,12 +33,14 @@ collections:
     tagline: Documentary coverage of Pride in Barcelona.
   - id: activism/Mexico
     name: Activism Mexico
-    heading: March for Mexico
-    tagline: Documentary coverage of a march for Mexico, photographed in Houston, Texas.
+    heading: Immigration Rights Protest
+    tagline: >-
+      Houston's Mexican community protesting United States immigration law.
   - id: activism/Ukraine
     name: Activism Ukraine
-    heading: March for Ukraine
-    tagline: Documentary coverage of a march for Ukraine, photographed in Houston, Texas.
+    heading: Ukraine War Anniversary Memorial
+    tagline: >-
+      Houston's Ukrainian community marking the anniversary of the war.
   - id: weddings
     name: Weddings
     heading: Wedding Photography in Barcelona & Catalonia
