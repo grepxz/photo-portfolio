@@ -1,0 +1,91 @@
+---
+import { CalendarDays } from 'lucide-astro';
+import siteConfig from '../../site.config.mjs';
+
+interface Props {
+	label?: string;
+	class?: string;
+}
+
+const { label = 'Book a consultation', class: className = '' } = Astro.props;
+const { link, namespace, origin } = siteConfig.calcom;
+
+// Passed to Cal on click; also the popup's initial view configuration.
+const calConfig = JSON.stringify({
+	layout: 'month_view',
+	useSlotsViewOnSmallScreen: 'true',
+	theme: 'light',
+});
+---
+
+<!-- Falls back to the hosted booking page when the embed script is unavailable. -->
+<a
+	href={`https://cal.com/${link}`}
+	data-cal-trigger
+	data-cal-link={link}
+	data-cal-namespace={namespace}
+	data-cal-config={calConfig}
+	class={`inline-flex items-center gap-2 px-6 py-3 bg-black text-white border-2 border-black rounded-md hover:bg-white hover:text-black transition-all duration-300 text-sm md:text-base font-normal transform hover:scale-105 active:scale-95 ${className}`}
+>
+	<CalendarDays class="w-4 h-4 shrink-0" aria-hidden="true" />
+	{label}
+</a>
+
+<script define:vars={{ namespace, origin }}>
+	(function (C, A, L) {
+		let p = function (a, ar) {
+			a.q.push(ar);
+		};
+		let d = C.document;
+		C.Cal =
+			C.Cal ||
+			function () {
+				let cal = C.Cal;
+				let ar = arguments;
+				if (!cal.loaded) {
+					cal.ns = {};
+					cal.q = cal.q || [];
+					d.head.appendChild(d.createElement('script')).src = A;
+					cal.loaded = true;
+				}
+				if (ar[0] === L) {
+					const api = function () {
+						p(api, arguments);
+					};
+					const namespace = ar[1];
+					api.q = api.q || [];
+					if (typeof namespace === 'string') {
+						cal.ns[namespace] = cal.ns[namespace] || api;
+						p(cal.ns[namespace], ar);
+						p(cal, ['initNamespace', namespace]);
+					} else p(cal, ar);
+					return;
+				}
+				p(cal, ar);
+			};
+	})(window, `${origin}/embed/embed.js`, 'init');
+
+	Cal('init', namespace, { origin: origin });
+	Cal.config = Cal.config || {};
+	Cal.config.forwardQueryParams = true;
+
+	Cal.ns[namespace]('ui', {
+		theme: 'light',
+		hideEventTypeDetails: false,
+		layout: 'month_view',
+	});
+
+	// embed.js opens the modal but never cancels the anchor's own navigation,
+	// so suppress it here. The href stays as the no-JS fallback, and is used
+	// again if the modal fails to appear (embed.js blocked or errored).
+	document.querySelectorAll('[data-cal-trigger]').forEach((trigger) => {
+		trigger.addEventListener('click', (event) => {
+			event.preventDefault();
+			setTimeout(() => {
+				if (!document.querySelector('cal-modal-box')) {
+					window.location.href = trigger.href;
+				}
+			}, 2500);
+		});
+	});
+</script>

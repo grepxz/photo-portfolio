@@ -12,6 +12,11 @@ export default {
 	favicon: 'favicon.ico',
 	owner: 'Hanna',
 	profileImage: 'profile.webp',
+	calcom: {
+		link: 'bluecatch/consultation',
+		namespace: 'consultation',
+		origin: 'https://app.cal.com',
+	},
 	socialLinks: [
 		{
 			name: 'GitHub',
