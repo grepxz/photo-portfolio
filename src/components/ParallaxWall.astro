@@ -152,10 +152,31 @@ const preloaded = images.slice(0, 8);
 			layers = Array.from({ length: DEPTH_LAYERS }, () => []);
 		}
 
+		/* Last size the scene was built for, so resize can tell a real layout
+		   change from the noise mobile browsers emit while scrolling. */
+		let builtW = 0;
+		let builtH = 0;
+
 		function resize() {
 			const w = container.clientWidth;
 			const h = container.clientHeight;
 			if (w === 0 || h === 0) return;
+			/* Scrolling a phone slides the URL bar, and that fires resize. Often
+			   nothing about the element actually changed, so measure before
+			   reacting.
+
+			   The populated check is not redundant. A resize landing before the
+			   first textures arrive records the size while there is still nothing
+			   to build; the initial build then calls resize() at the same size and
+			   would bail here, leaving the wall permanently blank behind an
+			   element already faded to full opacity. */
+			const populated = layers.some((layer) => layer.length > 0);
+			if (w === builtW && h === builtH && populated) return;
+
+			const widthChanged = w !== builtW;
+			builtW = w;
+			builtH = h;
+
 			renderer.setSize(w, h);
 			if (!camera) {
 				camera = new THREE.OrthographicCamera(0, w, h, 0, -1000, 1000);
@@ -165,7 +186,17 @@ const preloaded = images.slice(0, 8);
 				camera.top = h;
 				camera.updateProjectionMatrix();
 			}
-			disposeSprites();
+
+			/* Only a width change invalidates the horizontal layout, and only that
+			   justifies disposing sprites: every one is destroyed and respawned at
+			   a fresh random position, which reads as the whole background jumping.
+			   A height change alone must not do that. When the URL bar retracts the
+			   viewport grows by ~60px, and rebuilding the scene for it meant the
+			   wall visibly rearranged itself every time someone scrolled the page.
+			   fillViewport only appends sprites until the row reaches the right
+			   edge, so calling it without disposing first covers any newly exposed
+			   area and leaves the existing sprites where they are. */
+			if (widthChanged) disposeSprites();
 			if (textures.length > 0) fillViewport();
 		}
 
