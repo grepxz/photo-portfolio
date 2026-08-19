@@ -20,12 +20,12 @@ export default {
 	socialLinks: [
 		{
 			name: 'GitHub',
-			url: 'https://github.com/rockem/astro-photography-portfolio',
+			url: 'https://github.com/grepxz/photo-portfolio',
 			icon: Github,
 		} as SocialLink,
 		{
 			name: 'Instagram',
-			url: 'https://www.instagram.com',
+			url: 'https://www.instagram.com/bluecatch.ca/',
 			icon: Instagram,
 		} as SocialLink,
 	],
