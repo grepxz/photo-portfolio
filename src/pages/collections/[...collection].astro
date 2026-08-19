@@ -66,6 +66,15 @@ const tree = buildTree(rawCollections.map((c) => c.id));
 const { collection: slug } = Astro.params;
 const slugMap = buildSlugMap(rawCollections.map((c) => c.id).concat(SYNTHETIC.map((c) => c.id)));
 const collection = slug ? slugMap.get(slug) : undefined;
+if (slug && !collection) {
+	throw new Error(
+		`Unmapped collection slug "${slug}": no matching id in slugMap. ` +
+			`getStaticPaths derives routes from every node in the real collection tree, ` +
+			`while slugMap is built from rawCollections plus the hand-maintained SYNTHETIC ` +
+			`array above — check whether a new collection was added without a matching ` +
+			`SYNTHETIC entry.`,
+	);
+}
 
 const images = await getImages(collection ? { collection } : {});
 const activeSegments = collection ? collection.split('/') : [];

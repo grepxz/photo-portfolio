@@ -29,9 +29,9 @@ describe('collectionMeta', () => {
 
 	it('falls back to a template for collections without copy', () => {
 		const meta = collectionMeta('events/sport', COLLECTIONS);
-		expect(meta.heading).toEqual('Events Sport Photography');
-		expect(meta.tagline).toContain('Barcelona');
-		expect(meta.description).toContain('Events Sport');
+		expect(meta.heading).toEqual('Sport Photography');
+		expect(meta.tagline).toContain('by Hanna');
+		expect(meta.description).toContain('Sport');
 	});
 
 	it('derives a name for an intermediate node absent from the collections list', () => {

@@ -34,10 +34,10 @@ export const collectionMeta = (
 	if (!id) return ROOT;
 
 	const configured = collections.find((collection) => collection.id === id);
-	const name = configured?.name ?? humanise(id.split('/').pop() ?? id);
+	const name = humanise(id.split('/').pop() ?? id);
 
 	const heading = configured?.heading ?? `${name} Photography`;
-	const tagline = configured?.tagline ?? `${name} photography in Barcelona by Hanna.`;
+	const tagline = configured?.tagline ?? `${name} photography by Hanna.`;
 
 	return {
 		heading,
