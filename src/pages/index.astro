@@ -3,18 +3,12 @@ import MainLayout from '../layouts/MainLayout.astro';
 import LandingHero from '../components/LandingHero-1.astro';
 import FeaturedGallery from '../components/FeaturedGallery.astro';
 import FeaturedWorkScroll from '../components/FeaturedWorkScroll.astro';
-
+import ParallaxWall from '../components/ParallaxWall.astro';
 ---
 
 <MainLayout>
 	<section class="relative min-h-screen items-center flex py-20 md:py-16 overflow-hidden">
-		<img
-			class="absolute inset-0 w-full h-full object-cover md:object-contain opacity-100 z-0 scale-100 md:scale-[0.4]"
-			src="/hero.webp"
-			alt=""
-			loading="eager"
-			decoding="async"
-			fetchpriority="high" />
+		<ParallaxWall />
 		<LandingHero />
 		<FeaturedWorkScroll />
 	</section>

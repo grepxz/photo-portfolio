@@ -1,24 +1,56 @@
 ---
+
 ---
 
-<div class="absolute left-0 right-0">
-	<div class="text-center mb-12">
-		<h1
-			class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-white mix-blend-difference"
-		>
-			catching the right moment
-		</h1>
-		<p class="mt-4 md:mt-15 text-base md:text-md text-gray-100 italic drop-shadow-md">
-			a collection honorable people who took Hanna on a journey
+<div class="absolute left-0 right-0 z-10 flex flex-col items-center px-4">
+	<!-- Dictionary-entry card. Sits above the parallax wall; pointer events are
+	     stopped here so dragging it never moves the scene behind. -->
+	<div
+		id="hero-card"
+		class="max-w-xl rounded-lg border border-black/10 bg-[#faf9f6] px-6 py-5 text-left shadow-xl md:px-8 md:py-6"
+	>
+		<h1 class="text-4xl font-bold text-gray-900 md:text-5xl">good photo</h1>
+
+		<p class="mt-2 text-sm text-gray-500 md:text-base">
+			<span class="italic">noun</span>
+			<span class="ml-1">[ countable ]</span>
 		</p>
-		<a
-			href="/collections"
-			class="mt-8 inline-block px-6 py-3 border-2 border-white text-white rounded-md
-                      hover:bg-white hover:text-black transition-all duration-300
-                      text-sm md:text-base font-medium
-                      transform hover:scale-105 active:scale-95"
-		>
-			View Gallery
-		</a>
+
+		<!-- IPA sits outside Newsreader's glyph coverage, so give it an explicit
+		     fallback rather than letting the browser pick per character. -->
+		<p class="ipa mt-1 text-sm text-gray-400 md:text-base">/ˈfəʊtəʊ/</p>
+
+		<hr class="my-3 border-black/10" />
+
+		<p class="text-lg font-extralight italic text-gray-700 md:text-2xl">
+			<span class="pr-1 font-normal text-gray-400 not-italic">1.</span>
+			evidence that you were, briefly, photogenic.
+		</p>
 	</div>
+
+	<a
+		href="/collections"
+		class="mt-6 inline-block rounded-md border-2 border-black bg-white px-6 py-3 text-sm
+                      font-normal text-black shadow-md transition-all duration-300
+                      hover:bg-black hover:text-white md:text-base
+                      transform hover:scale-105 active:scale-95"
+	>
+		View Gallery
+	</a>
 </div>
+
+<style>
+	.ipa {
+		font-family:
+			'Charis SIL', 'Doulos SIL', 'Gentium Plus', 'Segoe UI', 'Lucida Sans Unicode', 'DejaVu Sans',
+			sans-serif;
+	}
+</style>
+
+<script>
+	// Keep drags on the card from reaching the parallax wall underneath.
+	const card = document.getElementById('hero-card');
+	for (const type of ['mousedown', 'mousemove', 'touchstart', 'touchmove']) {
+		card?.addEventListener(type, (e) => e.stopPropagation());
+	}
+</script>
