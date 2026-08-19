@@ -1,6 +1,8 @@
 collections:
   - id: events/nightclub
     name: Events Nightclub
+    heading: Nightlife & Club Photography
+    tagline: Late nights in Barcelona, shot in available light.
   - id: events/networking/Venture capital party
     name: Events Networking Venture Capital Party
   - id: events/networking/Pitch deck
@@ -15,12 +17,18 @@ collections:
     name: Events Birthday
   - id: activism/Barcelona Pride
     name: Activism Barcelona Pride
+    heading: Barcelona Pride
+    tagline: Documentary coverage of Pride in Barcelona.
   - id: activism/Mexico
     name: Activism Mexico
   - id: activism/Ukraine
     name: Activism Ukraine
   - id: weddings
     name: Weddings
+    heading: Wedding Photography in Barcelona
+    tagline: >-
+      Ceremonies and celebrations photographed as they happen — minimal
+      direction, minimal editing.
 images:
   - path: events/nightclub/IMG_7348.webp
     meta:
