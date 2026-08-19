@@ -5,6 +5,8 @@ import Footer from '../components/Footer.astro';
 import NavBar from '../components/NavBar.astro';
 import { buildMeta } from '../seo/meta.ts';
 import { person, professionalService, type JsonLd } from '../seo/schema.ts';
+import { alternates } from '../seo/hreflang.ts';
+import { DEFAULT_LOCALE, type Locale } from '../seo/defaults.ts';
 
 interface Props {
 	title: string;
@@ -12,13 +14,16 @@ interface Props {
 	image?: string;
 	/** Page-specific structured data, appended after the site-wide nodes. */
 	jsonLd?: JsonLd[];
+	/** Locales this page actually exists in. Defaults to English only. */
+	availableLocales?: Locale[];
 }
 
-const { title, description, image, jsonLd = [] } = Astro.props;
+const { title, description, image, jsonLd = [], availableLocales = [DEFAULT_LOCALE] } = Astro.props;
 const favicon = siteConfig.favicon;
 
 const meta = buildMeta({ title, description, image, path: Astro.url.pathname });
 const structuredData: JsonLd[] = [professionalService(), person(), ...jsonLd];
+const languageLinks = alternates(Astro.url.pathname, availableLocales);
 ---
 
 <html lang="en" class="h-full">
@@ -31,6 +36,11 @@ const structuredData: JsonLd[] = [professionalService(), person(), ...jsonLd];
 		<title>{meta.title}</title>
 		<meta name="description" content={meta.description} />
 		<link rel="canonical" href={meta.canonical} />
+		{
+			languageLinks.map((link) => (
+				<link rel="alternate" hreflang={link.hreflang} href={link.href} />
+			))
+		}
 
 		<meta property="og:site_name" content="Cedar4st" />
 		<meta property="og:type" content={meta.og.type} />
