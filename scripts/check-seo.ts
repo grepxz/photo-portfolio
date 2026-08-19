@@ -58,7 +58,8 @@ const main = async () => {
 		if (!page.description) problems.push(`  missing description: ${page.file}`);
 		if (!page.canonical) problems.push(`  missing canonical: ${page.file}`);
 		if (page.h1Count !== 1) problems.push(`  ${page.h1Count} h1 elements: ${page.file}`);
-		if (/^Img \d+$/.test(page.title)) problems.push(`  filename-style title: ${page.file}`);
+		if (/^[A-Za-z]+ \d+(?: — Cedar4st)?$/.test(page.title))
+			problems.push(`  filename-style title: ${page.file}`);
 		if (page.filenameAlts > 0)
 			problems.push(`  ${page.filenameAlts} filename-style alt attributes: ${page.file}`);
 	}
@@ -73,4 +74,7 @@ const main = async () => {
 	console.log(`SEO check passed: ${pages.length} pages, all unique.`);
 };
 
-main();
+main().catch((err: unknown) => {
+	console.error(`SEO check crashed: ${err instanceof Error ? err.message : String(err)}`);
+	process.exit(1);
+});
