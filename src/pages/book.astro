@@ -17,7 +17,10 @@ const profileImage = siteConfig.profileImage;
 				<h1 class="text-4xl md:text-5xl font-bold mb-4">Book Me</h1>
 			</div>
 
-			<div class="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-10 lg:gap-y-8 items-center">
+			<!-- items-start, not items-center: the bio column grew when the TFP section
+			     landed, and centring left the portrait floating against a much taller
+			     block of text. The portrait now sets against the first line of it. -->
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-10 lg:gap-y-8 items-start">
 				<div class="lg:col-start-1 lg:row-start-1">
 					<img
 						src=`/images/${profileImage}`
@@ -28,7 +31,17 @@ const profileImage = siteConfig.profileImage;
 					/>
 				</div>
 
-				<div class="prose text-gray-700 lg:col-start-2 lg:row-start-1">
+				<!-- text-pretty is the web's actual orphan/widow control: the browser
+				     looks ahead over the last few lines and rebalances so no line is
+				     left with a single stranded word. The CSS `orphans`/`widows`
+				     properties do nothing here — they only apply to paged and
+				     multi-column layouts. text-balance on headings keeps short
+				     headings from breaking one word onto a second line. Text stays
+				     ragged-right rather than justified, which is what prevents rivers;
+				     justification is what causes them. -->
+				<div
+					class="prose prose-p:text-pretty prose-li:text-pretty prose-headings:text-balance text-gray-700 lg:col-start-2 lg:row-start-1"
+				>
 					<BookPage />
 				</div>
 
