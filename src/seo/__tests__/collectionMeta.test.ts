@@ -16,7 +16,9 @@ describe('collectionMeta', () => {
 	it('describes the root gallery when no collection is given', () => {
 		const meta = collectionMeta(undefined, COLLECTIONS);
 		expect(meta.heading).toEqual('Photography Portfolio — Barcelona');
-		expect(meta.tagline).toContain('Weddings, events, nightlife');
+		expect(meta.tagline).toEqual(
+			'Weddings, events, nightlife and documentary work, photographed in Barcelona, across Spain and in the United States.',
+		);
 		expect(meta.title).toEqual('Photography Portfolio — Barcelona');
 	});
 

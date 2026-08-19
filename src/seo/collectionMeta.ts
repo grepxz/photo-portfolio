@@ -12,10 +12,11 @@ export interface CollectionMeta {
 
 const ROOT: CollectionMeta = {
 	heading: 'Photography Portfolio — Barcelona',
-	tagline: 'Weddings, events, nightlife and documentary work, shot across Barcelona and beyond.',
+	tagline:
+		'Weddings, events, nightlife and documentary work, photographed in Barcelona, across Spain and in the United States.',
 	title: 'Photography Portfolio — Barcelona',
 	description:
-		'Weddings, events, nightlife and documentary work, shot across Barcelona and beyond by photographer Hanna.',
+		'Weddings, events, nightlife and documentary work by Hanna, photographed in Barcelona, across Spain and in the United States.',
 };
 
 /** Turns a path segment into a display name, matching the page component. */

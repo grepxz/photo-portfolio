@@ -5,30 +5,46 @@ collections:
     tagline: Late nights in Barcelona, shot in available light.
   - id: events/networking/Venture capital party
     name: Events Networking Venture Capital Party
+    heading: Venture Capital Party
+    tagline: A venture capital party photographed in Houston, Texas.
   - id: events/networking/Pitch deck
     name: Events Networking Pitch Deck
+    heading: Startup Pitch Night
+    tagline: A startup pitch night photographed in Houston, Texas.
   - id: events/networking/Startup panel
     name: Events Networking Startup Panel
+    heading: Startup Panel
+    tagline: A startup panel discussion photographed in Houston, Texas.
   - id: events/networking/corporate dinner
     name: Events Networking Corporate Dinner
+    heading: Corporate Dinner
+    tagline: A corporate dinner photographed in Houston, Texas.
   - id: events/sport
     name: Events Sport
+    heading: Sports Photography
+    tagline: Sport and outdoor training in Barcelona.
   - id: events/birthday
     name: Events Birthday
+    heading: Birthdays & Private Celebrations
+    tagline: Private celebrations photographed in Houston, Texas.
   - id: activism/Barcelona Pride
     name: Activism Barcelona Pride
     heading: Barcelona Pride
     tagline: Documentary coverage of Pride in Barcelona.
   - id: activism/Mexico
     name: Activism Mexico
+    heading: March for Mexico
+    tagline: Documentary coverage of a march for Mexico, photographed in Houston, Texas.
   - id: activism/Ukraine
     name: Activism Ukraine
+    heading: March for Ukraine
+    tagline: Documentary coverage of a march for Ukraine, photographed in Houston, Texas.
   - id: weddings
     name: Weddings
-    heading: Wedding Photography in Barcelona
+    heading: Wedding Photography in Barcelona & Catalonia
     tagline: >-
       Ceremonies and celebrations photographed as they happen — minimal
-      direction, minimal editing.
+      direction, minimal editing. Shot on the Costa Brava at Blanes, Girona.
 images:
   - path: events/nightclub/IMG_7348.webp
     meta:
