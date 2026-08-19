@@ -34,7 +34,8 @@ still being written.
 ## Non-goals for Phase 1
 
 - Service pages for individual shoot types.
-- The TFP / model-call page.
+- A standalone TFP / model-call page. The TFP offer ships in Phase 1 as a
+  section on `/book`; a dedicated page, if warranted, is Phase 2.
 - Any Spanish content.
 - Renaming the 242 gallery image files.
 - Google Business Profile setup. Deferred by choice — the sequence is to get
@@ -197,6 +198,72 @@ The card stays visually identical. Changes:
   subject matter without pre-empting Phase 2. Claude drafts, owner edits.
   Phase 2 expands this into the full copy and the TFP offer.
 
+### Collection page headings
+
+`collections/[...collection].astro` currently renders `<h1>Gallery</h1>` and the
+subheading "Explore my collection of photographic works" for all 15 routes. Both
+are wasted signals repeated fifteen times.
+
+Two optional fields, `heading` and `tagline`, are added per collection in
+`gallery.yaml`, with a template fallback for collections that define neither.
+Copy therefore lives in one YAML file rather than in the page component.
+
+Approved copy for the root route:
+
+- Heading: *Photography Portfolio — Barcelona*
+- Tagline: *Weddings, events, nightlife and documentary work, shot across
+  Barcelona and beyond.*
+
+Per-collection, approved:
+
+| Route | Heading | Tagline |
+|---|---|---|
+| `weddings` | Wedding Photography in Barcelona | Ceremonies and celebrations photographed as they happen — minimal direction, minimal editing. |
+| `events` | Event Photography in Barcelona | Nightlife, corporate evenings, sport and private celebrations. |
+| `events/nightclub` | Nightlife & Club Photography | Late nights in Barcelona, shot in available light. |
+| `activism` | Documentary & Journalistic Work | Protest, movement and street photography from Barcelona, Mexico and Ukraine. |
+| `activism/barcelona-pride` | Barcelona Pride | Documentary coverage of Pride in Barcelona. |
+
+Remaining collections take the template fallback until copy is written for them.
+
+### TFP and reduced-rate section on `/book`
+
+The mechanism by which categories without galleries earn legitimate keyword
+coverage. Added to `src/content/book.md`, below the existing bio.
+
+Approved copy:
+
+> ### Work I'm looking for
+>
+> There are kinds of photography I want to be doing more of, and I'd rather build
+> that work with the right people than wait for it to find me. For the categories
+> below I'm shooting at reduced rates, or TFP — time for prints, meaning you
+> receive the edited images and neither of us invoices the other.
+>
+> **Creative and conceptual shoots** are the ones I most want to make. This is the
+> direction I'm actively trying to move in, and I'm looking for models and
+> collaborators for it. If you've had an idea sitting unrealised, bring it — I'd
+> rather make something strange with you than shoot another safe portrait.
+>
+> I'm also building work in:
+>
+> - Portrait and studio sessions
+> - Proposals and romantic sessions
+> - Backstage and behind-the-scenes
+> - Streetstyle
+> - Concerts and live music
+> - Property, interiors and Airbnb listings
+>
+> Outside commissioned work I shoot landscape and night photography around
+> Catalonia, mostly for myself.
+>
+> If any of this is yours, write to me. Tell me what you want to make.
+
+This places *portrait*, *studio*, *proposal*, *romantic*, *backstage*,
+*streetstyle*, *concert*, *Airbnb*, *creative*, *landscape* and *night* into
+indexable text, attached to a genuine offer on a page with a real purpose. That
+attachment is what separates it from a thin doorway page.
+
 ### Image alt text
 
 242 images currently carry auto-generated titles (`"Img 7348"`, `"Pride 051"`)
@@ -291,10 +358,8 @@ Search Console has accumulated query data.
 - Service pages for categories with existing galleries: weddings, events
   (nightclub, networking, sport, birthday), documentary and journalistic (Pride,
   Mexico, Ukraine).
-- A TFP / portfolio-building page naming the categories without galleries yet —
-  portrait, proposal, romantic, studio, backstage, streetstyle, property and
-  Airbnb, concert, creative — attached to a reduced-rate or TFP offer. Creative
-  shoots are the priority category and the primary reason models are needed.
+- A dedicated TFP / portfolio-building page, if the `/book` section proves it
+  earns one. The section itself ships in Phase 1.
 - Editorial content for landscape and night photography.
 - Spanish translations, prioritised by which English pages actually gain
   traction.
