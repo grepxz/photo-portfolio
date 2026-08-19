@@ -1,10 +1,29 @@
+/**
+ * Lightbox sizing. GLightbox's own rule is `.gslide-image img { max-height:
+ * 97vh; max-width: 100% }`; these selectors carry higher specificity, so they
+ * win without !important.
+ *
+ * Do NOT add !important to width/height here. GLightbox implements zoom by
+ * writing an inline style.width onto the image, and an !important author rule
+ * beats inline styles — the zoom is silently discarded while GLightbox still
+ * applies its .zoomed class, which switches the cursor to grab and activates
+ * dragging with bounds computed from the size it believes the image reached.
+ * The result is a picture that will not zoom but can be dragged out of frame.
+ */
 .glightbox-container .gslide-image img {
-	max-width: 90vw !important;
-	max-height: 85vh !important;
-	height: auto !important;
-	width: auto !important;
+	max-width: 90vw;
+	max-height: 85vh;
+	width: auto;
+	height: auto;
 	object-fit: contain;
 	display: block;
+}
+
+/* Once zoomed, the image is meant to exceed the viewport — the constraints
+   above have to lift or it cannot grow and dragging has nothing to pan. */
+.glightbox-container .zoomed .gslide-image img {
+	max-width: none;
+	max-height: none;
 }
 
 .glightbox-container .gslide {
