@@ -20,6 +20,7 @@ interface Props {
 
 const { title, description, image, jsonLd = [], availableLocales = [DEFAULT_LOCALE] } = Astro.props;
 const favicon = siteConfig.favicon;
+const analyticsToken = siteConfig.analyticsToken;
 
 const meta = buildMeta({ title, description, image, path: Astro.url.pathname });
 const structuredData: JsonLd[] = [professionalService(), person(), ...jsonLd];
@@ -74,6 +75,15 @@ const languageLinks = alternates(Astro.url.pathname, availableLocales);
 			<slot />
 		</main>
 		<Footer />
+		{
+			analyticsToken && (
+				<script
+					defer
+					src="https://static.cloudflareinsights.com/beacon.min.js"
+					data-cf-beacon={`{"token": "${analyticsToken}"}`}
+				/>
+			)
+		}
 	</body>
 </html>
 

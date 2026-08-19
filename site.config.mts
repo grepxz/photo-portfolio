@@ -10,6 +10,8 @@ export interface SocialLink {
 export default {
 	title: 'Cedar4st',
 	favicon: 'favicon.ico',
+	/** Cloudflare Web Analytics site token. Empty disables the beacon. */
+	analyticsToken: '',
 	owner: 'Hanna',
 	profileImage: 'profile.webp',
 	calcom: {
