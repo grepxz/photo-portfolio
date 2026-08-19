@@ -5,6 +5,7 @@
 	"scripts": {
 		"dev": "astro dev",
 		"build": "astro build",
+		"seo:check": "npx tsx scripts/check-seo.ts",
 		"preview": "astro preview",
 		"astro": "astro",
 		"prettier": "prettier . --write",
