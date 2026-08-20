@@ -11,7 +11,11 @@ const locale = localeFromPath(Astro.url.pathname);
 const t = useTranslations(locale);
 ---
 
-<MainLayout title={t.meta.home.title} description={t.meta.home.description}>
+<MainLayout
+	title={t.meta.home.title}
+	description={t.meta.home.description}
+	availableLocales={['en', 'es']}
+>
 	<section class="relative min-h-screen items-center flex py-20 md:py-16 overflow-hidden">
 		<ParallaxWall />
 		<LandingHero />

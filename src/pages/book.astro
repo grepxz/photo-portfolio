@@ -13,7 +13,11 @@ const BookPage = locale === 'es' ? BookPageEs : BookPageEn;
 const bookEmailHref = `mailto:nyzhniah@gmail.com?subject=${encodeURIComponent(t.book.emailSubject)}`;
 ---
 
-<MainLayout title={t.meta.book.title} description={t.meta.book.description}>
+<MainLayout
+	title={t.meta.book.title}
+	description={t.meta.book.description}
+	availableLocales={['en', 'es']}
+>
 	<section class="pt-32 pb-20">
 		<div class="container-custom">
 			<div class="max-w-2xl mx-auto text-center mb-16">

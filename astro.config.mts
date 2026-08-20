@@ -11,7 +11,14 @@ export default defineConfig({
 		defaultLocale: 'en',
 		routing: { prefixDefaultLocale: false },
 	},
-	integrations: [sitemap()],
+	integrations: [
+		sitemap({
+			i18n: {
+				defaultLocale: 'en',
+				locales: { en: 'en', es: 'es' },
+			},
+		}),
+	],
 	vite: {
 		plugins: [tailwindcss()],
 	},

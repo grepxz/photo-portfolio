@@ -47,7 +47,12 @@ if (collection) {
 const rows = filterRows(tree, activeSegments, t.gallery.all, t.gallery.allOf);
 ---
 
-<MainLayout title={meta.title} description={meta.description} jsonLd={[breadcrumbList(crumbs)]}>
+<MainLayout
+	title={meta.title}
+	description={meta.description}
+	jsonLd={[breadcrumbList(crumbs)]}
+	availableLocales={['en', 'es']}
+>
 	<CollectionPage heading={meta.heading} tagline={meta.tagline} rows={rows} collection={collection}
 		><PhotoGrid images={images} /></CollectionPage
 	>
