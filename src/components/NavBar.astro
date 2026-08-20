@@ -1,6 +1,7 @@
 ---
 import siteConfig from '../../site.config.mjs';
 import { localeFromPath, localePath, useTranslations } from '../i18n/index.ts';
+import LanguageSwitcher from './LanguageSwitcher.astro';
 
 const title = siteConfig.title;
 const favicon = siteConfig.favicon;
@@ -54,6 +55,7 @@ const menuItems = [
 					</a>
 				))
 			}
+			<LanguageSwitcher />
 		</div>
 
 		<!-- Mobile Menu Button -->
@@ -85,6 +87,7 @@ const menuItems = [
 					</a>
 				))
 			}
+			<LanguageSwitcher closeMenuOnClick />
 		</div>
 	</div>
 </nav>

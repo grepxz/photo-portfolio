@@ -1,0 +1,36 @@
+---
+import { LOCALES } from '../seo/defaults.ts';
+import { localeFromPath, localePath, useTranslations } from '../i18n/index.ts';
+
+interface Props {
+	/** Emit the Alpine `@click` handler that closes the mobile menu panel. */
+	closeMenuOnClick?: boolean;
+}
+
+const { closeMenuOnClick = false } = Astro.props;
+
+const current = localeFromPath(Astro.url.pathname);
+const t = useTranslations(current);
+const options = LOCALES.map((locale) => ({
+	locale,
+	href: localePath(Astro.url.pathname, locale),
+	current: locale === current,
+}));
+---
+
+<nav aria-label={t.nav.language} class="flex items-center gap-2 text-sm">
+	{
+		options.map((option) => (
+			<a
+				href={option.href}
+				hreflang={option.locale}
+				lang={option.locale}
+				aria-current={option.current ? 'true' : undefined}
+				class={option.current ? 'font-semibold underline' : 'text-gray-600 hover:text-black'}
+				{...(closeMenuOnClick ? { '@click': 'isOpen = false' } : {})}
+			>
+				{option.locale.toUpperCase()}
+			</a>
+		))
+	}
+</nav>
