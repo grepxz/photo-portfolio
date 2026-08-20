@@ -14,9 +14,9 @@ Todavía me queda mucho por aprender, y creo que una buena fotógrafa nunca se c
 
 Hay tipos de fotografía que quiero hacer más a menudo, y prefiero construir ese trabajo con las personas adecuadas antes que esperar a que me encuentre a mí. Para las categorías siguientes trabajo a tarifas reducidas, o en TFP —time for prints—, es decir: tú recibes las imágenes editadas y ninguna de las dos partes factura a la otra.
 
-**Las sesiones creativas y conceptuales** son las que más quiero hacer. Es la dirección hacia la que intento moverme activamente, y estoy buscando modelos y colaboradores para ello. Si tienes una idea que llevas tiempo sin realizar, tráela — prefiero hacer algo extraño contigo que fotografiar otro retrato más, seguro y previsible.
+**Las sesiones creativas y conceptuales** son las que más quiero hacer. Es la dirección hacia la que intento moverme activamente, y estoy buscando modelos y colaboradores para ello. Si tienes una idea que llevas tiempo sin realizar, tráela: prefiero hacer algo extraño contigo antes que fotografiar otro retrato más, seguro y previsible.
 
-También estoy construyendo trabajo en:
+También trabajo en estas áreas:
 
 - Retrato y estudio
 - Propuestas de compromiso y sesiones románticas
