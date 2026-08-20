@@ -1,6 +1,7 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
-import { Content as BookPage } from '../content/book.md';
+import { Content as BookPageEn } from '../content/book.md';
+import { Content as BookPageEs } from '../content/book.es.md';
 import CalBooking from '../components/CalBooking.astro';
 import siteConfig from '../../site.config.mjs';
 import { localeFromPath, useTranslations } from '../i18n/index.ts';
@@ -8,6 +9,7 @@ import { localeFromPath, useTranslations } from '../i18n/index.ts';
 const profileImage = siteConfig.profileImage;
 const locale = localeFromPath(Astro.url.pathname);
 const t = useTranslations(locale);
+const BookPage = locale === 'es' ? BookPageEs : BookPageEn;
 ---
 
 <MainLayout title={t.meta.book.title} description={t.meta.book.description}>
