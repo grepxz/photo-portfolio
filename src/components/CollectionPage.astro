@@ -1,0 +1,74 @@
+---
+import { slugifyId, type Row } from '../collections/route.ts';
+import { localeFromPath, localePath, useTranslations } from '../i18n/index.ts';
+
+interface Props {
+	heading: string;
+	tagline: string;
+	rows: Row[];
+	collection: string | undefined;
+}
+
+const { heading, tagline, rows, collection } = Astro.props;
+const locale = localeFromPath(Astro.url.pathname);
+const t = useTranslations(locale);
+const href = (id: string) => localePath(`/collections/${slugifyId(id)}/`, locale);
+const indexHref = localePath('/collections/', locale);
+// The literal English "All" text sat directly in a static text node, whose
+// leading and trailing newlines Astro preserves verbatim; an expression node
+// in the same spot collapses adjacent whitespace to a single space instead.
+// Embedding the newlines in the interpolated value itself keeps the English
+// output byte-identical while still driving the label from the dictionary.
+const allChipText = '\n' + t.gallery.all + '\n';
+---
+
+<section class="py-16 pt-24">
+	<div class="container-custom">
+		<div class="mb-16 text-center">
+			<h1 class="text-4xl md:text-5xl font-bold mb-4">{heading}</h1>
+			<p class="text-gray-600 max-w-xl mx-auto italic">{tagline}</p>
+		</div>
+
+		{
+			rows.map((row, idx) => (
+				<div class={`flex justify-center ${idx === rows.length - 1 ? 'mb-10' : 'mb-4'}`}>
+					<div class="flex flex-wrap gap-2 justify-center">
+						{idx === 0 && (
+							<a href={indexHref} class="order-last">
+								<div
+									class={`px-4 py-2 border ${
+										!collection
+											? 'border-black bg-black text-white'
+											: 'border-gray-200 text-gray-700 hover:border-gray-300'
+									} transition-all`}
+									set:text={allChipText}
+								/>
+							</a>
+						)}
+						{row.items.map((item) => {
+							const isActive =
+								item.id === collection ||
+								(collection !== undefined && collection.startsWith(item.id + '/'));
+							const sizeClass = idx === 0 ? 'px-4 py-2' : 'px-3 py-1 text-sm';
+							return (
+								<a href={href(item.id)}>
+									<div
+										class={`${sizeClass} border ${
+											isActive
+												? 'border-black bg-black text-white'
+												: 'border-gray-200 text-gray-700 hover:border-gray-300'
+										} transition-all`}
+									>
+										{item.name}
+									</div>
+								</a>
+							);
+						})}
+					</div>
+				</div>
+			))
+		}
+
+		<slot />
+	</div>
+</section>

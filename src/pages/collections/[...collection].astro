@@ -1,69 +1,21 @@
 ---
 import MainLayout from '../../layouts/MainLayout.astro';
+import CollectionPage from '../../components/CollectionPage.astro';
 import PhotoGrid from '../../components/PhotoGrid.astro';
 import { getCollections, getImages } from '../../data/imageStore';
-import type { Collection } from '../../data/galleryData';
 import { collectionMeta } from '../../seo/collectionMeta.ts';
 import { breadcrumbList, type Crumb } from '../../seo/schema.ts';
-import { buildSlugMap, slugifyId } from '../../seo/slug.ts';
+import { useTranslations, localeFromPath } from '../../i18n/index.ts';
+import {
+	SYNTHETIC,
+	buildTree,
+	collectionPaths,
+	filterRows,
+	resolveCollection,
+	slugifyId,
+} from '../../collections/route.ts';
 
-const cap = (s: string) =>
-	s
-		.replace(/[^a-zA-Z0-9]+/g, ' ')
-		.split(' ')
-		.filter(Boolean)
-		.map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
-		.join(' ');
-
-/**
- * Copy for the intermediate tree nodes, which are synthesised from the id paths
- * rather than declared in gallery.yaml.
- */
-const SYNTHETIC: Collection[] = [
-	{
-		id: 'events',
-		name: 'Events',
-		heading: 'Event Photography in Barcelona & Beyond',
-		tagline:
-			'Nightlife and sport in Barcelona; networking, corporate evenings and private celebrations in Houston.',
-	},
-	{
-		id: 'activism',
-		name: 'Activism',
-		heading: 'Documentary & Journalistic Work',
-		tagline:
-			'Protest and memorial photography — Pride in Barcelona, immigration-rights and Ukraine anniversary gatherings in Houston.',
-	},
-	{
-		id: 'events/networking',
-		name: 'Events Networking',
-		heading: 'Networking & Corporate Events',
-		tagline: 'Startup panels, pitch nights and corporate dinners in Houston, Texas.',
-	},
-];
-
-type Node = {
-	id: string;
-	name: string;
-	children: Map<string, Node>;
-};
-
-const buildTree = (ids: string[]): Node => {
-	const root: Node = { id: '', name: 'All', children: new Map() };
-	for (const id of ids) {
-		const segments = id.split('/');
-		let cur = root;
-		for (let i = 0; i < segments.length; i++) {
-			const seg = segments[i];
-			const fullId = segments.slice(0, i + 1).join('/');
-			if (!cur.children.has(seg)) {
-				cur.children.set(seg, { id: fullId, name: cap(seg), children: new Map() });
-			}
-			cur = cur.children.get(seg)!;
-		}
-	}
-	return root;
-};
+export const getStaticPaths = collectionPaths;
 
 const rawCollections = await getCollections();
 const allCollections = [...rawCollections, ...SYNTHETIC];
@@ -71,23 +23,16 @@ const tree = buildTree(rawCollections.map((c) => c.id));
 
 // The route carries the slug; everything downstream works with the real id.
 const { collection: slug } = Astro.params;
-const slugMap = buildSlugMap(rawCollections.map((c) => c.id).concat(SYNTHETIC.map((c) => c.id)));
-const collection = slug ? slugMap.get(slug) : undefined;
-if (slug && !collection) {
-	throw new Error(
-		`Unmapped collection slug "${slug}": no matching id in slugMap. ` +
-			`getStaticPaths derives routes from every node in the real collection tree, ` +
-			`while slugMap is built from rawCollections plus the hand-maintained SYNTHETIC ` +
-			`array above — check whether a new collection was added without a matching ` +
-			`SYNTHETIC entry.`,
-	);
-}
+const collection = resolveCollection(slug, rawCollections);
 
 const images = await getImages(collection ? { collection } : {});
 const activeSegments = collection ? collection.split('/') : [];
 const meta = collectionMeta(collection, allCollections);
 
-const crumbs: Crumb[] = [{ name: 'Gallery', path: '/collections/' }];
+const locale = localeFromPath(Astro.url.pathname);
+const t = useTranslations(locale);
+
+const crumbs: Crumb[] = [{ name: t.gallery.breadcrumb, path: '/collections/' }];
 if (collection) {
 	const segments = collection.split('/');
 	for (let i = 0; i < segments.length; i++) {
@@ -99,111 +44,11 @@ if (collection) {
 	}
 }
 
-type Row = {
-	parentId: string | undefined;
-	parentName: string;
-	items: { id: string; name: string }[];
-	activeId: string | undefined;
-};
-
-const rows: Row[] = [];
-{
-	let cur: Node | undefined = tree;
-	for (let depth = 0; cur && cur.children.size > 0; depth++) {
-		const items = [...cur.children.values()].map((c) => ({ id: c.id, name: c.name }));
-		const activeChildSeg = activeSegments[depth];
-		const activeChild = activeChildSeg ? cur.children.get(activeChildSeg) : undefined;
-		const row: Row = {
-			parentId: cur.id || undefined,
-			parentName: cur.id ? cur.name : 'All',
-			items,
-			activeId: activeChild?.id,
-		};
-		if (depth > 0) {
-			row.items = [...row.items, { id: cur.id, name: `All ${cur.name}` }];
-		}
-		rows.push(row);
-		cur = activeChild;
-	}
-}
-
-export const getStaticPaths = async () => {
-	const cols = await getCollections();
-	const t = (() => {
-		const root: { children: Map<string, any> } = { children: new Map() };
-		for (const c of cols) {
-			const segs = c.id.split('/');
-			let cur: any = root;
-			for (let i = 0; i < segs.length; i++) {
-				const seg = segs[i];
-				const fullId = segs.slice(0, i + 1).join('/');
-				if (!cur.children.has(seg)) cur.children.set(seg, { id: fullId, children: new Map() });
-				cur = cur.children.get(seg);
-			}
-		}
-		return root;
-	})();
-	const ids = new Set<string | undefined>([undefined]);
-	const walk = (n: any) => {
-		if (n.id) ids.add(n.id);
-		for (const c of n.children.values()) walk(c);
-	};
-	walk(t);
-	// Routes are emitted under slugs; the page resolves the slug back to the id.
-	return [...ids].map((id) => ({ params: { collection: id ? slugifyId(id) : undefined } }));
-};
+const rows = filterRows(tree, activeSegments, t.gallery.all, t.gallery.allOf);
 ---
 
 <MainLayout title={meta.title} description={meta.description} jsonLd={[breadcrumbList(crumbs)]}>
-	<section class="py-16 pt-24">
-		<div class="container-custom">
-			<div class="mb-16 text-center">
-				<h1 class="text-4xl md:text-5xl font-bold mb-4">{meta.heading}</h1>
-				<p class="text-gray-600 max-w-xl mx-auto italic">{meta.tagline}</p>
-			</div>
-
-			{
-				rows.map((row, idx) => (
-					<div class={`flex justify-center ${idx === rows.length - 1 ? 'mb-10' : 'mb-4'}`}>
-						<div class="flex flex-wrap gap-2 justify-center">
-							{idx === 0 && (
-								<a href="/collections/" class="order-last">
-									<div
-										class={`px-4 py-2 border ${
-											!collection
-												? 'border-black bg-black text-white'
-												: 'border-gray-200 text-gray-700 hover:border-gray-300'
-										} transition-all`}
-									>
-										All
-									</div>
-								</a>
-							)}
-							{row.items.map((item) => {
-								const isActive =
-									item.id === collection ||
-									(collection !== undefined && collection.startsWith(item.id + '/'));
-								const sizeClass = idx === 0 ? 'px-4 py-2' : 'px-3 py-1 text-sm';
-								return (
-									<a href={`/collections/${slugifyId(item.id)}/`}>
-										<div
-											class={`${sizeClass} border ${
-												isActive
-													? 'border-black bg-black text-white'
-													: 'border-gray-200 text-gray-700 hover:border-gray-300'
-											} transition-all`}
-										>
-											{item.name}
-										</div>
-									</a>
-								);
-							})}
-						</div>
-					</div>
-				))
-			}
-
-			<PhotoGrid images={images} />
-		</div>
-	</section>
+	<CollectionPage heading={meta.heading} tagline={meta.tagline} rows={rows} collection={collection}
+		><PhotoGrid images={images} /></CollectionPage
+	>
 </MainLayout>
