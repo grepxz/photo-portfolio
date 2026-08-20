@@ -2,3 +2,11 @@
 build
 coverage
 package-lock.json
+
+# Planning documents. These contain deliberate code FRAGMENTS inside fenced
+# blocks — partial call signatures, config excerpts, interface stubs — which
+# are illustrative rather than compilable. Prettier tries to parse them as
+# real source and exits with a SyntaxError, which fails the pre-commit hook
+# for the whole repo. They are prose for humans; formatting them buys nothing.
+docs/superpowers/
+.superpowers/
