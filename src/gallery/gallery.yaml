@@ -3,55 +3,103 @@ collections:
     name: Events Nightclub
     heading: Nightlife & Club Photography
     tagline: Late nights in Barcelona, shot in available light.
+    es:
+      name: Vida nocturna
+      heading: Fotografía de vida nocturna y discotecas
+      tagline: Noches largas en Barcelona, con luz disponible.
   - id: events/networking/Venture capital party
     name: Events Networking Venture Capital Party
     heading: Venture Capital Party
     tagline: A venture capital party photographed in Houston, Texas.
+    es:
+      name: Fiesta de capital riesgo
+      heading: Fiesta de capital riesgo
+      tagline: Una fiesta de capital riesgo fotografiada en Houston, Texas.
   - id: events/networking/Pitch deck
     name: Events Networking Pitch Deck
     heading: Startup Pitch Night
     tagline: A startup pitch night photographed in Houston, Texas.
+    es:
+      name: Noche de pitches
+      heading: Noche de pitches para startups
+      tagline: Una noche de pitches fotografiada en Houston, Texas.
   - id: events/networking/Startup panel
     name: Events Networking Startup Panel
     heading: Startup Panel
     tagline: A startup panel discussion photographed in Houston, Texas.
+    es:
+      name: Panel de startups
+      heading: Panel de startups
+      tagline: Un panel de startups fotografiado en Houston, Texas.
   - id: events/networking/corporate dinner
     name: Events Networking Corporate Dinner
     heading: Corporate Dinner
     tagline: A corporate dinner photographed in Houston, Texas.
+    es:
+      name: Cena corporativa
+      heading: Cena corporativa
+      tagline: Una cena de empresa fotografiada en Houston, Texas.
   - id: events/sport
     name: Events Sport
     heading: Sports Photography
     tagline: Sport and outdoor training in Barcelona.
+    es:
+      name: Deporte
+      heading: Fotografía deportiva
+      tagline: Deporte y entrenamiento al aire libre en Barcelona.
   - id: events/birthday
     name: Events Birthday
     heading: Birthdays & Private Celebrations
     tagline: Private celebrations photographed in Houston, Texas.
+    es:
+      name: Cumpleaños
+      heading: Cumpleaños y celebraciones privadas
+      tagline: Celebraciones privadas fotografiadas en Houston, Texas.
   - id: activism/Barcelona Pride
     name: Activism Barcelona Pride
     heading: Barcelona Pride
     tagline: Documentary coverage of Pride in Barcelona.
+    es:
+      name: Orgullo de Barcelona
+      heading: Orgullo de Barcelona
+      tagline: El Orgullo fotografiado en las calles de Barcelona.
   - id: activism/Mexico
     name: Activism Mexico
     heading: Immigration Rights Protest
-    tagline: >-
-      Houston's Mexican community protesting United States immigration law.
+    tagline: Houston's Mexican community protesting United States immigration law.
+    es:
+      name: Comunidad mexicana
+      heading: Protesta por los derechos de los inmigrantes
+      tagline: >-
+        Una protesta de la comunidad mexicana de Houston por los derechos de los
+        inmigrantes.
   - id: activism/Ukraine
     name: Activism Ukraine
     heading: Ukraine War Anniversary Memorial
-    tagline: >-
-      Houston's Ukrainian community marking the anniversary of the war.
+    tagline: Houston's Ukrainian community marking the anniversary of the war.
+    es:
+      name: Comunidad ucraniana
+      heading: Homenaje de la comunidad ucraniana
+      tagline: >-
+        Un homenaje de la comunidad ucraniana de Houston en el aniversario de la
+        guerra.
   - id: weddings
     name: Weddings
     heading: Wedding Photography in Barcelona & Catalonia
     tagline: >-
       Ceremonies and celebrations photographed as they happen — minimal
       direction, minimal editing. Shot on the Costa Brava at Blanes, Girona.
+    es:
+      name: Bodas
+      heading: Fotografía de bodas en Barcelona
+      tagline: Bodas en Barcelona, la Costa Brava y más allá.
 images:
   - path: events/nightclub/IMG_7348.webp
     meta:
       title: Img 7348
-      alt: Club crowd under a mirror ball with crossing red and blue spotlight beams
+      alt: >-
+        Club crowd under a mirror ball with crossing red and blue spotlight
+        beams
       description: ''
       collections:
         - events/nightclub
@@ -69,7 +117,9 @@ images:
   - path: events/nightclub/IMG_7996.webp
     meta:
       title: Img 7996
-      alt: A man's silhouette against purple stage lighting and hanging string lights
+      alt: >-
+        A man's silhouette against purple stage lighting and hanging string
+        lights
       description: ''
       collections:
         - events/nightclub
@@ -150,7 +200,9 @@ images:
   - path: activism/Barcelona Pride/pride - 016.webp
     meta:
       title: Pride 016
-      alt: A child peeks between marchers' legs beside a wheelchair and rainbow flag
+      alt: >-
+        A child peeks between marchers' legs beside a wheelchair and rainbow
+        flag
       description: ''
       collections:
         - activism/Barcelona Pride
@@ -173,7 +225,9 @@ images:
   - path: activism/Mexico/IMG_8360-1.webp
     meta:
       title: Img 8360 1
-      alt: A raised fist grips a railing beside a Mexican flag with its eagle emblem
+      alt: >-
+        A raised fist grips a railing beside a Mexican flag with its eagle
+        emblem
       description: ''
       collections:
         - activism/Mexico
@@ -333,7 +387,9 @@ images:
   - path: activism/Ukraine/IMG_9267.webp
     meta:
       title: Img 9267
-      alt: A girl in a flower crown sits on a man's shoulders beside war crimes signs
+      alt: >-
+        A girl in a flower crown sits on a man's shoulders beside war crimes
+        signs
       description: ''
       collections:
         - activism/Ukraine

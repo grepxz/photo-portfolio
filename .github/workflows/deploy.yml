@@ -25,8 +25,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Run unit tests
+        run: npx vitest run
+
       - name: Build the Astro site
         run: npm run build
+
+      - name: Run SEO guard
+        run: npm run seo:check
 
       - name: Deploy to photography-portfolio repository
         uses: JamesIves/github-pages-deploy-action@v4

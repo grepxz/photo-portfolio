@@ -1,4 +1,12 @@
-import { BRAND, DEFAULT_OG_IMAGE, OWNER, POSITIONING, SITE } from './defaults.ts';
+import {
+	BRAND,
+	DEFAULT_LOCALE,
+	DEFAULT_OG_IMAGE,
+	OWNER,
+	POSITIONING,
+	SITE,
+	type Locale,
+} from './defaults.ts';
 import { canonicalFor } from './meta.ts';
 
 export type JsonLd = Record<string, unknown>;
@@ -24,7 +32,7 @@ const SERVICE_TYPES = [
 	'Portrait photography',
 ];
 
-export const professionalService = (): JsonLd => {
+export const professionalService = (locale: Locale = DEFAULT_LOCALE): JsonLd => {
 	const schema: JsonLd = {
 		'@context': 'https://schema.org',
 		'@type': 'ProfessionalService',
@@ -41,6 +49,7 @@ export const professionalService = (): JsonLd => {
 		serviceType: SERVICE_TYPES,
 		founder: { '@id': PERSON_ID },
 		knowsLanguage: ['en', 'es'],
+		inLanguage: locale,
 	};
 
 	if (SAME_AS.length > 0) {
@@ -50,7 +59,7 @@ export const professionalService = (): JsonLd => {
 	return schema;
 };
 
-export const person = (): JsonLd => ({
+export const person = (locale: Locale = DEFAULT_LOCALE): JsonLd => ({
 	'@context': 'https://schema.org',
 	'@type': 'Person',
 	'@id': PERSON_ID,
@@ -58,6 +67,7 @@ export const person = (): JsonLd => ({
 	jobTitle: 'Photographer',
 	url: `${SITE}/book/`,
 	worksFor: { '@id': BUSINESS_ID },
+	inLanguage: locale,
 });
 
 export interface Crumb {

@@ -1,14 +1,26 @@
 ---
 import siteConfig from '../../site.config.mjs';
+import { DEFAULT_LOCALE, type Locale } from '../seo/defaults.ts';
+import { localeFromPath, localePath, useTranslations } from '../i18n/index.ts';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+
+interface Props {
+	/** Locales this page actually exists in. Defaults to English only. */
+	availableLocales?: Locale[];
+}
+
+const { availableLocales = [DEFAULT_LOCALE] } = Astro.props;
 
 const title = siteConfig.title;
 const favicon = siteConfig.favicon;
 
 const titleParts = title.split('4');
+const locale = localeFromPath(Astro.url.pathname);
+const t = useTranslations(locale);
 const menuItems = [
-	{ name: 'Home', link: `/` },
-	{ name: 'Gallery', link: `/collections/` },
-	{ name: 'Book', link: `/book/` },
+	{ name: t.nav.home, link: localePath('/', locale) },
+	{ name: t.nav.gallery, link: localePath('/collections/', locale) },
+	{ name: t.nav.book, link: localePath('/book/', locale) },
 ];
 ---
 
@@ -20,7 +32,7 @@ const menuItems = [
 >
 	<div class="container mx-auto flex justify-between items-center">
 		<a
-			href="/"
+			href={localePath('/', locale)}
 			id="logo"
 			class="text-2xl md:text-4xl font-semibold tracking-tight inline-flex items-center"
 		>
@@ -51,6 +63,7 @@ const menuItems = [
 					</a>
 				))
 			}
+			{availableLocales.length > 1 && <LanguageSwitcher availableLocales={availableLocales} />}
 		</div>
 
 		<!-- Mobile Menu Button -->
@@ -81,6 +94,11 @@ const menuItems = [
 						{item.name}
 					</a>
 				))
+			}
+			{
+				availableLocales.length > 1 && (
+					<LanguageSwitcher closeMenuOnClick availableLocales={availableLocales} />
+				)
 			}
 		</div>
 	</div>

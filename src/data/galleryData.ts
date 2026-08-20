@@ -18,12 +18,15 @@ export interface GalleryData {
  * @property {string} name - Display name of the collection
  * @property {string} [heading] - Page h1. Falls back to a template.
  * @property {string} [tagline] - Sub-heading and meta description source.
+ * @property {object} [es] - Spanish copy, colocated with the English original.
  */
 export interface Collection {
 	id: string;
 	name: string;
 	heading?: string;
 	tagline?: string;
+	/** Spanish copy, colocated with the English original. */
+	es?: { name: string; heading: string; tagline: string };
 }
 
 /**

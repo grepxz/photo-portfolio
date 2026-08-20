@@ -1,10 +1,10 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro';
-import { Content as BookPageEn } from '../content/book.md';
-import { Content as BookPageEs } from '../content/book.es.md';
-import CalBooking from '../components/CalBooking.astro';
-import siteConfig from '../../site.config.mjs';
-import { localeFromPath, useTranslations } from '../i18n/index.ts';
+import MainLayout from '../../layouts/MainLayout.astro';
+import { Content as BookPageEn } from '../../content/book.md';
+import { Content as BookPageEs } from '../../content/book.es.md';
+import CalBooking from '../../components/CalBooking.astro';
+import siteConfig from '../../../site.config.mjs';
+import { localeFromPath, useTranslations } from '../../i18n/index.ts';
 
 const profileImage = siteConfig.profileImage;
 const locale = localeFromPath(Astro.url.pathname);

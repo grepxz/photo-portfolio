@@ -49,3 +49,37 @@ describe('collectionMeta', () => {
 		}
 	});
 });
+
+describe('locale', () => {
+	const collections = [
+		{
+			id: 'weddings',
+			name: 'Weddings',
+			heading: 'Wedding Photography',
+			tagline: 'Weddings in Barcelona.',
+			es: { name: 'Bodas', heading: 'Fotografía de bodas', tagline: 'Bodas en Barcelona.' },
+		},
+	];
+
+	it('defaults to English', () => {
+		expect(collectionMeta('weddings', collections).heading).toBe('Wedding Photography');
+	});
+
+	it('uses the Spanish block when asked', () => {
+		const meta = collectionMeta('weddings', collections, 'es');
+		expect(meta.heading).toBe('Fotografía de bodas');
+		expect(meta.tagline).toBe('Bodas en Barcelona.');
+	});
+
+	it('localises the index page', () => {
+		expect(collectionMeta(undefined, collections, 'es').heading).toContain('Barcelona');
+		expect(collectionMeta(undefined, collections, 'es').heading).not.toBe(
+			collectionMeta(undefined, collections).heading,
+		);
+	});
+
+	it('falls back to English rather than rendering nothing', () => {
+		const partial = [{ id: 'x', name: 'X', heading: 'X Photography', tagline: 'X.' }];
+		expect(collectionMeta('x', partial, 'es').heading).toBe('X Photography');
+	});
+});

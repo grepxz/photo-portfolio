@@ -7,6 +7,8 @@ import { buildMeta } from '../seo/meta.ts';
 import { person, professionalService, type JsonLd } from '../seo/schema.ts';
 import { alternates } from '../seo/hreflang.ts';
 import { DEFAULT_LOCALE, type Locale } from '../seo/defaults.ts';
+import { localeFromPath } from '../i18n/index.ts';
+import { ogLocale } from '../seo/ogLocale.ts';
 
 interface Props {
 	title: string;
@@ -22,12 +24,13 @@ const { title, description, image, jsonLd = [], availableLocales = [DEFAULT_LOCA
 const favicon = siteConfig.favicon;
 const analyticsToken = siteConfig.analyticsToken;
 
-const meta = buildMeta({ title, description, image, path: Astro.url.pathname });
-const structuredData: JsonLd[] = [professionalService(), person(), ...jsonLd];
+const locale = localeFromPath(Astro.url.pathname);
+const meta = buildMeta({ title, description, image, path: Astro.url.pathname, locale });
+const structuredData: JsonLd[] = [professionalService(locale), person(locale), ...jsonLd];
 const languageLinks = alternates(Astro.url.pathname, availableLocales);
 ---
 
-<html lang="en" class="h-full">
+<html lang={locale} class="h-full">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -49,7 +52,7 @@ const languageLinks = alternates(Astro.url.pathname, availableLocales);
 		<meta property="og:description" content={meta.og.description} />
 		<meta property="og:url" content={meta.og.url} />
 		<meta property="og:image" content={meta.og.image} />
-		<meta property="og:locale" content={meta.og.locale} />
+		<meta property="og:locale" content={ogLocale(meta.og.locale)} />
 
 		<meta name="twitter:card" content={meta.twitter.card} />
 		<meta name="twitter:title" content={meta.twitter.title} />
@@ -70,7 +73,7 @@ const languageLinks = alternates(Astro.url.pathname, availableLocales);
 		}
 	</head>
 	<body>
-		<NavBar />
+		<NavBar availableLocales={availableLocales} />
 		<main>
 			<slot />
 		</main>

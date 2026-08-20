@@ -85,3 +85,20 @@ describe('breadcrumbList', () => {
 		expect(breadcrumbList([]).itemListElement).toEqual([]);
 	});
 });
+
+describe('locale handling', () => {
+	it('defaults to English', () => {
+		expect(professionalService().inLanguage).toBe('en');
+		expect(person().inLanguage).toBe('en');
+	});
+
+	it('carries the requested locale', () => {
+		expect(professionalService('es').inLanguage).toBe('es');
+		expect(person('es').inLanguage).toBe('es');
+	});
+
+	it('keeps @id stable across locales so the entity is not duplicated', () => {
+		expect(professionalService('es')['@id']).toBe(professionalService('en')['@id']);
+		expect(person('es')['@id']).toBe(person('en')['@id']);
+	});
+});
