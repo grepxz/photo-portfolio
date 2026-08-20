@@ -47,6 +47,7 @@ const es: Strings = {
 				'Reserva a Hanna para bodas, eventos, retratos y trabajo documental en Barcelona. Tarifas reducidas y TFP para sesiones seleccionadas.',
 		},
 	},
+	footer: { rights: 'Todos los derechos reservados.' },
 };
 
 export default es;

@@ -73,7 +73,7 @@ const languageLinks = alternates(Astro.url.pathname, availableLocales);
 		}
 	</head>
 	<body>
-		<NavBar />
+		<NavBar availableLocales={availableLocales} />
 		<main>
 			<slot />
 		</main>

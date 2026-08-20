@@ -1,10 +1,14 @@
 ---
 import siteConfig from '../../site.config.mjs';
 import SocialIcon from './SocialIcon.astro';
+import { localeFromPath, useTranslations } from '../i18n/index.ts';
 
 const year = new Date().getFullYear();
 const owner = siteConfig.owner;
 const socialLinks = siteConfig.socialLinks;
+
+const locale = localeFromPath(Astro.url.pathname);
+const t = useTranslations(locale);
 ---
 
 <footer class="py-10 border-t border-gray-100 mt-auto">
@@ -12,7 +16,7 @@ const socialLinks = siteConfig.socialLinks;
 		<div class="flex flex-col md:flex-row justify-between items-center">
 			<div class="text-sm font-sans text-gray-500 mb-4 md:mb-0">
 				© {year}
-				{owner}. All rights reserved.
+				{owner}. {t.footer.rights}
 			</div>
 
 			<div class="flex space-x-6">

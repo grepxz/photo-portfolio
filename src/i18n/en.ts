@@ -47,6 +47,7 @@ const en: Strings = {
 				'Book Hanna for weddings, events, portraits and documentary work in Barcelona. Reduced rates and TFP available for selected shoot types.',
 		},
 	},
+	footer: { rights: 'All rights reserved.' },
 };
 
 export default en;

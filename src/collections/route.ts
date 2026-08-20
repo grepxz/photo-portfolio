@@ -60,7 +60,10 @@ export type Node = {
 	children: Map<string, Node>;
 };
 
-export const buildTree = (ids: string[]): Node => {
+export const buildTree = (
+	ids: string[],
+	nameFor: (id: string, seg: string) => string = (_id, seg) => cap(seg),
+): Node => {
 	const root: Node = { id: '', name: 'All', children: new Map() };
 	for (const id of ids) {
 		const segments = id.split('/');
@@ -69,7 +72,7 @@ export const buildTree = (ids: string[]): Node => {
 			const seg = segments[i];
 			const fullId = segments.slice(0, i + 1).join('/');
 			if (!cur.children.has(seg)) {
-				cur.children.set(seg, { id: fullId, name: cap(seg), children: new Map() });
+				cur.children.set(seg, { id: fullId, name: nameFor(fullId, seg), children: new Map() });
 			}
 			cur = cur.children.get(seg)!;
 		}

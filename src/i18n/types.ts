@@ -58,4 +58,7 @@ export interface Strings {
 		home: { title: string; description: string };
 		book: { title: string; description: string };
 	};
+	footer: {
+		rights: string;
+	};
 }

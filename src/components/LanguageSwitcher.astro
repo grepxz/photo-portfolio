@@ -1,17 +1,19 @@
 ---
-import { LOCALES } from '../seo/defaults.ts';
+import { DEFAULT_LOCALE, type Locale } from '../seo/defaults.ts';
 import { localeFromPath, localePath, useTranslations } from '../i18n/index.ts';
 
 interface Props {
 	/** Emit the Alpine `@click` handler that closes the mobile menu panel. */
 	closeMenuOnClick?: boolean;
+	/** Locales this page actually exists in. Defaults to English only. */
+	availableLocales?: Locale[];
 }
 
-const { closeMenuOnClick = false } = Astro.props;
+const { closeMenuOnClick = false, availableLocales = [DEFAULT_LOCALE] } = Astro.props;
 
 const current = localeFromPath(Astro.url.pathname);
 const t = useTranslations(current);
-const options = LOCALES.map((locale) => ({
+const options = availableLocales.map((locale) => ({
 	locale,
 	href: localePath(Astro.url.pathname, locale),
 	current: locale === current,

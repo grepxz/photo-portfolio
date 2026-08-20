@@ -31,6 +31,23 @@ describe('buildTree', () => {
 		expect([...tree.children.keys()].sort()).toEqual(['events', 'weddings']);
 		expect(tree.children.get('events')!.children.has('networking')).toBe(true);
 	});
+
+	it('defaults to a capitalised segment when no naming function is given', () => {
+		const tree = buildTree(COLLECTIONS.map((c) => c.id));
+		expect(tree.children.get('events')!.name).toBe('Events');
+	});
+
+	it('applies a provided naming function to every node, not just the root', () => {
+		const tree = buildTree(
+			COLLECTIONS.map((c) => c.id),
+			(id, seg) => `ES:${id || seg}`,
+		);
+		expect(tree.children.get('events')!.name).toBe('ES:events');
+		expect(tree.children.get('events')!.children.get('networking')!.name).toBe(
+			'ES:events/networking',
+		);
+		expect(tree.children.get('weddings')!.name).toBe('ES:weddings');
+	});
 });
 
 describe('filterRows', () => {
@@ -41,10 +58,14 @@ describe('filterRows', () => {
 		expect(rows[1].items.some((i) => i.name === 'All Events')).toBe(true);
 	});
 
-	it('substitutes the label template rather than hardcoding English', () => {
-		const tree = buildTree(COLLECTIONS.map((c) => c.id));
+	it('substitutes the label template using the resolved node name, not the raw segment', () => {
+		const tree = buildTree(
+			COLLECTIONS.map((c) => c.id),
+			(id, seg) => (id === 'events' ? 'Eventos' : seg),
+		);
 		const rows = filterRows(tree, ['events'], 'Todo', 'Todo en {name}');
-		expect(rows[1].items.some((i) => i.name === 'Todo en Events')).toBe(true);
+		expect(rows[1].items.some((i) => i.name === 'Todo en Eventos')).toBe(true);
+		expect(rows[1].items.some((i) => i.name === 'Todo en Events')).toBe(false);
 	});
 });
 

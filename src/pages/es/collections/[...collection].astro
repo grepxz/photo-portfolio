@@ -5,10 +5,11 @@ import PhotoGrid from '../../../components/PhotoGrid.astro';
 import { getCollections, getImages } from '../../../data/imageStore';
 import { collectionMeta } from '../../../seo/collectionMeta.ts';
 import { breadcrumbList, type Crumb } from '../../../seo/schema.ts';
-import { useTranslations, localeFromPath } from '../../../i18n/index.ts';
+import { useTranslations, localeFromPath, localePath } from '../../../i18n/index.ts';
 import {
 	SYNTHETIC,
 	buildTree,
+	cap,
 	collectionPaths,
 	filterRows,
 	resolveCollection,
@@ -19,7 +20,10 @@ export const getStaticPaths = collectionPaths;
 
 const rawCollections = await getCollections();
 const allCollections = [...rawCollections, ...SYNTHETIC];
-const tree = buildTree(rawCollections.map((c) => c.id));
+const tree = buildTree(
+	rawCollections.map((c) => c.id),
+	(id, seg) => allCollections.find((c) => c.id === id)?.es?.name ?? cap(seg),
+);
 
 // The route carries the slug; everything downstream works with the real id.
 const { collection: slug } = Astro.params;
@@ -32,14 +36,14 @@ const meta = collectionMeta(collection, allCollections, 'es');
 const locale = localeFromPath(Astro.url.pathname);
 const t = useTranslations(locale);
 
-const crumbs: Crumb[] = [{ name: t.gallery.breadcrumb, path: '/collections/' }];
+const crumbs: Crumb[] = [{ name: t.gallery.breadcrumb, path: localePath('/collections/', 'es') }];
 if (collection) {
 	const segments = collection.split('/');
 	for (let i = 0; i < segments.length; i++) {
 		const id = segments.slice(0, i + 1).join('/');
 		crumbs.push({
 			name: collectionMeta(id, allCollections, 'es').heading,
-			path: `/collections/${slugifyId(id)}/`,
+			path: localePath(`/collections/${slugifyId(id)}/`, 'es'),
 		});
 	}
 }
