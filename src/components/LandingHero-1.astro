@@ -20,13 +20,22 @@ const t = useTranslations(locale);
 		</p>
 
 		<!-- IPA sits outside Newsreader's glyph coverage, so give it an explicit
-		     fallback rather than letting the browser pick per character. -->
-		<p class="ipa mt-1 text-sm text-gray-400 md:text-base">{t.hero.ipa}</p>
+		     fallback rather than letting the browser pick per character.
+
+		     gray-500, not 400: on this card's #faf9f6 the 400 shade measures
+		     2.41:1, which fails WCAG AA at any size — it is under even the 3:1
+		     large-text floor, let alone the 4.5:1 this text size needs. 500 is
+		     4.59:1, and matches the muted tone already used by the part-of-speech
+		     line and the attribution below. -->
+		<p class="ipa mt-1 text-sm text-gray-500 md:text-base">{t.hero.ipa}</p>
 
 		<hr class="my-3 border-black/10" />
 
 		<p class="text-lg font-extralight italic text-gray-700 md:text-2xl">
-			<span class="pr-1 font-normal text-gray-400 not-italic">1.</span>
+			<!-- gray-500 for the same reason as the IPA above: 400 is 2.41:1 here.
+			     This marker is 18px on mobile, so it needs the 4.5:1 small-text
+			     threshold rather than the 3:1 large-text one. -->
+			<span class="pr-1 font-normal text-gray-500 not-italic">1.</span>
 			{t.hero.definition}
 		</p>
 
