@@ -1,13 +1,16 @@
 ---
 import { CalendarDays } from 'lucide-astro';
 import siteConfig from '../../site.config.mjs';
+import { localeFromPath, useTranslations } from '../i18n/index.ts';
 
 interface Props {
 	label?: string;
 	class?: string;
 }
 
-const { label = 'Book a consultation', class: className = '' } = Astro.props;
+const locale = localeFromPath(Astro.url.pathname);
+const t = useTranslations(locale);
+const { label = t.book.bookConsultation, class: className = '' } = Astro.props;
 const { link, namespace, origin } = siteConfig.calcom;
 
 // Passed to Cal on click; also the popup's initial view configuration.

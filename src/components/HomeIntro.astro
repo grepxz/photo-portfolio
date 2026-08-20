@@ -4,37 +4,60 @@
  * collections. The parallax wall renders to a WebGL canvas, so without this the
  * page carries almost no indexable text.
  */
+import { localeFromPath, useTranslations } from '../i18n/index.ts';
+
+const locale = localeFromPath(Astro.url.pathname);
+const t = useTranslations(locale);
+
+/**
+ * Paragraphs carry inline links as HTML (see i18n/types.ts). Rendering that
+ * HTML with set:html would leave the anchors outside Astro's scoped-style
+ * pass — they'd never pick up the .reveal scope attribute the way every
+ * other element in this file does. Splitting into text/link segments and
+ * rendering the links as ordinary elements keeps them scoped like everything
+ * else, with the same hrefs and text the dictionary provides.
+ */
+type Segment = string | { href: string; text: string };
+
+const toSegments = (html: string): Segment[] => {
+	const pattern = /<a href="([^"]*)">([^<]*)<\/a>/g;
+	const segments: Segment[] = [];
+	let cursor = 0;
+	let match = pattern.exec(html);
+	while (match !== null) {
+		if (match.index > cursor) segments.push(html.slice(cursor, match.index));
+		segments.push({ href: match[1], text: match[2] });
+		cursor = match.index + match[0].length;
+		match = pattern.exec(html);
+	}
+	if (cursor < html.length) segments.push(html.slice(cursor));
+	return segments;
+};
 ---
 
 <section class="container-custom py-20">
 	<div class="prose mx-auto max-w-2xl text-gray-700">
-		<h2 class="reveal text-2xl md:text-3xl font-bold">Photography in Barcelona</h2>
-
-		<p class="reveal">
-			I photograph <a href="/collections/weddings/">weddings</a>, <a href="/collections/events/"
-				>events</a
-			> and <a href="/collections/activism/">documentary work</a> in Barcelona and wherever else the
-			work takes me. My approach centers on raw emotion, genuine reaction, natural movement and minimal
-			editing.
-		</p>
-
-		<p class="reveal">
-			That covers ceremonies and celebrations, corporate evenings and networking nights, sport,
-			concerts and <a href="/collections/events/nightclub/">nightlife</a>, and long-form
-			journalistic projects — Pride in Barcelona, an immigration-rights protest by Houston's Mexican
-			community, and a memorial held by Houston's Ukrainian community on the anniversary of the war.
-		</p>
-
-		<p class="reveal">
-			I work in English and Spanish, and much of my client work in Barcelona is with visitors and
-			people who have recently moved here. I travel for commissions — the documentary and event work
-			below was photographed in Barcelona, on the Costa Brava, and in Houston, Texas.
-		</p>
-
-		<p class="reveal">
-			There is also work I am actively building and shooting at reduced rates or TFP, including
-			creative and conceptual shoots. <a href="/book/">The details are on the booking page.</a>
-		</p>
+		<h2 class="reveal text-2xl md:text-3xl font-bold">{t.home.introHeading}</h2>
+		{
+			// Adjacent literal <p> siblings in a template pick up a whitespace text
+			// node between them; sibling elements returned from one expression's
+			// array do not. The interleaved ' ' reproduces that separator so the
+			// only differences left are the insignificant ones Astro already made.
+			t.home.paragraphs.flatMap((html, i) => {
+				const paragraph = (
+					<p class="reveal">
+						{toSegments(html).map((segment) =>
+							typeof segment === 'string' ? (
+								<Fragment set:html={segment} />
+							) : (
+								<a href={segment.href} set:html={segment.text} />
+							),
+						)}
+					</p>
+				);
+				return i === 0 ? [paragraph] : [' ', paragraph];
+			})
+		}
 	</div>
 </section>
 

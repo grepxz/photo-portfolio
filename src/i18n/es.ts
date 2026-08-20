@@ -20,7 +20,12 @@ const es: Strings = {
 			'También hay trabajo que estoy construyendo ahora mismo, con tarifas reducidas o en TFP, incluidas sesiones creativas y conceptuales. <a href="/es/book/">Tienes los detalles en la página de reservas.</a>',
 		],
 	},
-	featured: { works: 'Trabajos destacados', work: 'Trabajo destacado' },
+	featured: {
+		works: 'Trabajos destacados',
+		work: 'Trabajo destacado',
+		subtitle: 'Una selección de bodas, eventos y trabajo documental en Barcelona.',
+		scrollLabel: 'Desplázate para ver el trabajo destacado',
+	},
 	gallery: { all: 'Todo', allOf: 'Todo en {name}', breadcrumb: 'Galería' },
 	book: {
 		heading: 'Reserva conmigo',

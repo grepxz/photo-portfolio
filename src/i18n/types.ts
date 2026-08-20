@@ -33,6 +33,9 @@ export interface Strings {
 	featured: {
 		works: string;
 		work: string;
+		subtitle: string;
+		/** Accessible label for the scroll-to-content button on the homepage hero. */
+		scrollLabel: string;
 	};
 	gallery: {
 		/** The chip that clears all filters. */

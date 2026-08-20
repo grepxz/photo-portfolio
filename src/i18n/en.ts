@@ -20,7 +20,12 @@ const en: Strings = {
 			'There is also work I am actively building and shooting at reduced rates or TFP, including creative and conceptual shoots. <a href="/book/">The details are on the booking page.</a>',
 		],
 	},
-	featured: { works: 'Featured Works', work: 'Featured Work' },
+	featured: {
+		works: 'Featured Works',
+		work: 'Featured Work',
+		subtitle: 'Selected work from weddings, events and documentary shoots across Barcelona.',
+		scrollLabel: 'Scroll down to see featured work',
+	},
 	gallery: { all: 'All', allOf: 'All {name}', breadcrumb: 'Gallery' },
 	book: {
 		heading: 'Book Me',

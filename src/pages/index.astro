@@ -5,12 +5,13 @@ import FeaturedGallery from '../components/FeaturedGallery.astro';
 import FeaturedWorkScroll from '../components/FeaturedWorkScroll.astro';
 import ParallaxWall from '../components/ParallaxWall.astro';
 import HomeIntro from '../components/HomeIntro.astro';
+import { localeFromPath, useTranslations } from '../i18n/index.ts';
+
+const locale = localeFromPath(Astro.url.pathname);
+const t = useTranslations(locale);
 ---
 
-<MainLayout
-	title="Photographer in Barcelona"
-	description="Hanna is a documentary, event and wedding photographer based in Barcelona. Weddings, nightlife, concerts, sport and journalistic work."
->
+<MainLayout title={t.meta.home.title} description={t.meta.home.description}>
 	<section class="relative min-h-screen items-center flex py-20 md:py-16 overflow-hidden">
 		<ParallaxWall />
 		<LandingHero />
