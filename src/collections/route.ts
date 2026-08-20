@@ -21,6 +21,12 @@ export const SYNTHETIC: Collection[] = [
 		heading: 'Event Photography in Barcelona & Beyond',
 		tagline:
 			'Nightlife and sport in Barcelona; networking, corporate evenings and private celebrations in Houston.',
+		es: {
+			name: 'Eventos',
+			heading: 'Fotografía de eventos en Barcelona y más allá',
+			tagline:
+				'Vida nocturna y deporte en Barcelona; networking, cenas de empresa y celebraciones privadas en Houston.',
+		},
 	},
 	{
 		id: 'activism',
@@ -28,12 +34,23 @@ export const SYNTHETIC: Collection[] = [
 		heading: 'Documentary & Journalistic Work',
 		tagline:
 			'Protest and memorial photography — Pride in Barcelona, immigration-rights and Ukraine anniversary gatherings in Houston.',
+		es: {
+			name: 'Activismo',
+			heading: 'Trabajo documental y periodístico',
+			tagline:
+				'Fotografía de protestas y homenajes: el Orgullo en Barcelona, derechos de los inmigrantes y el aniversario de la guerra en Ucrania, en Houston.',
+		},
 	},
 	{
 		id: 'events/networking',
 		name: 'Events Networking',
 		heading: 'Networking & Corporate Events',
 		tagline: 'Startup panels, pitch nights and corporate dinners in Houston, Texas.',
+		es: {
+			name: 'Networking',
+			heading: 'Networking y eventos corporativos',
+			tagline: 'Paneles de startups, noches de pitches y cenas de empresa en Houston, Texas.',
+		},
 	},
 ];
 
