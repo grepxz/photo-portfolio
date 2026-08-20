@@ -1,0 +1,26 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import LandingHero from '../../components/LandingHero-1.astro';
+import FeaturedGallery from '../../components/FeaturedGallery.astro';
+import FeaturedWorkScroll from '../../components/FeaturedWorkScroll.astro';
+import ParallaxWall from '../../components/ParallaxWall.astro';
+import HomeIntro from '../../components/HomeIntro.astro';
+import { localeFromPath, useTranslations } from '../../i18n/index.ts';
+
+const locale = localeFromPath(Astro.url.pathname);
+const t = useTranslations(locale);
+---
+
+<MainLayout title={t.meta.home.title} description={t.meta.home.description}>
+	<section class="relative min-h-screen items-center flex py-20 md:py-16 overflow-hidden">
+		<ParallaxWall />
+		<LandingHero />
+		<FeaturedWorkScroll />
+	</section>
+
+	<HomeIntro />
+
+	<section class="featured-section py-20">
+		<FeaturedGallery />
+	</section>
+</MainLayout>

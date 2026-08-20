@@ -1,0 +1,54 @@
+---
+import MainLayout from '../../../layouts/MainLayout.astro';
+import CollectionPage from '../../../components/CollectionPage.astro';
+import PhotoGrid from '../../../components/PhotoGrid.astro';
+import { getCollections, getImages } from '../../../data/imageStore';
+import { collectionMeta } from '../../../seo/collectionMeta.ts';
+import { breadcrumbList, type Crumb } from '../../../seo/schema.ts';
+import { useTranslations, localeFromPath } from '../../../i18n/index.ts';
+import {
+	SYNTHETIC,
+	buildTree,
+	collectionPaths,
+	filterRows,
+	resolveCollection,
+	slugifyId,
+} from '../../../collections/route.ts';
+
+export const getStaticPaths = collectionPaths;
+
+const rawCollections = await getCollections();
+const allCollections = [...rawCollections, ...SYNTHETIC];
+const tree = buildTree(rawCollections.map((c) => c.id));
+
+// The route carries the slug; everything downstream works with the real id.
+const { collection: slug } = Astro.params;
+const collection = resolveCollection(slug, rawCollections);
+
+const images = await getImages(collection ? { collection } : {});
+const activeSegments = collection ? collection.split('/') : [];
+const meta = collectionMeta(collection, allCollections, 'es');
+
+const locale = localeFromPath(Astro.url.pathname);
+const t = useTranslations(locale);
+
+const crumbs: Crumb[] = [{ name: t.gallery.breadcrumb, path: '/collections/' }];
+if (collection) {
+	const segments = collection.split('/');
+	for (let i = 0; i < segments.length; i++) {
+		const id = segments.slice(0, i + 1).join('/');
+		crumbs.push({
+			name: collectionMeta(id, allCollections, 'es').heading,
+			path: `/collections/${slugifyId(id)}/`,
+		});
+	}
+}
+
+const rows = filterRows(tree, activeSegments, t.gallery.all, t.gallery.allOf);
+---
+
+<MainLayout title={meta.title} description={meta.description} jsonLd={[breadcrumbList(crumbs)]}>
+	<CollectionPage heading={meta.heading} tagline={meta.tagline} rows={rows} collection={collection}
+		><PhotoGrid images={images} /></CollectionPage
+	>
+</MainLayout>
