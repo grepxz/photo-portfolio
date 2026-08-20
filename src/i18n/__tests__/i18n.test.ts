@@ -52,7 +52,7 @@ describe('dictionaries', () => {
 	// from both files at once, or an object built dynamically.
 	it('has identical key sets in both locales', () => {
 		const keys = (value: unknown, prefix = ''): string[] =>
-			value !== null && typeof value === 'object' && !Array.isArray(value)
+			value !== null && typeof value === 'object'
 				? Object.entries(value).flatMap(([k, v]) => keys(v, `${prefix}${k}.`))
 				: [prefix.replace(/\.$/, '')];
 
