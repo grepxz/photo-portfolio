@@ -14,12 +14,6 @@ const locale = localeFromPath(Astro.url.pathname);
 const t = useTranslations(locale);
 const href = (id: string) => localePath(`/collections/${slugifyId(id)}/`, locale);
 const indexHref = localePath('/collections/', locale);
-// The literal English "All" text sat directly in a static text node, whose
-// leading and trailing newlines Astro preserves verbatim; an expression node
-// in the same spot collapses adjacent whitespace to a single space instead.
-// Embedding the newlines in the interpolated value itself keeps the English
-// output byte-identical while still driving the label from the dictionary.
-const allChipText = '\n' + t.gallery.all + '\n';
 ---
 
 <section class="py-16 pt-24">
@@ -41,8 +35,9 @@ const allChipText = '\n' + t.gallery.all + '\n';
 											? 'border-black bg-black text-white'
 											: 'border-gray-200 text-gray-700 hover:border-gray-300'
 									} transition-all`}
-									set:text={allChipText}
-								/>
+								>
+									{t.gallery.all}
+								</div>
 							</a>
 						)}
 						{row.items.map((item) => {
