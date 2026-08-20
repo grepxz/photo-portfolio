@@ -26,7 +26,7 @@ const options = LOCALES.map((locale) => ({
 				hreflang={option.locale}
 				lang={option.locale}
 				aria-current={option.current ? 'true' : undefined}
-				class={option.current ? 'font-semibold underline' : 'text-gray-600 hover:text-black'}
+				class={option.current ? 'font-semibold underline' : 'text-gray-800 hover:text-black'}
 				{...(closeMenuOnClick ? { '@click': 'isOpen = false' } : {})}
 			>
 				{option.locale.toUpperCase()}
