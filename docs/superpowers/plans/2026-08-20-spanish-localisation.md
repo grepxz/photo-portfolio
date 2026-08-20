@@ -112,7 +112,7 @@ describe('dictionaries', () => {
 
 	it('has no untranslated strings left in Spanish', () => {
 		expect(es.nav.home).not.toBe(en.nav.home);
-		expect(es.buttons.viewGallery).not.toBe(en.buttons.viewGallery);
+		expect(es.hero.viewGallery).not.toBe(en.hero.viewGallery);
 	});
 });
 ```
