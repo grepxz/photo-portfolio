@@ -51,6 +51,8 @@ export interface Strings {
 		bookEmail: string;
 		bookConsultation: string;
 		profileAlt: string;
+		/** Pre-filled subject line for the "book by email" mailto link. */
+		emailSubject: string;
 	};
 	meta: {
 		home: { title: string; description: string };

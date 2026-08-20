@@ -33,6 +33,7 @@ const en: Strings = {
 		bookEmail: 'Book through Email',
 		bookConsultation: 'Book a consultation',
 		profileAlt: 'Hanna editing a photograph in DaVinci Resolve',
+		emailSubject: 'Photography Booking Inquiry',
 	},
 	meta: {
 		home: {
